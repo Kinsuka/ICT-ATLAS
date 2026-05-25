@@ -9,11 +9,21 @@
   const items = Array.from(shell.querySelectorAll("[data-glossary-item]"));
   let lastFocus = null;
 
-  const openPanel = () => {
+  const applySearch = (value = "") => {
+    if (search) search.value = value;
+    const query = value.trim().toLowerCase();
+    items.forEach((item) => {
+      const text = item.dataset.glossaryText || "";
+      item.classList.toggle("is-hidden", Boolean(query) && !text.includes(query));
+    });
+  };
+
+  const openPanel = (term = "") => {
     lastFocus = document.activeElement;
     shell.classList.add("is-open");
     shell.setAttribute("aria-hidden", "false");
     document.body.classList.add("glossary-panel-open");
+    if (term) applySearch(term);
     window.setTimeout(() => search?.focus(), 80);
   };
 
@@ -26,15 +36,12 @@
     }
   };
 
-  const filterItems = () => {
-    const query = (search?.value || "").trim().toLowerCase();
-    items.forEach((item) => {
-      const text = item.dataset.glossaryText || "";
-      item.classList.toggle("is-hidden", Boolean(query) && !text.includes(query));
+  openers.forEach((button) => button.addEventListener("click", () => openPanel()));
+  document.querySelectorAll("[data-glossary-term]").forEach((termButton) => {
+    termButton.addEventListener("click", () => {
+      openPanel(termButton.dataset.glossaryTerm || termButton.textContent || "");
     });
-  };
-
-  openers.forEach((button) => button.addEventListener("click", openPanel));
+  });
   glossaryLinks.forEach((link) => {
     link.addEventListener("click", (event) => {
       event.preventDefault();
@@ -42,7 +49,7 @@
     });
   });
   closers.forEach((button) => button.addEventListener("click", closePanel));
-  search?.addEventListener("input", filterItems);
+  search?.addEventListener("input", () => applySearch(search.value));
 
   document.addEventListener("keydown", (event) => {
     if (event.key === "Escape" && shell.classList.contains("is-open")) {

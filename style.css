@@ -448,6 +448,23 @@ p { max-width: 70ch; }
   text-decoration: none;
 }
 
+.glossary-term {
+  display: inline;
+  padding: 0;
+  border: 0;
+  border-bottom: 1px dotted rgba(142, 229, 250, 0.72);
+  background: transparent;
+  color: #8ee5fa;
+  font: inherit;
+  font-weight: 760;
+  cursor: pointer;
+}
+
+.glossary-term:hover {
+  color: #f8d48a;
+  border-bottom-color: rgba(248, 212, 138, 0.9);
+}
+
 body.glossary-panel-open {
   overflow: hidden;
 }

@@ -1,0 +1,330 @@
+from pathlib import Path
+from bs4 import BeautifulSoup
+
+
+PARTS = [
+    {
+        "label": "Partie 1",
+        "title": "Comprendre la logique ICT",
+        "lessons": [
+            ("index.html", "Accueil du cours"),
+            ("16-modele-mental.html", "Modèle mental"),
+            ("01-parcours.html", "Tirez le maximum du cours"),
+            ("11-mecanique-marches.html", "Comprenez la mécanique des marchés"),
+            ("21-liquidite-deplacement.html", "Comprenez le déplacement du prix"),
+            ("22-structure-trend-range.html", "Comprenez trend, range et transitions"),
+            ("17-concept-setup-plan.html", "Distinguez concept, setup et plan"),
+        ],
+    },
+    {
+        "label": "Partie 2",
+        "title": "Construire une lecture de setup",
+        "lessons": [
+            ("03-fondations.html", "Posez les fondations de décision"),
+            ("04-setups-core.html", "Reconnaissez les setups cœur"),
+            ("18-transition-reel.html", "Passez du propre au réel"),
+            ("05-variantes.html", "Filtrez les variantes et faux signaux"),
+            ("07-failures-journees.html", "Acceptez les failures et journées complexes"),
+        ],
+    },
+    {
+        "label": "Partie 3",
+        "title": "Tester, risquer et exécuter",
+        "lessons": [
+            ("06-contextes-avances.html", "Ajoutez les contextes avancés"),
+            ("12-gestion-risque.html", "Calculez le risque"),
+            ("19-preuve-statistique.html", "Prouvez l’edge statistiquement"),
+            ("20-workflow-session.html", "Préparez une session live"),
+            ("14-live-chart.html", "Lisez un graphique TradingView"),
+        ],
+    },
+    {
+        "label": "Partie 4",
+        "title": "Valider et pratiquer",
+        "lessons": [
+            ("10-programme-avance.html", "Suivez le programme avancé"),
+            ("08-quiz.html", "Passez les quiz"),
+            ("13-prop-firm.html", "Adaptez-vous aux prop firms"),
+            ("09-synthese.html", "Validez la synthèse finale"),
+            ("15-index-concepts.html", "Retrouvez les concepts"),
+        ],
+    },
+]
+
+
+def flatten_lessons():
+    lessons = []
+    for part_index, part in enumerate(PARTS, 1):
+        for lesson_index, (href, title) in enumerate(part["lessons"], 1):
+            lessons.append(
+                {
+                    "href": href,
+                    "title": title,
+                    "part_index": part_index,
+                    "lesson_index": lesson_index,
+                    "part_label": part["label"],
+                    "part_title": part["title"],
+                }
+            )
+    return lessons
+
+
+LESSONS = flatten_lessons()
+LESSON_BY_FILE = {lesson["href"]: lesson for lesson in LESSONS}
+
+LESSON_OBJECTIVES = {
+    "index.html": [
+        ("Objectif", "Comprendre le parcours sans entrer encore dans les setups."),
+        ("Avant de continuer", "Repère où se trouvent le glossaire, l’index et la progression principale."),
+        ("Checkpoint", "Tu dois savoir quelle page lire ensuite et pourquoi."),
+    ],
+    "16-modele-mental.html": [
+        ("Objectif", "Construire l’idée simple qui organise tout le cours : liquidité, réaction, retour, cible."),
+        ("Avant de continuer", "Ne cherche pas encore à mémoriser les sigles ICT ; ils seront définis au fur et à mesure."),
+        ("Checkpoint", "Tu dois pouvoir raconter le mouvement du prix en une phrase simple."),
+    ],
+    "01-parcours.html": [
+        ("Objectif", "Comprendre comment travailler le cours, produire des captures et construire un journal."),
+        ("Avant de continuer", "Le parcours sert à apprendre dans l’ordre, pas à picorer uniquement les setups."),
+        ("Checkpoint", "Tu dois savoir quoi pratiquer après chaque leçon."),
+    ],
+    "11-mecanique-marches.html": [
+        ("Objectif", "Comprendre pourquoi le prix bouge avant d’apprendre les formes ICT."),
+        ("Avant de continuer", "Retiens surtout ordres, liquidité, absorption et déplacement ; les sigles viendront ensuite."),
+        ("Checkpoint", "Tu dois savoir expliquer pourquoi une zone évidente attire le prix."),
+    ],
+    "21-liquidite-deplacement.html": [
+        ("Objectif", "Relier recherche de liquidité et réaction du prix après la prise."),
+        ("Avant de continuer", "Un sweep seul ne suffit pas : la réaction après la prise est le cœur de la leçon."),
+        ("Checkpoint", "Tu dois distinguer continuation, absorption et retournement."),
+    ],
+    "22-structure-trend-range.html": [
+        ("Objectif", "Identifier si le marché est en trend, en range ou en transition avant de chercher un setup."),
+        ("Avant de continuer", "Cette leçon ne demande pas encore de trader : elle sert à filtrer l’environnement."),
+        ("Checkpoint", "Tu dois pouvoir dire quel type de setup est cohérent avec l’environnement."),
+    ],
+    "17-concept-setup-plan.html": [
+        ("Objectif", "Séparer concept observé, setup possible et plan réellement exécutable."),
+        ("Avant de continuer", "Voir une forme sur le graphique n’autorise pas encore une entrée."),
+        ("Checkpoint", "Tu dois pouvoir refuser un beau signal s’il manque contexte, risque ou cible."),
+    ],
+    "03-fondations.html": [
+        ("Objectif", "Assembler contexte, timing, environnement et décision avant les setups détaillés."),
+        ("Avant de continuer", "Cette page est dense : lis-la comme une méthode de tri, pas comme une liste à mémoriser."),
+        ("Checkpoint", "Tu dois savoir pourquoi un setup peut être interdit malgré une belle forme."),
+    ],
+    "04-setups-core.html": [
+        ("Objectif", "Découvrir les familles de setups cœur sans les confondre avec des signaux automatiques."),
+        ("Avant de continuer", "Chaque setup doit être lu comme une séquence : contexte, liquidité, déplacement, zone, risque."),
+        ("Checkpoint", "Tu dois pouvoir expliquer pourquoi une entrée est autorisée ou refusée."),
+    ],
+    "18-transition-reel.html": [
+        ("Objectif", "Passer du schéma propre au graphique réel, plus ambigu et plus bruyant."),
+        ("Avant de continuer", "Le but n’est pas de trouver plus de trades, mais de mieux trier."),
+        ("Checkpoint", "Tu dois distinguer exemple idéal, cas exploitable, cas ambigu et no trade."),
+    ],
+    "05-variantes.html": [
+        ("Objectif", "Reconnaître les faux amis et les versions dégradées des setups."),
+        ("Avant de continuer", "Une variante n’est pas forcément tradable : elle sert d’abord à entraîner le filtre."),
+        ("Checkpoint", "Tu dois savoir nommer ce qui manque dans un signal séduisant."),
+    ],
+    "07-failures-journees.html": [
+        ("Objectif", "Comprendre qu’un setup valide peut perdre sans que le modèle soit faux."),
+        ("Avant de continuer", "On sépare ici erreur de lecture, no trade et perte normale."),
+        ("Checkpoint", "Tu dois pouvoir classer une perte : erreur, hors plan ou perte valide."),
+    ],
+    "19-preuve-statistique.html": [
+        ("Objectif", "Transformer une idée visuelle en hypothèse mesurable."),
+        ("Avant de continuer", "Un beau pattern ne prouve rien tant qu’il n’a pas été testé sur un échantillon."),
+        ("Checkpoint", "Tu dois savoir quelles données noter pour vérifier un edge."),
+    ],
+}
+
+
+def tag(soup, name, text=None, **attrs):
+    item = soup.new_tag(name, **attrs)
+    if text is not None:
+        item.string = text
+    return item
+
+
+def lesson_position(filename):
+    for index, lesson in enumerate(LESSONS):
+        if lesson["href"] == filename:
+            return index, lesson
+    return 0, LESSONS[0]
+
+
+def rebuild_course_nav(soup, filename):
+    aside = soup.find("aside", class_="site-nav")
+    if not aside:
+        return
+    _, current = lesson_position(filename)
+    aside.clear()
+
+    brand = tag(soup, "div", **{"class": "nav-brand"})
+    brand.append(tag(soup, "strong", "ICT Atlas"))
+    brand.append(tag(soup, "span", "Cours guidé · trading ICT"))
+    aside.append(brand)
+
+    nav_title = tag(soup, "div", **{"class": "course-nav-title"})
+    nav_title.append(tag(soup, "span", "Table des matières"))
+    nav_title.append(tag(soup, "small", f"{len(LESSONS)} leçons"))
+    aside.append(nav_title)
+
+    glossary_link = soup.new_tag("a", href="glossaire.html", **{"class": "glossary-nav-link"})
+    glossary_link.append(tag(soup, "strong", "Glossaire permanent"))
+    glossary_link.append(tag(soup, "span", "Acronymes, zones et vocabulaire ICT"))
+    aside.append(glossary_link)
+
+    global_number = 1
+    for part in PARTS:
+        part_block = tag(soup, "div", **{"class": "course-part"})
+        part_head = tag(soup, "div", **{"class": "course-part-head"})
+        part_head.append(tag(soup, "span", part["label"]))
+        part_head.append(tag(soup, "strong", part["title"]))
+        part_block.append(part_head)
+
+        lessons_list = tag(soup, "ol", **{"class": "course-lessons"})
+        for local_index, (href, title) in enumerate(part["lessons"], 1):
+            li_class = "course-lesson active" if href == filename else "course-lesson"
+            li = tag(soup, "li", **{"class": li_class})
+            a = soup.new_tag("a", href=href)
+            a.append(tag(soup, "span", f"{local_index}", **{"class": "lesson-bullet"}))
+            text = tag(soup, "span", **{"class": "lesson-link-text"})
+            text.append(tag(soup, "strong", title))
+            text.append(tag(soup, "small", f"Leçon {global_number:02d}"))
+            a.append(text)
+            li.append(a)
+            lessons_list.append(li)
+            global_number += 1
+        part_block.append(lessons_list)
+        aside.append(part_block)
+
+    help_box = tag(soup, "div", **{"class": "nav-help"})
+    help_box.append(tag(soup, "strong", "Méthode"))
+    help_box.append(soup.new_tag("br"))
+    help_box.append("Lisez dans l’ordre, pratiquez en replay, puis validez par journal et stats.")
+    aside.append(help_box)
+
+    old_fab = soup.find("a", class_="glossary-fab")
+    if old_fab:
+        old_fab.decompose()
+    if soup.body:
+        fab = soup.new_tag(
+            "a",
+            href="glossaire.html",
+            **{"class": "glossary-fab", "aria-label": "Ouvrir le glossaire ICT"},
+        )
+        fab.string = "Glossaire"
+        soup.body.append(fab)
+
+
+def insert_lesson_header(soup, filename):
+    main = soup.find("main", class_="page")
+    if not main:
+        return
+    old = main.find("div", class_="lesson-header")
+    if old:
+        old.decompose()
+    old_bottom = main.find("nav", class_="lesson-bottom-nav")
+    if old_bottom:
+        old_bottom.decompose()
+
+    index, lesson = lesson_position(filename)
+    previous_lesson = LESSONS[index - 1] if index > 0 else None
+    next_lesson = LESSONS[index + 1] if index + 1 < len(LESSONS) else None
+
+    header = tag(soup, "div", **{"class": "lesson-header"})
+    meta = tag(soup, "div", **{"class": "lesson-meta"})
+    meta.append(tag(soup, "span", lesson["part_label"]))
+    meta.append(tag(soup, "span", f"Leçon {index + 1:02d}/{len(LESSONS):02d}"))
+    header.append(meta)
+    header.append(tag(soup, "div", lesson["part_title"], **{"class": "lesson-part-title"}))
+
+    progress = tag(soup, "div", **{"class": "course-progress", "aria-label": "Progression du cours"})
+    bar = tag(soup, "span")
+    bar["style"] = f"width:{round(((index + 1) / len(LESSONS)) * 100, 2)}%"
+    progress.append(bar)
+    header.append(progress)
+
+    pager = tag(soup, "nav", **{"class": "lesson-pager", "aria-label": "Navigation de leçon"})
+    if previous_lesson:
+        prev = soup.new_tag("a", href=previous_lesson["href"], **{"class": "pager-link"})
+        prev.append(tag(soup, "small", "Précédent"))
+        prev.append(tag(soup, "span", previous_lesson["title"]))
+        pager.append(prev)
+    else:
+        pager.append(tag(soup, "span", "Début du cours", **{"class": "pager-link disabled"}))
+    if next_lesson:
+        nxt = soup.new_tag("a", href=next_lesson["href"], **{"class": "pager-link next"})
+        nxt.append(tag(soup, "small", "Suivant"))
+        nxt.append(tag(soup, "span", next_lesson["title"]))
+        pager.append(nxt)
+    else:
+        pager.append(tag(soup, "span", "Fin du cours", **{"class": "pager-link disabled next"}))
+    header.append(pager)
+
+    hero = main.find("div", class_="hero")
+    if hero:
+        hero.insert_before(header)
+    else:
+        main.insert(0, header)
+
+    bottom = tag(soup, "nav", **{"class": "lesson-bottom-nav", "aria-label": "Navigation finale de leçon"})
+    if previous_lesson:
+        prev = soup.new_tag("a", href=previous_lesson["href"], **{"class": "bottom-link"})
+        prev.append(tag(soup, "small", "Revoir"))
+        prev.append(tag(soup, "span", previous_lesson["title"]))
+        bottom.append(prev)
+    if next_lesson:
+        nxt = soup.new_tag("a", href=next_lesson["href"], **{"class": "bottom-link next"})
+        nxt.append(tag(soup, "small", "Continuer"))
+        nxt.append(tag(soup, "span", next_lesson["title"]))
+        bottom.append(nxt)
+    main.append(bottom)
+
+
+def add_lesson_intro(soup, filename):
+    main = soup.find("main", class_="page")
+    if not main:
+        return
+    old = main.find("section", class_="lesson-objectives")
+    if old:
+        old.decompose()
+    hero = main.find("div", class_="hero")
+    if not hero:
+        return
+    lesson = LESSON_BY_FILE.get(filename)
+    if not lesson:
+        return
+    intro = tag(soup, "section", **{"class": "lesson-objectives"})
+    intro.append(tag(soup, "h2", "Dans cette leçon"))
+    grid = tag(soup, "div", **{"class": "lesson-objective-grid"})
+    objectives = LESSON_OBJECTIVES.get(filename, [
+        ("Objectif", "Comprendre le rôle de cette leçon dans le parcours complet."),
+        ("À produire", "Une note, une capture ou une décision claire avant de passer à la suite."),
+        ("À retenir", f"Cette leçon appartient à : {lesson['part_title']}."),
+    ])
+    for title, body in objectives:
+        card = tag(soup, "div", **{"class": "lesson-objective"})
+        card.append(tag(soup, "strong", title))
+        card.append(tag(soup, "p", body))
+        grid.append(card)
+    intro.append(grid)
+    hero.insert_after(intro)
+
+
+def main():
+    for path in sorted(Path(".").glob("*.html")):
+        if path.name not in LESSON_BY_FILE:
+            continue
+        soup = BeautifulSoup(path.read_text(encoding="utf-8"), "html.parser")
+        rebuild_course_nav(soup, path.name)
+        insert_lesson_header(soup, path.name)
+        add_lesson_intro(soup, path.name)
+        path.write_text(str(soup), encoding="utf-8")
+
+
+if __name__ == "__main__":
+    main()

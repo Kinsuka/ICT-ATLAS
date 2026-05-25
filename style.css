@@ -2508,3 +2508,52 @@ pre {
     font-size: 1.55rem;
   }
 }
+
+/* ── Série A/B/C ──────────────────────────────────────── */
+.abc-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.2rem;
+  margin-top: 1rem;
+}
+
+@media (max-width: 900px) {
+  .abc-grid { grid-template-columns: 1fr; }
+}
+
+.abc-case {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.abc-case .chart {
+  margin: 0;
+  border-radius: 0;
+  border: none;
+}
+
+.abc-list {
+  list-style: none;
+  margin: 0;
+  padding: 0.75rem 1rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  font-size: 0.82rem;
+  line-height: 1.45;
+}
+
+.abc-check {
+  color: #4caf50;
+  padding-left: 0.2rem;
+}
+
+.abc-cross {
+  color: #ef5350;
+  padding-left: 0.2rem;
+}

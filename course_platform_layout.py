@@ -11,6 +11,7 @@ PARTS = [
             ("16-modele-mental.html", "Modèle mental"),
             ("01-parcours.html", "Tirez le maximum du cours"),
             ("11-mecanique-marches.html", "Comprenez la mécanique des marchés"),
+            ("23-langage-ict-contexte.html", "Lisez le langage ICT en contexte"),
             ("21-liquidite-deplacement.html", "Comprenez le déplacement du prix"),
             ("22-structure-trend-range.html", "Comprenez trend, range et transitions"),
             ("17-concept-setup-plan.html", "Distinguez concept, setup et plan"),
@@ -20,7 +21,9 @@ PARTS = [
         "label": "Partie 2",
         "title": "Construire une lecture de setup",
         "lessons": [
+            ("24-premium-discount-killzones.html", "Situez où et quand chercher"),
             ("03-fondations.html", "Posez les fondations de décision"),
+            ("25-top-down-multi-timeframe.html", "Lisez en top-down multi-timeframe"),
             ("04-setups-core.html", "Reconnaissez les setups cœur"),
             ("18-transition-reel.html", "Passez du propre au réel"),
             ("05-variantes.html", "Filtrez les variantes et faux signaux"),
@@ -34,6 +37,7 @@ PARTS = [
             ("06-contextes-avances.html", "Ajoutez les contextes avancés"),
             ("12-gestion-risque.html", "Calculez le risque"),
             ("19-preuve-statistique.html", "Prouvez l’edge statistiquement"),
+            ("26-psychologie-trader.html", "Travaillez le jeu mental"),
             ("20-workflow-session.html", "Préparez une session live"),
             ("14-live-chart.html", "Lisez un graphique TradingView"),
         ],
@@ -93,6 +97,11 @@ LESSON_OBJECTIVES = {
         ("Avant de continuer", "Retiens surtout ordres, liquidité, absorption et déplacement ; les sigles viendront ensuite."),
         ("Checkpoint", "Tu dois savoir expliquer pourquoi une zone évidente attire le prix."),
     ],
+    "23-langage-ict-contexte.html": [
+        ("Objectif", "Apprendre les sigles essentiels dans la logique du modèle, pas comme une liste abstraite."),
+        ("Avant de continuer", "Chaque mot doit répondre à une question : où est la liquidité, que fait le prix, quelle zone reste exploitable ?"),
+        ("Checkpoint", "Tu dois pouvoir lire FVG, MSS, DOL, OB, CE, BSL et SSL sans quitter le fil du cours."),
+    ],
     "21-liquidite-deplacement.html": [
         ("Objectif", "Relier recherche de liquidité et réaction du prix après la prise."),
         ("Avant de continuer", "Un sweep seul ne suffit pas : la réaction après la prise est le cœur de la leçon."),
@@ -108,10 +117,20 @@ LESSON_OBJECTIVES = {
         ("Avant de continuer", "Voir une forme sur le graphique n’autorise pas encore une entrée."),
         ("Checkpoint", "Tu dois pouvoir refuser un beau signal s’il manque contexte, risque ou cible."),
     ],
+    "24-premium-discount-killzones.html": [
+        ("Objectif", "Ajouter les deux filtres qui manquent avant les setups : où dans la range, et quand dans la session."),
+        ("Avant de continuer", "Premium/discount répond au WHERE ; kill zone répond au WHEN."),
+        ("Checkpoint", "Tu dois savoir refuser un setup bien formé s’il arrive au mauvais endroit ou au mauvais moment."),
+    ],
     "03-fondations.html": [
         ("Objectif", "Assembler contexte, timing, environnement et décision avant les setups détaillés."),
         ("Avant de continuer", "Cette page est dense : lis-la comme une méthode de tri, pas comme une liste à mémoriser."),
         ("Checkpoint", "Tu dois savoir pourquoi un setup peut être interdit malgré une belle forme."),
+    ],
+    "25-top-down-multi-timeframe.html": [
+        ("Objectif", "Comprendre de quel timeframe part la narrative et sur lequel l’entrée se précise."),
+        ("Avant de continuer", "Un signal 5M peut être beau mais interdit si le Daily ou le 4H racontent l’inverse."),
+        ("Checkpoint", "Tu dois pouvoir descendre Weekly/Daily vers 5M sans inverser les rôles."),
     ],
     "04-setups-core.html": [
         ("Objectif", "Découvrir les familles de setups cœur sans les confondre avec des signaux automatiques."),
@@ -137,6 +156,11 @@ LESSON_OBJECTIVES = {
         ("Objectif", "Transformer une idée visuelle en hypothèse mesurable."),
         ("Avant de continuer", "Un beau pattern ne prouve rien tant qu’il n’a pas été testé sur un échantillon."),
         ("Checkpoint", "Tu dois savoir quelles données noter pour vérifier un edge."),
+    ],
+    "26-psychologie-trader.html": [
+        ("Objectif", "Préparer le passage au réel : pertes, euphorie, revenge trade, tilt et discipline prop firm."),
+        ("Avant de continuer", "La psychologie ne remplace pas le plan ; elle protège le plan quand l’émotion monte."),
+        ("Checkpoint", "Tu dois avoir un protocole écrit après gain, perte et série de pertes."),
     ],
 }
 

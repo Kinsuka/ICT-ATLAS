@@ -38,7 +38,7 @@ def main():
         "ICT Atlas V44 - Layout plateforme de cours\n\n"
         "Refonte HTML/CSS pour une lecture type OpenClassrooms/Udemy : table des matières en parties, "
         "leçons numérotées, progression, navigation précédent/suivant, contenu clair centré et blocs pédagogiques.\n"
-        "Le contenu existant est conservé et réorganisé en 4 parties / 22 leçons, avec un glossaire permanent séparé du parcours.\n\n"
+        "Le contenu existant est conservé et réorganisé en 4 parties / 26 leçons, avec un glossaire permanent accessible en panneau latéral.\n\n"
         "Point d’entrée : index.html\n",
         encoding="utf-8",
     )

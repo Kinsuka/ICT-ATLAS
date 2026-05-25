@@ -140,6 +140,29 @@ LESSON_OBJECTIVES = {
     ],
 }
 
+GLOSSARY_TERMS = [
+    ("Liquidité", "Zones où les ordres sont probablement concentrés : stops au-dessus des highs, stops sous les lows, niveaux évidents."),
+    ("BSL / SSL", "Buy-Side Liquidity au-dessus d’un high ; Sell-Side Liquidity sous un low. Ce sont des cibles possibles, pas des entrées."),
+    ("Sweep / Raid", "Dépassement d’un high ou low visible pour prendre la liquidité. On observe ensuite la réaction du prix."),
+    ("DOL", "Draw on Liquidity : cible de liquidité la plus logique dans le contexte actuel."),
+    ("PDH / PDL", "Previous Day High / Low. Repères journaliers majeurs pour lire la liquidité et le biais."),
+    ("Displacement", "Mouvement impulsif qui montre une livraison rapide du prix et un déséquilibre directionnel."),
+    ("FVG", "Fair Value Gap : zone créée par une livraison rapide. Elle devient utile seulement avec contexte, cible et invalidation."),
+    ("MSS", "Market Structure Shift : changement de structure après une prise de liquidité ou une rupture de contrôle."),
+    ("OB", "Order Block : dernière zone opposée avant une impulsion significative. Zone candidate, pas signal automatique."),
+    ("Breaker", "Ancien OB invalidé qui peut agir dans l’autre sens après changement de structure."),
+    ("OTE", "Optimal Trade Entry : zone de retracement, généralement utilisée seulement si l’ancrage du mouvement est justifié."),
+    ("CE", "Consequent Encroachment : milieu d’une zone, souvent utilisé comme repère de précision ou de qualité."),
+    ("Premium / Discount", "Position du prix dans une range. Acheter en discount et vendre en premium donne une meilleure logique contextuelle."),
+    ("Kill Zone", "Fenêtre horaire où l’on accepte de chercher certains setups. Hors timing, le même signal perd en qualité."),
+    ("Trend", "Environnement directionnel : impulsions plus fortes que corrections. Les pullbacks dans le sens du flux sont favorisés."),
+    ("Range", "Environnement d’équilibre relatif : rejet, absorption et faux breakouts sont plus fréquents."),
+    ("Transition", "Phase où le marché passe d’un équilibre à un déséquilibre, ou d’une tendance à une autre."),
+    ("Pullback", "Correction contre l’impulsion. Il est sain s’il respecte la structure et ne détruit pas le déplacement précédent."),
+    ("Failed breakout", "Cassure sans acceptation : le prix sort d’une zone puis réintègre rapidement la range."),
+    ("Edge", "Avantage mesurable sur échantillon. Un beau pattern ne devient un edge qu’après preuve statistique."),
+]
+
 
 def tag(soup, name, text=None, **attrs):
     item = soup.new_tag(name, **attrs)
@@ -172,9 +195,10 @@ def rebuild_course_nav(soup, filename):
     nav_title.append(tag(soup, "small", f"{len(LESSONS)} leçons"))
     aside.append(nav_title)
 
-    glossary_link = soup.new_tag("a", href="glossaire.html", **{"class": "glossary-nav-link"})
-    glossary_link.append(tag(soup, "strong", "Glossaire permanent"))
-    glossary_link.append(tag(soup, "span", "Acronymes, zones et vocabulaire ICT"))
+    glossary_link = soup.new_tag("button", type="button", **{"class": "glossary-nav-link"})
+    glossary_link["data-glossary-open"] = ""
+    glossary_link.append(tag(soup, "strong", "Glossaire rapide"))
+    glossary_link.append(tag(soup, "span", "Ouvrir sans quitter la leçon"))
     aside.append(glossary_link)
 
     global_number = 1
@@ -207,17 +231,75 @@ def rebuild_course_nav(soup, filename):
     help_box.append("Lisez dans l’ordre, pratiquez en replay, puis validez par journal et stats.")
     aside.append(help_box)
 
-    old_fab = soup.find("a", class_="glossary-fab")
+    old_fab = soup.find(class_="glossary-fab")
     if old_fab:
         old_fab.decompose()
+    old_panel = soup.find("div", class_="glossary-panel-shell")
+    if old_panel:
+        old_panel.decompose()
+    old_script = soup.find("script", src="glossary-panel.js")
+    if old_script:
+        old_script.decompose()
     if soup.body:
-        fab = soup.new_tag(
-            "a",
-            href="glossaire.html",
-            **{"class": "glossary-fab", "aria-label": "Ouvrir le glossaire ICT"},
-        )
+        fab = soup.new_tag("button", type="button", **{"class": "glossary-fab", "aria-label": "Ouvrir le glossaire ICT"})
+        fab["data-glossary-open"] = ""
         fab.string = "Glossaire"
         soup.body.append(fab)
+        soup.body.append(build_glossary_panel(soup))
+        script = soup.new_tag("script", src="glossary-panel.js", defer=True)
+        soup.body.append(script)
+
+
+def build_glossary_panel(soup):
+    shell = tag(soup, "div", **{"class": "glossary-panel-shell", "aria-hidden": "true"})
+    backdrop = tag(soup, "button", type="button", **{"class": "glossary-backdrop", "aria-label": "Fermer le glossaire"})
+    backdrop["data-glossary-close"] = ""
+    shell.append(backdrop)
+
+    panel = tag(
+        soup,
+        "aside",
+        **{"class": "glossary-panel", "role": "dialog", "aria-modal": "true", "aria-labelledby": "glossary-panel-title"},
+    )
+    head = tag(soup, "div", **{"class": "glossary-panel-head"})
+    title_wrap = tag(soup, "div")
+    title_wrap.append(tag(soup, "span", "Référence rapide", **{"class": "glossary-panel-kicker"}))
+    title_wrap.append(tag(soup, "h2", "Glossaire ICT", id="glossary-panel-title"))
+    head.append(title_wrap)
+    close = tag(soup, "button", "Fermer", type="button", **{"class": "glossary-close"})
+    close["data-glossary-close"] = ""
+    head.append(close)
+    panel.append(head)
+
+    intro = tag(soup, "p", "Cherche un terme sans quitter la leçon. Pour les définitions longues, ouvre la page complète.")
+    intro["class"] = "glossary-panel-intro"
+    panel.append(intro)
+
+    search = soup.new_tag(
+        "input",
+        type="search",
+        placeholder="Rechercher : FVG, sweep, DOL...",
+        **{"class": "glossary-search", "aria-label": "Rechercher dans le glossaire"},
+    )
+    search["data-glossary-search"] = ""
+    panel.append(search)
+
+    list_wrap = tag(soup, "div", **{"class": "glossary-list"})
+    list_wrap["data-glossary-list"] = ""
+    for term, definition in GLOSSARY_TERMS:
+        item = tag(soup, "article", **{"class": "glossary-item"})
+        item["data-glossary-item"] = ""
+        item["data-glossary-text"] = f"{term} {definition}".lower()
+        item.append(tag(soup, "h3", term))
+        item.append(tag(soup, "p", definition))
+        list_wrap.append(item)
+    panel.append(list_wrap)
+
+    full = soup.new_tag("a", href="glossaire.html", **{"class": "glossary-full-link"})
+    full.string = "Ouvrir la page glossaire complète"
+    panel.append(full)
+    shell.append(panel)
+    return shell
 
 
 def insert_lesson_header(soup, filename):

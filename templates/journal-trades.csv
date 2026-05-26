@@ -1,0 +1,2 @@
+date,market,session,timeframe_htf,timeframe_ltf,environment,bias,dol,liquidity_trigger,setup,entry_type,entry_price,stop_price,tp1,tp2,risk_percent,risk_amount,result_r,management,rule_respected,emotion_before,emotion_after,screenshot_before,screenshot_after,notes
+YYYY-MM-DD,EURUSD,London/NY AM,4H/1H,5M/1M,trend/range/transition,bullish/bearish/neutral,PDH/PDL/EQH/EQL/Asia High/Asia Low,sweep BSL/SSL,FVG/MSS/OB/Breaker/Asia RF,limit/confirmation/no trade,,,,,,0.25/0.5/1.0,,+/-R,partial/BE/full exit,yes/no,calm/fear/FOMO/tilt,calm/frustrated/euphoric,,,

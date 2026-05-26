@@ -13,6 +13,9 @@ PARTS = [
             ("11-mecanique-marches.html", "Comprenez la mécanique des marchés"),
             ("23-langage-ict-contexte.html", "Lisez le langage ICT en contexte"),
             ("21-liquidite-deplacement.html", "Comprenez le déplacement du prix"),
+            ("27-fondations-liquidite.html", "Lisez la liquidité"),
+            ("28-fondations-entree.html", "Construisez le scénario d’entrée"),
+            ("29-fondations-stop-tp.html", "Placez stop, invalidation et TP"),
             ("22-structure-trend-range.html", "Comprenez trend, range et transitions"),
             ("17-concept-setup-plan.html", "Distinguez concept, setup et plan"),
         ],
@@ -106,6 +109,21 @@ LESSON_OBJECTIVES = {
         ("Objectif", "Relier recherche de liquidité et réaction du prix après la prise."),
         ("Avant de continuer", "Un sweep seul ne suffit pas : la réaction après la prise est le cœur de la leçon."),
         ("Checkpoint", "Tu dois distinguer continuation, absorption et retournement."),
+    ],
+    "27-fondations-liquidite.html": [
+        ("Objectif", "Savoir où la liquidité se trouve avant de parler d’entrée."),
+        ("Avant de continuer", "Une liquidité peut être une cible, un déclencheur ou une zone déjà consommée."),
+        ("Checkpoint", "Tu dois pouvoir classer une zone : externe, interne, faible, propre ou déjà prise."),
+    ],
+    "28-fondations-entree.html": [
+        ("Objectif", "Comprendre pourquoi une entrée n’est autorisée qu’après une séquence causale."),
+        ("Avant de continuer", "FVG, CE, OB et MSS ne sont pas des boutons d’achat ou de vente."),
+        ("Checkpoint", "Tu dois pouvoir dire ce qui manque dans une entrée trop tôt ou hors contexte."),
+    ],
+    "29-fondations-stop-tp.html": [
+        ("Objectif", "Relier entrée, invalidation, stop, TP1 et TP2 à la structure du marché."),
+        ("Avant de continuer", "Un stop n’est pas une distance confortable ; un TP n’est pas un chiffre rond."),
+        ("Checkpoint", "Tu dois pouvoir justifier où le trade est faux et où le prix peut raisonnablement aller."),
     ],
     "22-structure-trend-range.html": [
         ("Objectif", "Identifier si le marché est en trend, en range ou en transition avant de chercher un setup."),

@@ -50,6 +50,7 @@ PARTS = [
         "title": "Valider et pratiquer",
         "lessons": [
             ("10-programme-avance.html", "Suivez le programme avancé"),
+            ("30-replay-lab.html", "Entraînez-vous en bar replay"),
             ("08-quiz.html", "Passez les quiz"),
             ("13-prop-firm.html", "Adaptez-vous aux prop firms"),
             ("09-synthese.html", "Validez la synthèse finale"),
@@ -179,6 +180,11 @@ LESSON_OBJECTIVES = {
         ("Objectif", "Préparer le passage au réel : pertes, euphorie, revenge trade, tilt et discipline prop firm."),
         ("Avant de continuer", "La psychologie ne remplace pas le plan ; elle protège le plan quand l’émotion monte."),
         ("Checkpoint", "Tu dois avoir un protocole écrit après gain, perte et série de pertes."),
+    ],
+    "30-replay-lab.html": [
+        ("Objectif", "Transformer les schémas propres du cours en exercices sur graphique réel, sans regarder le futur."),
+        ("Avant de continuer", "Le replay n’est utile que si tu notes ta décision avant de voir la suite."),
+        ("Checkpoint", "Tu dois pouvoir produire une fiche de cas : contexte, liquidité, décision, invalidation, résultat."),
     ],
 }
 

@@ -12,6 +12,7 @@ RESOURCES = [
     ("templates/review-post-session.md", "Review post-session", "Markdown pour separer trade conforme, erreur, emotion et correction unique."),
     ("templates/plan-trading-ict.md", "Plan de trading ICT", "Markdown pour formaliser setups autorises, risque, TP, BE et regles non negociables."),
     ("templates/regles-prop-firm.md", "Regles prop firm", "Markdown pour traduire les limites prop firm en regles defensives concretes."),
+    ("templates/replay-lab.csv", "Replay Lab", "CSV pour documenter les cas bar replay : contexte, decision, resultat et correction."),
 ]
 
 

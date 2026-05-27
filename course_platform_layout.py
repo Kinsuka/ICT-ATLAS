@@ -249,6 +249,11 @@ def rebuild_course_nav(soup, filename):
     glossary_link.append(tag(soup, "span", "Ouvrir sans quitter la leçon"))
     aside.append(glossary_link)
 
+    resources_link = soup.new_tag("a", href="ressources-pratiques.html", **{"class": "resources-nav-link"})
+    resources_link.append(tag(soup, "strong", "Ressources pratiques"))
+    resources_link.append(tag(soup, "span", "Journal · Backtest · Checklist"))
+    aside.append(resources_link)
+
     global_number = 1
     for part in PARTS:
         part_block = tag(soup, "div", **{"class": "course-part"})

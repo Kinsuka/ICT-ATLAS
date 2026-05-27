@@ -45,6 +45,18 @@
 - Si +2R : proteger la journee.
 - Aucun trade si une case essentielle manque.
 
+## 5b. Thermometre mental
+
+- Etat vert : calme, patient, capable d'expliquer le plan sans urgence.
+- Etat jaune : tension, impatience, envie de cliquer vite -> risque reduit ou attente.
+- Etat rouge : revenge, euphorie, colere, besoin de recuperer -> aucun trade.
+
+Decision :
+
+- Vert : trade autorise si setup complet.
+- Jaune : seulement A+ ou observation.
+- Rouge : stop session ou replay sans execution.
+
 ## 6. Fin de session
 
 - Capture avant / apres sauvegardee ?

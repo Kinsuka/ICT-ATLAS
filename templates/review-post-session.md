@@ -32,6 +32,14 @@
 - Ai-je ressenti FOMO, revenge, peur ou euphorie ?
 - Ai-je change le plan en direct ?
 
+## Sabotage potentiel
+
+- Declencheur : perte normale / gain rapide / trade rate / drawdown / fatigue
+- Phrase interne observee :
+- Action dangereuse evitee ou executee :
+- Etat mental : vert / jaune / rouge
+- Regle si/alors a renforcer :
+
 ## Classification
 
 - Trade conforme gagnant :

@@ -35,6 +35,7 @@ PARTS = [
             ("36-ote-dealing-range.html", "Ancrez OTE et dealing range"),
             ("37-dol-targets-hierarchie.html", "Hiérarchisez DOL et targets"),
             ("38-smt-divergence.html", "Utilisez SMT comme confluence"),
+            ("39-profils-journee-sessions.html", "Lisez les profils de journée"),
             ("04-setups-core.html", "Reconnaissez les setups cœur"),
             ("18-transition-reel.html", "Passez du propre au réel"),
             ("05-variantes.html", "Filtrez les variantes et faux signaux"),
@@ -199,6 +200,11 @@ LESSON_OBJECTIVES = {
         ("Avant de continuer", "Une SMT utile doit apparaître sur une liquidité pertinente et être suivie d’une réaction du prix."),
         ("Checkpoint", "Tu dois pouvoir distinguer SMT valide, non-confirmation faible, corrélation cassée et faux signal."),
     ],
+    "39-profils-journee-sessions.html": [
+        ("Objectif", "Identifier trend day, range day, reversal day, AM expansion/PM continuation et no-trade day avant de choisir un setup."),
+        ("Avant de continuer", "Un setup n’a pas la même valeur selon le profil de journée et la phase de session."),
+        ("Checkpoint", "Tu dois pouvoir adapter entrée, target, protection ou refus au profil dominant de la journée."),
+    ],
     "04-setups-core.html": [
         ("Objectif", "Découvrir les familles de setups cœur sans les confondre avec des signaux automatiques."),
         ("Avant de continuer", "Chaque setup doit être lu comme une séquence : contexte, liquidité, déplacement, zone, risque."),
@@ -253,6 +259,7 @@ GLOSSARY_TERMS = [
     ("Dealing Range", "Range de référence utilisée pour lire premium/discount, ancrer un retracement et situer objectifs/invalidation."),
     ("CE", "Consequent Encroachment : milieu d’une zone, souvent utilisé comme repère de précision ou de qualité."),
     ("SMT", "Divergence entre deux marchés corrélés : l’un prend une liquidité, l’autre ne confirme pas. Confluence, pas entrée autonome."),
+    ("Profil de journée", "Lecture du comportement global d’une session : trend day, range day, reversal day, expansion/continuation ou no-trade."),
     ("Premium / Discount", "Position du prix dans une range. Acheter en discount et vendre en premium donne une meilleure logique contextuelle."),
     ("Kill Zone", "Fenêtre horaire où l’on accepte de chercher certains setups. Hors timing, le même signal perd en qualité."),
     ("Trend", "Environnement directionnel : impulsions plus fortes que corrections. Les pullbacks dans le sens du flux sont favorisés."),

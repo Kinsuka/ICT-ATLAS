@@ -13,6 +13,7 @@ PARTS = [
             ("11-mecanique-marches.html", "Comprenez la mécanique des marchés"),
             ("23-langage-ict-contexte.html", "Lisez le langage ICT en contexte"),
             ("21-liquidite-deplacement.html", "Comprenez le déplacement du prix"),
+            ("40-displacement-operationnel.html", "Validez un displacement opérationnel"),
             ("27-fondations-liquidite.html", "Lisez la liquidité"),
             ("28-fondations-entree.html", "Construisez le scénario d’entrée"),
             ("29-fondations-stop-tp.html", "Placez stop, invalidation et TP"),
@@ -119,6 +120,11 @@ LESSON_OBJECTIVES = {
         ("Objectif", "Relier recherche de liquidité et réaction du prix après la prise."),
         ("Avant de continuer", "Un sweep seul ne suffit pas : la réaction après la prise est le cœur de la leçon."),
         ("Checkpoint", "Tu dois distinguer continuation, absorption et retournement."),
+    ],
+    "40-displacement-operationnel.html": [
+        ("Objectif", "Transformer le mot displacement en critère observable : impulsion, corps, vitesse, rupture et acceptation."),
+        ("Avant de continuer", "Une grosse bougie ne suffit pas ; le displacement doit livrer une information de contrôle."),
+        ("Checkpoint", "Tu dois pouvoir classer un mouvement : displacement valide, impulsion ambiguë ou simple bruit."),
     ],
     "27-fondations-liquidite.html": [
         ("Objectif", "Savoir où la liquidité se trouve avant de parler d’entrée."),
@@ -249,7 +255,7 @@ GLOSSARY_TERMS = [
     ("DOL", "Draw on Liquidity : cible de liquidité la plus logique dans le contexte actuel."),
     ("Liquidité interne / externe", "Interne : cible proche dans la structure courante. Externe : high/low plus large qui peut devenir DOL principal."),
     ("PDH / PDL", "Previous Day High / Low. Repères journaliers majeurs pour lire la liquidité et le biais."),
-    ("Displacement", "Mouvement impulsif qui montre une livraison rapide du prix et un déséquilibre directionnel."),
+    ("Displacement", "Mouvement impulsif qui montre une livraison rapide du prix, peu d’overlap, une rupture utile et un déséquilibre directionnel."),
     ("FVG", "Fair Value Gap : zone créée par une livraison rapide. Elle devient utile seulement avec contexte, cible et invalidation."),
     ("MSS", "Market Structure Shift : changement de structure après une prise de liquidité ou une rupture de contrôle."),
     ("OB", "Order Block : dernière zone opposée avant une impulsion significative. Zone candidate, pas signal automatique."),

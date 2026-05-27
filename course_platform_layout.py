@@ -32,6 +32,7 @@ PARTS = [
             ("33-mss-changement-controle.html", "Validez le MSS et le changement de contrôle"),
             ("34-breaker-mitigation.html", "Comprenez breaker et mitigation"),
             ("35-pd-arrays-hierarchie.html", "Priorisez les PD Arrays"),
+            ("36-ote-dealing-range.html", "Ancrez OTE et dealing range"),
             ("04-setups-core.html", "Reconnaissez les setups cœur"),
             ("18-transition-reel.html", "Passez du propre au réel"),
             ("05-variantes.html", "Filtrez les variantes et faux signaux"),
@@ -181,6 +182,11 @@ LESSON_OBJECTIVES = {
         ("Avant de continuer", "Une zone n’a pas la même valeur selon timeframe, premium/discount, liquidité, contexte et distance au TP."),
         ("Checkpoint", "Tu dois pouvoir choisir la meilleure zone ou refuser le trade quand la carte est trop confuse."),
     ],
+    "36-ote-dealing-range.html": [
+        ("Objectif", "Savoir choisir la bonne dealing range et ancrer un OTE sans forcer le graphique."),
+        ("Avant de continuer", "Un OTE n’est utile que si le swing choisi vient d’un déplacement pertinent et reste aligné avec la carte."),
+        ("Checkpoint", "Tu dois pouvoir refuser un OTE joli mais ancré sur le mauvais mouvement."),
+    ],
     "04-setups-core.html": [
         ("Objectif", "Découvrir les familles de setups cœur sans les confondre avec des signaux automatiques."),
         ("Avant de continuer", "Chaque setup doit être lu comme une séquence : contexte, liquidité, déplacement, zone, risque."),
@@ -231,6 +237,7 @@ GLOSSARY_TERMS = [
     ("Breaker", "Ancien OB invalidé qui peut agir dans l’autre sens après changement de structure."),
     ("PD Arrays", "Famille de zones de prix utiles en lecture ICT : OB, FVG, breaker, liquidité, premium/discount ou niveaux HTF. Elles doivent être priorisées."),
     ("OTE", "Optimal Trade Entry : zone de retracement, généralement utilisée seulement si l’ancrage du mouvement est justifié."),
+    ("Dealing Range", "Range de référence utilisée pour lire premium/discount, ancrer un retracement et situer objectifs/invalidation."),
     ("CE", "Consequent Encroachment : milieu d’une zone, souvent utilisé comme repère de précision ou de qualité."),
     ("Premium / Discount", "Position du prix dans une range. Acheter en discount et vendre en premium donne une meilleure logique contextuelle."),
     ("Kill Zone", "Fenêtre horaire où l’on accepte de chercher certains setups. Hors timing, le même signal perd en qualité."),

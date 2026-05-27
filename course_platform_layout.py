@@ -29,6 +29,7 @@ PARTS = [
             ("25-top-down-multi-timeframe.html", "Lisez en top-down multi-timeframe"),
             ("31-order-blocks.html", "Comprenez les Order Blocks"),
             ("32-fvg-imbalance-ce.html", "Comprenez FVG, imbalance et CE"),
+            ("33-mss-changement-controle.html", "Validez le MSS et le changement de contrôle"),
             ("04-setups-core.html", "Reconnaissez les setups cœur"),
             ("18-transition-reel.html", "Passez du propre au réel"),
             ("05-variantes.html", "Filtrez les variantes et faux signaux"),
@@ -162,6 +163,11 @@ LESSON_OBJECTIVES = {
         ("Objectif", "Comprendre ce qu’un FVG représente, comment lire l’imbalance et quand utiliser le CE."),
         ("Avant de continuer", "Un FVG n’est pas une zone magique : il doit venir d’un displacement et rester cohérent avec liquidité, contexte et objectif."),
         ("Checkpoint", "Tu dois pouvoir distinguer FVG net, gap trop fin, zone déjà comblée et retour dangereux."),
+    ],
+    "33-mss-changement-controle.html": [
+        ("Objectif", "Comprendre ce qu’un MSS valide confirme : un changement de contrôle après une prise de liquidité."),
+        ("Avant de continuer", "Un simple break de micro-swing ne suffit pas : il faut contexte, displacement et niveau structurel pertinent."),
+        ("Checkpoint", "Tu dois pouvoir distinguer MSS valide, cassure mineure, CHoCH faible et faux shift."),
     ],
     "04-setups-core.html": [
         ("Objectif", "Découvrir les familles de setups cœur sans les confondre avec des signaux automatiques."),

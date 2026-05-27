@@ -19,7 +19,7 @@
 <div class="page-meta-dashboard"><div class="meta-main"><div class="meta-goal"><strong>Objectif</strong> transformer une entree en plan complet : invalidation, stop, TP1, TP2 et gestion.</div><div class="meta-prereq"><strong>Prerequis</strong> avoir une cible de liquidite et une entree justifiee.</div></div><div class="meta-sidebar"><strong>A lire avec</strong><nav class="pill-nav"><a class="pill" href="27-fondations-liquidite.html">Fondations liquidite</a><a class="pill" href="28-fondations-entree.html">Fondations entree</a><a class="pill" href="12-gestion-risque.html">Gestion du risque</a></nav></div></div>
 <section class="page-note beginner-bridge"><strong>Idee simple :</strong> un trade n'est complet que si tu sais ou il est faux et ou il peut raisonnablement payer.</section>
 <section class="card" id="anatomie-plan"><header><h2>Anatomie du plan : entree, invalidation, TP1, TP2</h2><span>Graphique</span></header>
-<div class="chart"><svg height="auto" viewbox="0 0 960 390" width="100%" xmlns="http://www.w3.org/2000/svg">
+<div class="chart"><svg aria-label="Anatomie du plan : entree, invalidation, TP1, TP2 - graphique 1" height="auto" role="img" viewbox="0 0 960 390" width="100%" xmlns="http://www.w3.org/2000/svg">
 <rect fill="#081222" height="390" width="960"></rect>
 <g opacity=".55">
 <line stroke="#1e3a5f" x1="70" x2="850" y1="70" y2="70"></line>
@@ -30,8 +30,8 @@
 <polyline fill="none" points="105,258 160,224 215,246 270,282 325,236 380,178 435,144 490,172 545,128 600,150 660,108 720,132 805,86" stroke="#8fa5ba" stroke-width="2.4"></polyline><line stroke="#26a69a" stroke-dasharray="7 5" x1="90" x2="850" y1="282" y2="282"></line><rect fill="#4fc3f7" height="48" opacity=".14" width="112" x="390" y="154"></rect><line stroke="#ef5350" stroke-dasharray="6 4" x1="90" x2="850" y1="298" y2="298"></line><line stroke="#4fc3f7" stroke-dasharray="6 4" x1="90" x2="850" y1="132" y2="132"></line><line stroke="#4fc3f7" stroke-dasharray="6 4" x1="90" x2="850" y1="86" y2="86"></line><circle cx="270" cy="282" fill="#26a69a" paint-order="stroke fill" r="5.5" stroke="#e6f4ff" stroke-width="1.4"></circle><circle cx="446" cy="178" fill="#26a69a" paint-order="stroke fill" r="5.5" stroke="#e6f4ff" stroke-width="1.4"></circle><circle cx="720" cy="132" fill="#4fc3f7" paint-order="stroke fill" r="5.5" stroke="#e6f4ff" stroke-width="1.4"></circle><circle cx="805" cy="86" fill="#4fc3f7" paint-order="stroke fill" r="5.5" stroke="#e6f4ff" stroke-width="1.4"></circle><rect fill="#081222" height="24" opacity=".98" rx="12" stroke="#ef5350" width="110" x="224" y="304"></rect><text fill="#ef5350" font-size="10.5" font-weight="900" paint-order="stroke fill" stroke="#081222" stroke-width="3" text-anchor="middle" x="279.0" y="320">invalidation</text><rect fill="#081222" height="24" opacity=".98" rx="12" stroke="#26a69a" width="90" x="400" y="210"></rect><text fill="#26a69a" font-size="10.5" font-weight="900" paint-order="stroke fill" stroke="#081222" stroke-width="3" text-anchor="middle" x="445.0" y="226">entree</text><rect fill="#081222" height="24" opacity=".98" rx="12" stroke="#4fc3f7" width="76" x="680" y="140"></rect><text fill="#4fc3f7" font-size="10.5" font-weight="900" paint-order="stroke fill" stroke="#081222" stroke-width="3" text-anchor="middle" x="718.0" y="156">TP1</text><rect fill="#081222" height="24" opacity=".98" rx="12" stroke="#4fc3f7" width="76" x="770" y="54"></rect><text fill="#4fc3f7" font-size="10.5" font-weight="900" paint-order="stroke fill" stroke="#081222" stroke-width="3" text-anchor="middle" x="808.0" y="70">TP2</text><text fill="#d9e6f2" font-size="12" font-weight="900" paint-order="stroke fill" stroke="#081222" stroke-width="3" text-anchor="middle" x="480" y="335">Le stop repond a 'ou suis-je faux ?'. Les TP repondent a 'ou sont les prochains ordres ?'.</text>
 </svg></div>
 <div class="rule-block"><strong>Regle :</strong> si le TP logique est trop proche du point d'entree, le trade est refuse meme si le setup est propre.</div></section>
-<section class="card" id="abc-stop"><header><h2>Stop A/B/C : logique, trop serre, arbitraire</h2><span>Serie A/B/C</span></header><div class="abc-grid"><div class="abc-case"><div class="chart"><svg height="auto" viewbox="0 0 320 280" width="100%" xmlns="http://www.w3.org/2000/svg">
-<rect fill="#081222" height="280" width="320"></rect>
+<section class="card" id="abc-stop"><header><h2>Stop A/B/C : logique, trop serre, arbitraire</h2><span>Serie A/B/C</span></header><div class="abc-grid"><div class="abc-case"><div class="chart"><svg aria-label="Stop A/B/C : logique, trop serre, arbitraire - graphique 1" height="auto" role="img" viewbox="0 0 320 300" width="100%" xmlns="http://www.w3.org/2000/svg">
+<rect fill="#081222" height="300" width="320"></rect>
 <line opacity=".45" stroke="#1e3a5f" x1="12" x2="302" y1="58" y2="58"></line>
 <line opacity=".45" stroke="#1e3a5f" x1="12" x2="302" y1="116" y2="116"></line>
 <line opacity=".45" stroke="#1e3a5f" x1="12" x2="302" y1="174" y2="174"></line>
@@ -41,8 +41,8 @@
 <polyline fill="none" points="28,220 60,190 92,210 124,238 156,250 188,198 220,160 252,184 290,132" stroke="#8fa5ba" stroke-width="2.1"></polyline>
 <line stroke="#26a69a" stroke-dasharray="5,3" x1="18" x2="302" y1="250" y2="250"></line><line stroke="#ef5350" stroke-dasharray="5,3" x1="18" x2="302" y1="258" y2="258"></line><circle cx="188" cy="198" fill="#26a69a" paint-order="stroke fill" r="5.5" stroke="#e6f4ff" stroke-width="1.4"></circle><text fill="#ef5350" font-size="8" font-weight="900" paint-order="stroke fill" stroke="#081222" stroke-width="3" text-anchor="middle" x="238" y="260">stop sous sweep</text>
 <text fill="#8fa5ba" font-size="8" font-weight="700" paint-order="stroke fill" stroke="#081222" stroke-width="2" text-anchor="middle" x="160" y="268">invalidation derriere structure</text>
-</svg></div><ul class="abc-list"><li class="abc-check">Stop place la ou le scenario est faux</li><li class="abc-check">Le risque se calcule depuis cette invalidation</li><li class="abc-check">Le TP reste assez loin pour justifier le trade</li></ul></div><div class="abc-case"><div class="chart"><svg height="auto" viewbox="0 0 320 280" width="100%" xmlns="http://www.w3.org/2000/svg">
-<rect fill="#081222" height="280" width="320"></rect>
+</svg></div><ul class="abc-list"><li class="abc-check">Stop place la ou le scenario est faux</li><li class="abc-check">Le risque se calcule depuis cette invalidation</li><li class="abc-check">Le TP reste assez loin pour justifier le trade</li></ul></div><div class="abc-case"><div class="chart"><svg aria-label="Stop A/B/C : logique, trop serre, arbitraire - graphique 2" height="auto" role="img" viewbox="0 0 320 300" width="100%" xmlns="http://www.w3.org/2000/svg">
+<rect fill="#081222" height="300" width="320"></rect>
 <line opacity=".45" stroke="#1e3a5f" x1="12" x2="302" y1="58" y2="58"></line>
 <line opacity=".45" stroke="#1e3a5f" x1="12" x2="302" y1="116" y2="116"></line>
 <line opacity=".45" stroke="#1e3a5f" x1="12" x2="302" y1="174" y2="174"></line>
@@ -52,8 +52,8 @@
 <polyline fill="none" points="28,220 60,190 92,210 124,238 156,250 188,198 220,160 252,184 290,132" stroke="#8fa5ba" stroke-width="2.1"></polyline>
 <line stroke="#ef5350" stroke-dasharray="5,3" x1="18" x2="302" y1="204" y2="204"></line><circle cx="188" cy="198" fill="#ffb300" paint-order="stroke fill" r="5.5" stroke="#e6f4ff" stroke-width="1.4"></circle><text fill="#ffb300" font-size="8" font-weight="900" paint-order="stroke fill" stroke="#081222" stroke-width="3" text-anchor="middle" x="245" y="198">trop serre</text>
 <text fill="#8fa5ba" font-size="8" font-weight="700" paint-order="stroke fill" stroke="#081222" stroke-width="2" text-anchor="middle" x="160" y="268">stop dans le bruit normal</text>
-</svg></div><ul class="abc-list"><li class="abc-cross">Le stop ne protege pas une structure</li><li class="abc-cross">Une simple respiration peut sortir le trade</li><li class="abc-cross">Risque joli mais fragile</li></ul></div><div class="abc-case"><div class="chart"><svg height="auto" viewbox="0 0 320 280" width="100%" xmlns="http://www.w3.org/2000/svg">
-<rect fill="#081222" height="280" width="320"></rect>
+</svg></div><ul class="abc-list"><li class="abc-cross">Le stop ne protege pas une structure</li><li class="abc-cross">Une simple respiration peut sortir le trade</li><li class="abc-cross">Risque joli mais fragile</li></ul></div><div class="abc-case"><div class="chart"><svg aria-label="Stop A/B/C : logique, trop serre, arbitraire - graphique 3" height="auto" role="img" viewbox="0 0 320 300" width="100%" xmlns="http://www.w3.org/2000/svg">
+<rect fill="#081222" height="300" width="320"></rect>
 <line opacity=".45" stroke="#1e3a5f" x1="12" x2="302" y1="58" y2="58"></line>
 <line opacity=".45" stroke="#1e3a5f" x1="12" x2="302" y1="116" y2="116"></line>
 <line opacity=".45" stroke="#1e3a5f" x1="12" x2="302" y1="174" y2="174"></line>
@@ -65,7 +65,7 @@
 <text fill="#8fa5ba" font-size="8" font-weight="700" paint-order="stroke fill" stroke="#081222" stroke-width="2" text-anchor="middle" x="160" y="268">stop arbitraire, plan absent</text>
 </svg></div><ul class="abc-list"><li class="abc-cross">Aucune condition claire qui annule l'idee</li><li class="abc-cross">Stop choisi pour le confort</li><li class="abc-cross">Impossible a backtester proprement</li></ul></div></div></section>
 <section class="card" id="tp-logique"><header><h2>TP1 et TP2 : sortir sur des liquidites, pas sur l'espoir</h2><span>Objectifs</span></header>
-<div class="chart"><svg height="auto" viewbox="0 0 960 390" width="100%" xmlns="http://www.w3.org/2000/svg">
+<div class="chart"><svg aria-label="TP1 et TP2 : sortir sur des liquidites, pas sur l'espoir - graphique 1" height="auto" role="img" viewbox="0 0 960 390" width="100%" xmlns="http://www.w3.org/2000/svg">
 <rect fill="#081222" height="390" width="960"></rect>
 <g opacity=".55">
 <line stroke="#1e3a5f" x1="70" x2="850" y1="70" y2="70"></line>
@@ -77,7 +77,7 @@
 </svg></div>
 <div class="academy-grid"><div class="academy-card"><h3>TP1</h3><p>Premier niveau ou le prix peut rencontrer des ordres : high interne, milieu de range, niveau intraday.</p></div><div class="academy-card"><h3>TP2</h3><p>Destination principale : BSL/SSL externe, PDH/PDL, Asia High/Low ou DOL choisi.</p></div><div class="academy-card"><h3>Refus</h3><p>Si TP1 est trop proche et TP2 peu clair, le risque ne paie pas. Le bon trade peut etre de ne rien faire.</p></div></div></section>
 <section class="card" id="tp-maximum-securisation"><header><h2>TP maximum logique et securisation : sortir sans predire le retournement</h2><span>Gestion</span></header>
-<div class="chart"><svg height="auto" viewbox="0 0 960 390" width="100%" xmlns="http://www.w3.org/2000/svg">
+<div class="chart"><svg aria-label="TP maximum logique et securisation : sortir sans predire le retournement - graphique 1" height="auto" role="img" viewbox="0 0 960 390" width="100%" xmlns="http://www.w3.org/2000/svg">
 <rect fill="#081222" height="390" width="960"></rect>
 <g opacity=".55">
 <line stroke="#1e3a5f" x1="70" x2="850" y1="70" y2="70"></line>
@@ -88,7 +88,7 @@
 <polyline fill="none" points="105,260 160,224 215,246 270,282 325,230 380,176 435,148 490,170 545,132 600,154 660,112 720,134 805,92" stroke="#8fa5ba" stroke-width="2.4"></polyline><line stroke="#ef5350" stroke-dasharray="6 4" x1="90" x2="850" y1="296" y2="296"></line><line stroke="#ffb300" stroke-dasharray="6 4" x1="90" x2="850" y1="154" y2="154"></line><rect fill="#4fc3f7" height="34" opacity=".12" width="760" x="90" y="78"></rect><line stroke="#4fc3f7" stroke-dasharray="6 4" x1="90" x2="850" y1="92" y2="92"></line><circle cx="446" cy="176" fill="#26a69a" paint-order="stroke fill" r="5.5" stroke="#e6f4ff" stroke-width="1.4"></circle><circle cx="600" cy="154" fill="#ffb300" paint-order="stroke fill" r="5.5" stroke="#e6f4ff" stroke-width="1.4"></circle><circle cx="805" cy="92" fill="#4fc3f7" paint-order="stroke fill" r="5.5" stroke="#e6f4ff" stroke-width="1.4"></circle><line stroke="#26a69a" stroke-dasharray="4 3" x1="446" x2="600" y1="176" y2="154"></line><line stroke="#ffb300" stroke-dasharray="4 3" x1="600" x2="805" y1="154" y2="92"></line><rect fill="#081222" height="24" opacity=".98" rx="12" stroke="#26a69a" width="92" x="398" y="184"></rect><text fill="#26a69a" font-size="10.5" font-weight="900" paint-order="stroke fill" stroke="#081222" stroke-width="3" text-anchor="middle" x="444.0" y="200">entree</text><rect fill="#081222" height="24" opacity=".98" rx="12" stroke="#ffb300" width="102" x="552" y="162"></rect><text fill="#ffb300" font-size="10.5" font-weight="900" paint-order="stroke fill" stroke="#081222" stroke-width="3" text-anchor="middle" x="603.0" y="178">TP1/BE</text><rect fill="#081222" height="24" opacity=".98" rx="12" stroke="#4fc3f7" width="158" x="710" y="52"></rect><text fill="#4fc3f7" font-size="10.5" font-weight="900" paint-order="stroke fill" stroke="#081222" stroke-width="3" text-anchor="middle" x="789.0" y="68">TP max logique</text><rect fill="#081222" height="24" opacity=".98" rx="12" stroke="#ef5350" width="120" x="214" y="304"></rect><text fill="#ef5350" font-size="10.5" font-weight="900" paint-order="stroke fill" stroke="#081222" stroke-width="3" text-anchor="middle" x="274.0" y="320">stop initial</text><text fill="#d9e6f2" font-size="12" font-weight="900" paint-order="stroke fill" stroke="#081222" stroke-width="3" text-anchor="middle" x="480" y="326">On ne predit pas le retournement : on sort quand la raison du trade a ete payee.</text>
 </svg></div>
 <div class="academy-grid"><div class="academy-card"><h3>TP maximum</h3><p>C'est la prochaine liquidite majeure non consommee : PDH/PDL, equal highs/lows, high/low externe ou DOL HTF.</p></div><div class="academy-card"><h3>Securiser</h3><p>A TP1, reduis le risque : partiel, stop break-even ou stop sous le dernier creux/haut structurel.</p></div><div class="academy-card"><h3>Runner</h3><p>Apres la cible principale, le runner devient optionnel. Si la structure casse contre toi, le reliquat sort.</p></div></div><div class="rule-block"><strong>Regle :</strong> le TP maximum n'est pas "le top". C'est la derniere zone ou ton scenario initial reste paye et rationnel.</div></section><section class="card" id="v56-tp-decision-tree"><header><h2>Arbre de decision : TP, securisation, sortie</h2><span>Gestion</span></header>
-<div class="chart"><svg height="auto" viewbox="0 0 960 390" width="100%" xmlns="http://www.w3.org/2000/svg">
+<div class="chart"><svg aria-label="Arbre de decision : TP, securisation, sortie - graphique 1" height="auto" role="img" viewbox="0 0 960 390" width="100%" xmlns="http://www.w3.org/2000/svg">
 <rect fill="#081222" height="390" width="960"></rect>
 <g opacity=".55">
 <line stroke="#1e3a5f" x1="70" x2="850" y1="70" y2="70"></line>
@@ -101,8 +101,8 @@
 <div class="academy-grid"><div class="academy-card"><h3>Avant TP1</h3><p>Tu ne deplaces pas ton stop au hasard. Le trade respire tant que l'invalidation reste intacte.</p></div><div class="academy-card"><h3>Apres TP1</h3><p>Tu peux reduire le risque : partiel, break-even ou stop derriere une structure valide.</p></div><div class="academy-card"><h3>Apres DOL</h3><p>La raison principale est payee. Le reliquat sort sur cible, perte de momentum ou MSS inverse.</p></div></div><div class="rule-block"><strong>Regle :</strong> tu ne securises pas parce que tu devines le retournement ; tu securises parce que le plan avance.</div></section>
 <section class="card" id="tp-abc"><header><h2>TP A/B/C : logique, trop ambitieux, trop proche</h2><span>Serie visuelle</span></header>
 <div class="abc-grid">
-<div class="abc-case"><div class="chart"><svg height="auto" viewbox="0 0 320 280" width="100%" xmlns="http://www.w3.org/2000/svg">
-<rect fill="#081222" height="280" width="320"></rect>
+<div class="abc-case"><div class="chart"><svg aria-label="TP A/B/C : logique, trop ambitieux, trop proche - graphique 1" height="auto" role="img" viewbox="0 0 320 300" width="100%" xmlns="http://www.w3.org/2000/svg">
+<rect fill="#081222" height="300" width="320"></rect>
 <line opacity=".45" stroke="#1e3a5f" x1="12" x2="302" y1="58" y2="58"></line>
 <line opacity=".45" stroke="#1e3a5f" x1="12" x2="302" y1="116" y2="116"></line>
 <line opacity=".45" stroke="#1e3a5f" x1="12" x2="302" y1="174" y2="174"></line>
@@ -113,8 +113,8 @@
 <line stroke="#4fc3f7" stroke-dasharray="5,3" x1="18" x2="302" y1="130" y2="130"></line><circle cx="252" cy="130" fill="#4fc3f7" paint-order="stroke fill" r="5.5" stroke="#e6f4ff" stroke-width="1.4"></circle><text fill="#4fc3f7" font-size="8" font-weight="900" paint-order="stroke fill" stroke="#081222" stroke-width="3" text-anchor="middle" x="230" y="112">TP externe</text>
 <text fill="#8fa5ba" font-size="8" font-weight="700" paint-order="stroke fill" stroke="#081222" stroke-width="2" text-anchor="middle" x="160" y="268">TP sur liquidite externe</text>
 </svg></div><ul class="abc-list"><li class="abc-check">Cible visible et non consommee</li><li class="abc-check">Distance suffisante pour le risque</li><li class="abc-check">Sortie reliee au DOL</li></ul></div>
-<div class="abc-case"><div class="chart"><svg height="auto" viewbox="0 0 320 280" width="100%" xmlns="http://www.w3.org/2000/svg">
-<rect fill="#081222" height="280" width="320"></rect>
+<div class="abc-case"><div class="chart"><svg aria-label="TP A/B/C : logique, trop ambitieux, trop proche - graphique 2" height="auto" role="img" viewbox="0 0 320 300" width="100%" xmlns="http://www.w3.org/2000/svg">
+<rect fill="#081222" height="300" width="320"></rect>
 <line opacity=".45" stroke="#1e3a5f" x1="12" x2="302" y1="58" y2="58"></line>
 <line opacity=".45" stroke="#1e3a5f" x1="12" x2="302" y1="116" y2="116"></line>
 <line opacity=".45" stroke="#1e3a5f" x1="12" x2="302" y1="174" y2="174"></line>
@@ -125,8 +125,8 @@
 <line stroke="#ffb300" stroke-dasharray="5,3" x1="18" x2="302" y1="72" y2="72"></line><text fill="#ffb300" font-size="8" font-weight="900" paint-order="stroke fill" stroke="#081222" stroke-width="3" text-anchor="middle" x="230" y="66">trop loin</text>
 <text fill="#8fa5ba" font-size="8" font-weight="700" paint-order="stroke fill" stroke="#081222" stroke-width="2" text-anchor="middle" x="160" y="268">cible loin sans relais</text>
 </svg></div><ul class="abc-list"><li class="abc-cross">TP choisi pour le ratio</li><li class="abc-cross">Aucune liquidite evidente</li><li class="abc-cross">Le plan devient de l'espoir</li></ul></div>
-<div class="abc-case"><div class="chart"><svg height="auto" viewbox="0 0 320 280" width="100%" xmlns="http://www.w3.org/2000/svg">
-<rect fill="#081222" height="280" width="320"></rect>
+<div class="abc-case"><div class="chart"><svg aria-label="TP A/B/C : logique, trop ambitieux, trop proche - graphique 3" height="auto" role="img" viewbox="0 0 320 300" width="100%" xmlns="http://www.w3.org/2000/svg">
+<rect fill="#081222" height="300" width="320"></rect>
 <line opacity=".45" stroke="#1e3a5f" x1="12" x2="302" y1="58" y2="58"></line>
 <line opacity=".45" stroke="#1e3a5f" x1="12" x2="302" y1="116" y2="116"></line>
 <line opacity=".45" stroke="#1e3a5f" x1="12" x2="302" y1="174" y2="174"></line>

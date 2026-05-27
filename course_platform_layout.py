@@ -34,6 +34,7 @@ PARTS = [
             ("35-pd-arrays-hierarchie.html", "Priorisez les PD Arrays"),
             ("36-ote-dealing-range.html", "Ancrez OTE et dealing range"),
             ("37-dol-targets-hierarchie.html", "Hiérarchisez DOL et targets"),
+            ("38-smt-divergence.html", "Utilisez SMT comme confluence"),
             ("04-setups-core.html", "Reconnaissez les setups cœur"),
             ("18-transition-reel.html", "Passez du propre au réel"),
             ("05-variantes.html", "Filtrez les variantes et faux signaux"),
@@ -193,6 +194,11 @@ LESSON_OBJECTIVES = {
         ("Avant de continuer", "On ne prédit pas le retournement : on réduit le risque quand le prix arrive sur une zone de liquidité ou d’opposition."),
         ("Checkpoint", "Tu dois pouvoir dire où prendre partiel, où viser la cible principale et quand le TP est trop faible pour trader."),
     ],
+    "38-smt-divergence.html": [
+        ("Objectif", "Comprendre SMT comme divergence de confirmation entre marchés corrélés, pas comme setup autonome."),
+        ("Avant de continuer", "Une SMT utile doit apparaître sur une liquidité pertinente et être suivie d’une réaction du prix."),
+        ("Checkpoint", "Tu dois pouvoir distinguer SMT valide, non-confirmation faible, corrélation cassée et faux signal."),
+    ],
     "04-setups-core.html": [
         ("Objectif", "Découvrir les familles de setups cœur sans les confondre avec des signaux automatiques."),
         ("Avant de continuer", "Chaque setup doit être lu comme une séquence : contexte, liquidité, déplacement, zone, risque."),
@@ -246,6 +252,7 @@ GLOSSARY_TERMS = [
     ("OTE", "Optimal Trade Entry : zone de retracement, généralement utilisée seulement si l’ancrage du mouvement est justifié."),
     ("Dealing Range", "Range de référence utilisée pour lire premium/discount, ancrer un retracement et situer objectifs/invalidation."),
     ("CE", "Consequent Encroachment : milieu d’une zone, souvent utilisé comme repère de précision ou de qualité."),
+    ("SMT", "Divergence entre deux marchés corrélés : l’un prend une liquidité, l’autre ne confirme pas. Confluence, pas entrée autonome."),
     ("Premium / Discount", "Position du prix dans une range. Acheter en discount et vendre en premium donne une meilleure logique contextuelle."),
     ("Kill Zone", "Fenêtre horaire où l’on accepte de chercher certains setups. Hors timing, le même signal perd en qualité."),
     ("Trend", "Environnement directionnel : impulsions plus fortes que corrections. Les pullbacks dans le sens du flux sont favorisés."),

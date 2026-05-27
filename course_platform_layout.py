@@ -41,6 +41,7 @@ PARTS = [
             ("18-transition-reel.html", "Passez du propre au réel"),
             ("05-variantes.html", "Filtrez les variantes et faux signaux"),
             ("07-failures-journees.html", "Acceptez les failures et journées complexes"),
+            ("41-no-trade.html", "Maîtrisez le no trade"),
         ],
     },
     {
@@ -231,6 +232,11 @@ LESSON_OBJECTIVES = {
         ("Avant de continuer", "On sépare ici erreur de lecture, no trade et perte normale."),
         ("Checkpoint", "Tu dois pouvoir classer une perte : erreur, hors plan ou perte valide."),
     ],
+    "41-no-trade.html": [
+        ("Objectif", "Transformer le refus du trade en décision active, écrite et mesurable."),
+        ("Avant de continuer", "Un no trade n’est pas une absence de travail : c’est le filtre qui protège l’edge."),
+        ("Checkpoint", "Tu dois pouvoir refuser un setup tentant avec une raison précise : contexte, timing, target, risque ou état mental."),
+    ],
     "19-preuve-statistique.html": [
         ("Objectif", "Transformer une idée visuelle en hypothèse mesurable."),
         ("Avant de continuer", "Un beau pattern ne prouve rien tant qu’il n’a pas été testé sur un échantillon."),
@@ -266,6 +272,7 @@ GLOSSARY_TERMS = [
     ("CE", "Consequent Encroachment : milieu d’une zone, souvent utilisé comme repère de précision ou de qualité."),
     ("SMT", "Divergence entre deux marchés corrélés : l’un prend une liquidité, l’autre ne confirme pas. Confluence, pas entrée autonome."),
     ("Profil de journée", "Lecture du comportement global d’une session : trend day, range day, reversal day, expansion/continuation ou no-trade."),
+    ("No Trade", "Décision active de ne pas entrer parce qu’une condition obligatoire manque : contexte, timing, target, risque ou état mental."),
     ("Premium / Discount", "Position du prix dans une range. Acheter en discount et vendre en premium donne une meilleure logique contextuelle."),
     ("Kill Zone", "Fenêtre horaire où l’on accepte de chercher certains setups. Hors timing, le même signal perd en qualité."),
     ("Trend", "Environnement directionnel : impulsions plus fortes que corrections. Les pullbacks dans le sens du flux sont favorisés."),

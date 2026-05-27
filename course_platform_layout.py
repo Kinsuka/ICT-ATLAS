@@ -31,6 +31,7 @@ PARTS = [
             ("32-fvg-imbalance-ce.html", "Comprenez FVG, imbalance et CE"),
             ("33-mss-changement-controle.html", "Validez le MSS et le changement de contrôle"),
             ("34-breaker-mitigation.html", "Comprenez breaker et mitigation"),
+            ("35-pd-arrays-hierarchie.html", "Priorisez les PD Arrays"),
             ("04-setups-core.html", "Reconnaissez les setups cœur"),
             ("18-transition-reel.html", "Passez du propre au réel"),
             ("05-variantes.html", "Filtrez les variantes et faux signaux"),
@@ -175,6 +176,11 @@ LESSON_OBJECTIVES = {
         ("Avant de continuer", "Un breaker n’est pas une zone cassée au hasard : il vient d’une invalidation lisible après changement de contrôle."),
         ("Checkpoint", "Tu dois pouvoir distinguer OB actif, mitigation, OB cassé, breaker valide et faux breaker."),
     ],
+    "35-pd-arrays-hierarchie.html": [
+        ("Objectif", "Savoir prioriser les zones ICT quand plusieurs PD Arrays se superposent."),
+        ("Avant de continuer", "Une zone n’a pas la même valeur selon timeframe, premium/discount, liquidité, contexte et distance au TP."),
+        ("Checkpoint", "Tu dois pouvoir choisir la meilleure zone ou refuser le trade quand la carte est trop confuse."),
+    ],
     "04-setups-core.html": [
         ("Objectif", "Découvrir les familles de setups cœur sans les confondre avec des signaux automatiques."),
         ("Avant de continuer", "Chaque setup doit être lu comme une séquence : contexte, liquidité, déplacement, zone, risque."),
@@ -223,6 +229,7 @@ GLOSSARY_TERMS = [
     ("MSS", "Market Structure Shift : changement de structure après une prise de liquidité ou une rupture de contrôle."),
     ("OB", "Order Block : dernière zone opposée avant une impulsion significative. Zone candidate, pas signal automatique."),
     ("Breaker", "Ancien OB invalidé qui peut agir dans l’autre sens après changement de structure."),
+    ("PD Arrays", "Famille de zones de prix utiles en lecture ICT : OB, FVG, breaker, liquidité, premium/discount ou niveaux HTF. Elles doivent être priorisées."),
     ("OTE", "Optimal Trade Entry : zone de retracement, généralement utilisée seulement si l’ancrage du mouvement est justifié."),
     ("CE", "Consequent Encroachment : milieu d’une zone, souvent utilisé comme repère de précision ou de qualité."),
     ("Premium / Discount", "Position du prix dans une range. Acheter en discount et vendre en premium donne une meilleure logique contextuelle."),

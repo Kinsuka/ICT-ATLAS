@@ -33,6 +33,7 @@ PARTS = [
             ("34-breaker-mitigation.html", "Comprenez breaker et mitigation"),
             ("35-pd-arrays-hierarchie.html", "Priorisez les PD Arrays"),
             ("36-ote-dealing-range.html", "Ancrez OTE et dealing range"),
+            ("37-dol-targets-hierarchie.html", "Hiérarchisez DOL et targets"),
             ("04-setups-core.html", "Reconnaissez les setups cœur"),
             ("18-transition-reel.html", "Passez du propre au réel"),
             ("05-variantes.html", "Filtrez les variantes et faux signaux"),
@@ -187,6 +188,11 @@ LESSON_OBJECTIVES = {
         ("Avant de continuer", "Un OTE n’est utile que si le swing choisi vient d’un déplacement pertinent et reste aligné avec la carte."),
         ("Checkpoint", "Tu dois pouvoir refuser un OTE joli mais ancré sur le mauvais mouvement."),
     ],
+    "37-dol-targets-hierarchie.html": [
+        ("Objectif", "Construire une hiérarchie de targets : TP1, TP2, DOL, protection et refus du trade."),
+        ("Avant de continuer", "On ne prédit pas le retournement : on réduit le risque quand le prix arrive sur une zone de liquidité ou d’opposition."),
+        ("Checkpoint", "Tu dois pouvoir dire où prendre partiel, où viser la cible principale et quand le TP est trop faible pour trader."),
+    ],
     "04-setups-core.html": [
         ("Objectif", "Découvrir les familles de setups cœur sans les confondre avec des signaux automatiques."),
         ("Avant de continuer", "Chaque setup doit être lu comme une séquence : contexte, liquidité, déplacement, zone, risque."),
@@ -229,6 +235,7 @@ GLOSSARY_TERMS = [
     ("BSL / SSL", "Buy-Side Liquidity au-dessus d’un high ; Sell-Side Liquidity sous un low. Ce sont des cibles possibles, pas des entrées."),
     ("Sweep / Raid", "Dépassement d’un high ou low visible pour prendre la liquidité. On observe ensuite la réaction du prix."),
     ("DOL", "Draw on Liquidity : cible de liquidité la plus logique dans le contexte actuel."),
+    ("Liquidité interne / externe", "Interne : cible proche dans la structure courante. Externe : high/low plus large qui peut devenir DOL principal."),
     ("PDH / PDL", "Previous Day High / Low. Repères journaliers majeurs pour lire la liquidité et le biais."),
     ("Displacement", "Mouvement impulsif qui montre une livraison rapide du prix et un déséquilibre directionnel."),
     ("FVG", "Fair Value Gap : zone créée par une livraison rapide. Elle devient utile seulement avec contexte, cible et invalidation."),

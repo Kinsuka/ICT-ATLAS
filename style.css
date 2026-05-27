@@ -2682,16 +2682,74 @@ pre {
   padding-left: 1.15rem;
 }
 
+.case-library-section {
+  border-color: rgba(142, 229, 250, 0.18);
+}
+
+.case-library-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.case-slot {
+  background: rgba(8, 21, 34, 0.9);
+  border: 1px solid var(--course-line);
+  border-radius: 0.7rem;
+  padding: 1rem;
+}
+
+.case-slot-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75rem;
+  align-items: center;
+  margin-bottom: 0.7rem;
+}
+
+.case-slot-head span {
+  color: #8ee5fa;
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+}
+
+.case-slot-head small {
+  color: #f8c24e;
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.case-slot h3 {
+  margin: 0 0 0.5rem;
+}
+
+.case-slot p,
+.case-slot li {
+  color: var(--course-muted);
+  font-size: 0.93rem;
+  line-height: 1.5;
+}
+
+.case-slot ul {
+  margin: 0.8rem 0 0;
+  padding-left: 1.1rem;
+}
+
 @media (max-width: 1100px) {
   .replay-steps,
-  .replay-grid {
+  .replay-grid,
+  .case-library-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
 @media (max-width: 640px) {
   .replay-steps,
-  .replay-grid {
+  .replay-grid,
+  .case-library-grid {
     grid-template-columns: 1fr;
   }
 }

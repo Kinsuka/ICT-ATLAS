@@ -13,6 +13,7 @@ RESOURCES = [
     ("templates/plan-trading-ict.md", "Plan de trading ICT", "Markdown pour formaliser setups autorises, risque, TP, BE et regles non negociables."),
     ("templates/regles-prop-firm.md", "Regles prop firm", "Markdown pour traduire les limites prop firm en regles defensives concretes."),
     ("templates/replay-lab.csv", "Replay Lab", "CSV pour documenter les cas bar replay : contexte, decision, resultat et correction."),
+    ("templates/cas-replay-validation.md", "Validation cas replay", "Markdown pour valider un cas avec capture avant, decision, capture apres et correction."),
 ]
 
 

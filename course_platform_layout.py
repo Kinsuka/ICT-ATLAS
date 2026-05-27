@@ -28,6 +28,7 @@ PARTS = [
             ("03-fondations.html", "Posez les fondations de décision"),
             ("25-top-down-multi-timeframe.html", "Lisez en top-down multi-timeframe"),
             ("31-order-blocks.html", "Comprenez les Order Blocks"),
+            ("32-fvg-imbalance-ce.html", "Comprenez FVG, imbalance et CE"),
             ("04-setups-core.html", "Reconnaissez les setups cœur"),
             ("18-transition-reel.html", "Passez du propre au réel"),
             ("05-variantes.html", "Filtrez les variantes et faux signaux"),
@@ -156,6 +157,11 @@ LESSON_OBJECTIVES = {
         ("Objectif", "Comprendre ce qu’un Order Block représente, quand il est utile et quand il devient un piège."),
         ("Avant de continuer", "Un OB n’est pas simplement la dernière bougie avant un mouvement : il doit être validé par contexte, liquidité et displacement."),
         ("Checkpoint", "Tu dois pouvoir distinguer OB valide, OB faible, OB mitigé et breaker."),
+    ],
+    "32-fvg-imbalance-ce.html": [
+        ("Objectif", "Comprendre ce qu’un FVG représente, comment lire l’imbalance et quand utiliser le CE."),
+        ("Avant de continuer", "Un FVG n’est pas une zone magique : il doit venir d’un displacement et rester cohérent avec liquidité, contexte et objectif."),
+        ("Checkpoint", "Tu dois pouvoir distinguer FVG net, gap trop fin, zone déjà comblée et retour dangereux."),
     ],
     "04-setups-core.html": [
         ("Objectif", "Découvrir les familles de setups cœur sans les confondre avec des signaux automatiques."),

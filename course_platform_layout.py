@@ -30,6 +30,7 @@ PARTS = [
             ("31-order-blocks.html", "Comprenez les Order Blocks"),
             ("32-fvg-imbalance-ce.html", "Comprenez FVG, imbalance et CE"),
             ("33-mss-changement-controle.html", "Validez le MSS et le changement de contrôle"),
+            ("34-breaker-mitigation.html", "Comprenez breaker et mitigation"),
             ("04-setups-core.html", "Reconnaissez les setups cœur"),
             ("18-transition-reel.html", "Passez du propre au réel"),
             ("05-variantes.html", "Filtrez les variantes et faux signaux"),
@@ -168,6 +169,11 @@ LESSON_OBJECTIVES = {
         ("Objectif", "Comprendre ce qu’un MSS valide confirme : un changement de contrôle après une prise de liquidité."),
         ("Avant de continuer", "Un simple break de micro-swing ne suffit pas : il faut contexte, displacement et niveau structurel pertinent."),
         ("Checkpoint", "Tu dois pouvoir distinguer MSS valide, cassure mineure, CHoCH faible et faux shift."),
+    ],
+    "34-breaker-mitigation.html": [
+        ("Objectif", "Comprendre quand une zone tient, quand elle est mitigée, et quand elle devient breaker."),
+        ("Avant de continuer", "Un breaker n’est pas une zone cassée au hasard : il vient d’une invalidation lisible après changement de contrôle."),
+        ("Checkpoint", "Tu dois pouvoir distinguer OB actif, mitigation, OB cassé, breaker valide et faux breaker."),
     ],
     "04-setups-core.html": [
         ("Objectif", "Découvrir les familles de setups cœur sans les confondre avec des signaux automatiques."),

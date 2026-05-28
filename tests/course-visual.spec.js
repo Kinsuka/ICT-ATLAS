@@ -1,0 +1,100 @@
+const { test, expect } = require('@playwright/test');
+const { mkdirSync } = require('node:fs');
+const path = require('node:path');
+const { pathToFileURL } = require('node:url');
+
+const pages = [
+  'index.html',
+  '04-setups-core.html',
+  '08-quiz.html',
+  '21-liquidite-deplacement.html',
+  '27-fondations-liquidite.html',
+  '28-fondations-entree.html',
+  '29-fondations-stop-tp.html',
+  '31-order-blocks.html',
+  '32-fvg-imbalance-ce.html',
+  '33-mss-changement-controle.html',
+  '39-profils-journee-sessions.html',
+  '40-displacement-operationnel.html',
+  '41-no-trade.html',
+];
+
+function fileUrl(fileName) {
+  return pathToFileURL(path.join(__dirname, '..', fileName)).href;
+}
+
+test.describe('ICT Atlas visual smoke audit', () => {
+  for (const fileName of pages) {
+    test(`${fileName} renders SVG charts without obvious visual regressions`, async ({ page }, testInfo) => {
+      await page.goto(fileUrl(fileName));
+      await expect(page.locator('h1').first()).toBeVisible();
+
+      const audit = await page.evaluate(() => {
+        const svgs = [...document.querySelectorAll('svg')];
+        const visibleAnswerLabels = [...document.querySelectorAll('svg text')]
+          .filter((node) => node.textContent.includes('Réponse') && !node.closest('details'))
+          .map((node) => node.textContent.trim());
+
+        const invisibleSvgs = svgs
+          .map((svg, index) => {
+            const rect = svg.getBoundingClientRect();
+            return {
+              index,
+              label: svg.getAttribute('aria-label') || '',
+              width: Math.round(rect.width),
+              height: Math.round(rect.height),
+            };
+          })
+          .filter((item) => item.width < 80 || item.height < 50);
+
+        const missingLabels = svgs
+          .map((svg, index) => ({ index, label: svg.getAttribute('aria-label') || '' }))
+          .filter((item) => item.label.trim().length === 0);
+
+        const clippedText = svgs.flatMap((svg, svgIndex) => {
+          const svgRect = svg.getBoundingClientRect();
+          return [...svg.querySelectorAll('text')]
+            .map((textNode) => {
+              const textRect = textNode.getBoundingClientRect();
+              const text = textNode.textContent.trim();
+              return { svgIndex, text, svgRect, textRect };
+            })
+            .filter(({ text, svgRect, textRect }) => {
+              if (!text) return false;
+              const isPriceAxis = /^\d+(?:\.\d+)?$/.test(text) && textRect.left > svgRect.right - svgRect.width * 0.12;
+              if (isPriceAxis) return false;
+              return (
+                textRect.left < svgRect.left - 2 ||
+                textRect.right > svgRect.right + 2 ||
+                textRect.top < svgRect.top - 2 ||
+                textRect.bottom > svgRect.bottom + 2
+              );
+            })
+            .map(({ svgIndex, text }) => ({ svgIndex, text }));
+        });
+
+        return {
+          svgCount: svgs.length,
+          visibleAnswerLabels,
+          invisibleSvgs,
+          missingLabels,
+          clippedText,
+        };
+      });
+
+      expect(audit.visibleAnswerLabels, 'quiz answers must stay hidden until correction').toEqual([]);
+      expect(audit.invisibleSvgs, 'SVGs should have visible dimensions').toEqual([]);
+      expect(audit.missingLabels, 'SVGs should describe what they illustrate').toEqual([]);
+      expect(audit.clippedText, 'SVG text should stay inside its chart').toEqual([]);
+
+      if (['04-setups-core.html', '08-quiz.html', '41-no-trade.html'].includes(fileName)) {
+        mkdirSync(path.join(__dirname, '..', 'test-results', 'visual-smoke'), { recursive: true });
+        const safeProject = testInfo.project.name.replace(/[^a-z0-9_-]/gi, '-');
+        await page.screenshot({
+          path: path.join(__dirname, '..', 'test-results', 'visual-smoke', `${safeProject}-${fileName}.png`),
+          fullPage: false,
+        });
+      }
+    });
+  }
+});

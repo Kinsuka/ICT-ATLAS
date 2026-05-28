@@ -1,0 +1,26 @@
+{
+  "name": "ict_atlas_v42_design_guard_ui-2",
+  "version": "1.0.0",
+  "description": "Mini-site autonome organisé autour de l’atlas visuel ICT : parcours, mécanique du prix, liquidité, structure trend/range, setups, variantes, contextes, quiz et synthèse.",
+  "main": "glossary-panel.js",
+  "scripts": {
+    "test:e2e": "playwright test",
+    "test:e2e:headed": "playwright test --headed",
+    "test:e2e:update": "playwright test --update-snapshots"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kinsuka/ICT-ATLAS.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Kinsuka/ICT-ATLAS/issues"
+  },
+  "homepage": "https://github.com/Kinsuka/ICT-ATLAS#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.60.0"
+  }
+}

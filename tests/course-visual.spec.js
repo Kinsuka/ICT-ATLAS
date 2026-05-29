@@ -5,18 +5,20 @@ const { pathToFileURL } = require('node:url');
 
 const pages = [
   'index.html',
-  '04-setups-core.html',
-  '08-quiz.html',
-  '21-liquidite-deplacement.html',
-  '27-fondations-liquidite.html',
-  '28-fondations-entree.html',
-  '29-fondations-stop-tp.html',
-  '31-order-blocks.html',
-  '32-fvg-imbalance-ce.html',
-  '33-mss-changement-controle.html',
-  '39-profils-journee-sessions.html',
-  '40-displacement-operationnel.html',
-  '41-no-trade.html',
+  'pages/04-setups-core.html',
+  'pages/08-quiz.html',
+  'pages/11-mecanique-marches.html',
+  'pages/14-live-chart.html',
+  'pages/21-liquidite-deplacement.html',
+  'pages/27-fondations-liquidite.html',
+  'pages/28-fondations-entree.html',
+  'pages/29-fondations-stop-tp.html',
+  'pages/31-order-blocks.html',
+  'pages/32-fvg-imbalance-ce.html',
+  'pages/33-mss-changement-controle.html',
+  'pages/39-profils-journee-sessions.html',
+  'pages/40-displacement-operationnel.html',
+  'pages/41-no-trade.html',
 ];
 
 function fileUrl(fileName) {
@@ -87,11 +89,12 @@ test.describe('ICT Atlas visual smoke audit', () => {
       expect(audit.missingLabels, 'SVGs should describe what they illustrate').toEqual([]);
       expect(audit.clippedText, 'SVG text should stay inside its chart').toEqual([]);
 
-      if (['04-setups-core.html', '08-quiz.html', '41-no-trade.html'].includes(fileName)) {
+      if (['pages/04-setups-core.html', 'pages/08-quiz.html', 'pages/41-no-trade.html'].includes(fileName)) {
         mkdirSync(path.join(__dirname, '..', 'test-results', 'visual-smoke'), { recursive: true });
         const safeProject = testInfo.project.name.replace(/[^a-z0-9_-]/gi, '-');
+        const safeFileName = fileName.replace(/[^a-z0-9_-]/gi, '-');
         await page.screenshot({
-          path: path.join(__dirname, '..', 'test-results', 'visual-smoke', `${safeProject}-${fileName}.png`),
+          path: path.join(__dirname, '..', 'test-results', 'visual-smoke', `${safeProject}-${safeFileName}.png`),
           fullPage: false,
         });
       }

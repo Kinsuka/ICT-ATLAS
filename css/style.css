@@ -2371,40 +2371,112 @@ a:hover {
   min-width: 44rem;
 }
 
+.table-wrap {
+  max-width: min(100%, 64rem);
+  margin: 1.35rem 0 1.6rem;
+  overflow-x: auto;
+}
+
 .chart table,
+.table-wrap table,
 .table-like,
 .référence-table,
 .v37-mini-table {
   width: 100%;
-  border-collapse: collapse;
+  border-collapse: separate;
+  border-spacing: 0 0.55rem;
   background: transparent;
-  border: 1px solid var(--course-line);
+  border: 0;
   color: var(--course-text);
 }
 
 .chart th,
 .chart td,
+.table-wrap th,
+.table-wrap td,
 .table-like th,
 .table-like td,
 .référence-table th,
 .référence-table td,
 .v37-mini-table th,
 .v37-mini-table td {
-  padding: 0.8rem 0.95rem;
-  border-bottom: 1px solid var(--course-line);
+  padding: 1.05rem 1.25rem;
   color: var(--course-text);
   font-size: 0.9rem;
+  line-height: 1.7;
   vertical-align: top;
 }
 
 .chart th,
+.table-wrap th,
 .table-like th,
 .référence-table th,
 .v37-mini-table th {
-  background: rgba(255, 255, 255, 0.035);
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  background: transparent;
   color: var(--course-ink);
   font-weight: 760;
+  line-height: 1.35;
   text-align: left;
+}
+
+.chart tbody td,
+.table-wrap tbody td,
+.table-like tbody td,
+.référence-table tbody td,
+.v37-mini-table tbody td {
+  background: rgba(255, 255, 255, 0.022);
+  border-top: 1px solid rgba(143, 165, 186, 0.14);
+  border-bottom: 1px solid rgba(143, 165, 186, 0.14);
+}
+
+.chart td + td,
+.chart th + th,
+.table-wrap td + td,
+.table-wrap th + th,
+.table-like td + td,
+.table-like th + th,
+.référence-table td + td,
+.référence-table th + th,
+.v37-mini-table td + td,
+.v37-mini-table th + th {
+  border-left: 1px solid rgba(143, 165, 186, 0.12);
+}
+
+.chart tbody tr:nth-child(even) td,
+.table-wrap tbody tr:nth-child(even) td,
+.table-like tbody tr:nth-child(even) td,
+.référence-table tbody tr:nth-child(even) td,
+.v37-mini-table tbody tr:nth-child(even) td {
+  background: rgba(83, 214, 233, 0.035);
+}
+
+.chart tbody td:first-child,
+.table-wrap tbody td:first-child,
+.table-like tbody td:first-child,
+.référence-table tbody td:first-child,
+.v37-mini-table tbody td:first-child {
+  border-left: 1px solid rgba(143, 165, 186, 0.14);
+  border-radius: 0.55rem 0 0 0.55rem;
+}
+
+.chart tbody td:last-child,
+.table-wrap tbody td:last-child,
+.table-like tbody td:last-child,
+.référence-table tbody td:last-child,
+.v37-mini-table tbody td:last-child {
+  border-right: 1px solid rgba(143, 165, 186, 0.14);
+  border-radius: 0 0.55rem 0.55rem 0;
+}
+
+.chart td strong,
+.table-wrap td strong,
+.table-like td strong,
+.référence-table td strong,
+.v37-mini-table td strong {
+  color: var(--course-ink);
+  font-weight: 780;
 }
 
 .rule-block,

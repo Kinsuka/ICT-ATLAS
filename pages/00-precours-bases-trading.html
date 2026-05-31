@@ -22,15 +22,17 @@
         <nav class="nav-links toc-links">
           <a class="active" href="#objectif"><span class="nav-num">0</span>Pourquoi ce pré-cours</a>
           <a href="#bougie-timeframe"><span class="nav-num">1</span>Bougie et timeframe</a>
-          <a href="#long-short"><span class="nav-num">2</span>Long, short et prix</a>
-          <a href="#ordres"><span class="nav-num">3</span>Market, limit, stop</a>
-          <a href="#liquidite-debutant"><span class="nav-num">4</span>Liquidité débutant</a>
-          <a href="#stops-niveaux-visibles"><span class="nav-num">5</span>Stops et niveaux visibles</a>
-          <a href="#prise-reaction"><span class="nav-num">6</span>Prise et réaction</a>
-          <a href="#spread-pip-lot"><span class="nav-num">7</span>Spread, pip, lot</a>
-          <a href="#levier-risque"><span class="nav-num">8</span>Levier, marge, risque</a>
-          <a href="#sl-tp-r"><span class="nav-num">9</span>SL, TP et R</a>
-          <a href="#test-final"><span class="nav-num">10</span>Test de sortie</a>
+          <a href="#swing-structure"><span class="nav-num">2</span>Swing et structure</a>
+          <a href="#long-short"><span class="nav-num">3</span>Long, short et prix</a>
+          <a href="#ordres"><span class="nav-num">4</span>Market, limit, stop</a>
+          <a href="#liquidite-debutant"><span class="nav-num">5</span>Liquidité débutant</a>
+          <a href="#stops-niveaux-visibles"><span class="nav-num">6</span>Stops et niveaux visibles</a>
+          <a href="#prise-reaction"><span class="nav-num">7</span>Prise et réaction</a>
+          <a href="#spread-pip-lot"><span class="nav-num">8</span>Spread, pip, lot</a>
+          <a href="#levier-risque"><span class="nav-num">9</span>Levier, marge, risque</a>
+          <a href="#sl-tp-r"><span class="nav-num">10</span>SL, TP et R</a>
+          <a href="#traduction-ict"><span class="nav-num">11</span>Traduction ICT</a>
+          <a href="#test-final"><span class="nav-num">12</span>Test de sortie</a>
         </nav>
       </div>
       <div class="nav-help">
@@ -51,7 +53,7 @@
 
       <div class="hero">
         <h1>Pré-cours — Bases trading indispensables</h1>
-        <p>Une passerelle pour comprendre les mots techniques avant ICT : bougie, timeframe, ordre, liquidité, spread, risque, stop et take profit.</p>
+        <p>Une passerelle pour comprendre les mots techniques avant ICT : bougie, timeframe, swing, structure, ordre, liquidité, spread, risque, stop et take profit.</p>
         <div class="tagline"><span>Hors parcours principal</span><span>Débutant trading</span><span>Passerelle ICT</span></div>
       </div>
 
@@ -60,7 +62,7 @@
         <div class="lesson-objective-grid">
           <div class="lesson-objective"><strong>Objectif</strong><p>Donner le vocabulaire minimum et la logique des ordres pour lire ICT Atlas sans bloquer.</p></div>
           <div class="lesson-objective"><strong>Limite</strong><p>Ce n'est pas une formation broker ou plateforme. C'est une rampe d'accès.</p></div>
-          <div class="lesson-objective"><strong>Validation</strong><p>Tu peux passer au cours si tu sais expliquer long, short, ordre, liquidité, stop, TP et risque en R.</p></div>
+          <div class="lesson-objective"><strong>Validation</strong><p>Tu peux passer au cours si tu sais expliquer long, short, swing, structure, liquidité, stop, TP et risque en R.</p></div>
         </div>
       </section>
 
@@ -97,8 +99,53 @@
         <div class="rule-block"><strong>Tu dois savoir faire :</strong> regarder une bougie et dire où elle a ouvert, où elle a clôturé, quel niveau a été le plus haut et quel niveau a été le plus bas.</div>
       </section>
 
+      <section class="card" id="swing-structure">
+        <header><h2>2 — Comprendre swing et structure</h2><span>Mouvement</span></header>
+        <p>Une bougie seule donne une information locale. Pour lire un mouvement, il faut relier plusieurs bougies entre elles. Un <strong>swing high</strong> est un sommet local : le prix monte, bloque, puis redescend. Un <strong>swing low</strong> est un creux local : le prix descend, bloque, puis remonte.</p>
+        <p>La structure vient de la répétition de ces swings. Si les sommets et les creux montent, le marché pousse vers le haut. S'ils descendent, il pousse vers le bas. S'ils restent enfermés entre deux zones, il est plutôt en range.</p>
+        <div class="chart">
+          <svg aria-label="Swing high swing low et structure de marché simple" role="img" viewBox="0 0 900 430" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg">
+            <rect width="900" height="430" fill="#081222"/>
+            <g opacity=".45" stroke="#1e3a5f">
+              <line x1="70" x2="830" y1="92" y2="92"/>
+              <line x1="70" x2="830" y1="172" y2="172"/>
+              <line x1="70" x2="830" y1="252" y2="252"/>
+              <line x1="70" x2="830" y1="332" y2="332"/>
+            </g>
+            <text x="450" y="38" text-anchor="middle" fill="#8ee5fa" font-size="20" font-weight="900">La structure se lit avec une suite de swings</text>
+            <polyline points="90,316 160,252 230,278 300,212 370,238 450,166 520,194 610,122 690,150 790,92" fill="none" stroke="#34d399" stroke-width="4"/>
+
+            <circle cx="160" cy="252" r="6" fill="#f8c24e"/>
+            <circle cx="300" cy="212" r="6" fill="#f8c24e"/>
+            <circle cx="450" cy="166" r="6" fill="#f8c24e"/>
+            <circle cx="610" cy="122" r="6" fill="#f8c24e"/>
+            <text x="168" y="232" fill="#f8c24e" font-size="13" font-weight="900">swing high</text>
+            <text x="460" y="146" fill="#f8c24e" font-size="13" font-weight="900">swing high</text>
+
+            <circle cx="230" cy="278" r="6" fill="#8ee5fa"/>
+            <circle cx="370" cy="238" r="6" fill="#8ee5fa"/>
+            <circle cx="520" cy="194" r="6" fill="#8ee5fa"/>
+            <circle cx="690" cy="150" r="6" fill="#8ee5fa"/>
+            <text x="238" y="306" fill="#8ee5fa" font-size="13" font-weight="900">swing low</text>
+            <text x="530" y="222" fill="#8ee5fa" font-size="13" font-weight="900">swing low</text>
+
+            <path d="M250 350 L710 230" stroke="#34d399" stroke-width="3" stroke-dasharray="8 7"/>
+            <text x="450" y="382" text-anchor="middle" fill="#34d399" font-size="15" font-weight="900">Exemple simple : sommets plus hauts + creux plus hauts = tendance haussière</text>
+          </svg>
+        </div>
+        <div class="academy-grid">
+          <div class="academy-card"><h3>Swing high</h3><p>Un sommet local. Il devient important si beaucoup de traders le voient.</p></div>
+          <div class="academy-card"><h3>Swing low</h3><p>Un creux local. Il peut attirer les stops des traders déjà acheteurs.</p></div>
+          <div class="academy-card"><h3>Structure</h3><p>La façon dont les highs et lows s'enchaînent : tendance, range ou transition.</p></div>
+        </div>
+        <details class="rule-block">
+          <summary><strong>Exercice :</strong> marque les swings</summary>
+          <p>Sur un graphique simple, entoure trois sommets locaux et trois creux locaux. Ensuite, demande-toi : est-ce que les niveaux montent, descendent ou restent enfermés dans une zone ?</p>
+        </details>
+      </section>
+
       <section class="card" id="long-short">
-        <header><h2>2 — Comprendre long, short et mouvement du prix</h2><span>Direction</span></header>
+        <header><h2>3 — Comprendre long, short et mouvement du prix</h2><span>Direction</span></header>
         <p>Un trade long cherche à profiter d'une hausse. Un trade short cherche à profiter d'une baisse. Dans les deux cas, le raisonnement est le même : entrée, invalidation, objectif, risque.</p>
         <div class="academy-grid">
           <div class="academy-card"><h3>Long</h3><p>Tu achètes d'abord, puis tu veux revendre plus haut. Ton scénario échoue si le prix casse ton invalidation sous l'entrée.</p><span class="badge">Hausse</span></div>
@@ -129,7 +176,7 @@
       </section>
 
       <section class="card" id="ordres">
-        <header><h2>3 — Les ordres : market, limit, stop</h2><span>Exécution</span></header>
+        <header><h2>4 — Les ordres : market, limit, stop</h2><span>Exécution</span></header>
         <p>Un ordre est une instruction envoyée au marché. Avant ICT, retiens seulement la logique : entrer maintenant, attendre un meilleur prix, ou déclencher si un niveau est cassé.</p>
         <div class="academy-grid">
           <div class="academy-card"><h3>Market</h3><p>Tu entres maintenant au prix disponible. C'est rapide, mais tu acceptes le prix réel d'exécution.</p></div>
@@ -140,7 +187,7 @@
       </section>
 
       <section class="card" id="liquidite-debutant">
-        <header><h2>4 — Comprendre la liquidité avant ICT</h2><span>Fondation</span></header>
+        <header><h2>5 — Comprendre la liquidité avant ICT</h2><span>Fondation</span></header>
         <p>La liquidité, version débutant, ce n'est pas un sigle compliqué. C'est simplement l'idée qu'un marché a besoin d'ordres disponibles pour échanger. Si personne n'accepte de vendre, un acheteur ne peut pas acheter facilement. Si personne n'accepte d'acheter, un vendeur ne peut pas vendre facilement.</p>
         <p>Donc le prix ne bouge pas dans le vide. Il se déplace souvent vers des endroits où beaucoup de décisions sont probables : anciens plus hauts, anciens plus bas, zones rondes, stops, ordres en attente, niveaux que tout le monde voit.</p>
         <div class="chart">
@@ -178,7 +225,7 @@
       </section>
 
       <section class="card" id="stops-niveaux-visibles">
-        <header><h2>5 — Pourquoi les stops créent de la liquidité</h2><span>Mécanique simple</span></header>
+        <header><h2>6 — Pourquoi les stops créent de la liquidité</h2><span>Mécanique simple</span></header>
         <p>Un stop loss est un ordre. Quand beaucoup de traders placent leur stop au même endroit, ce niveau devient intéressant parce qu'il concentre des décisions. Un ancien high ou un ancien low est visible par tout le monde ; c'est pour cela qu'il peut devenir une zone importante.</p>
         <div class="chart">
           <svg aria-label="Les stops placés au-dessus des highs et sous les lows deviennent de la liquidité" role="img" viewBox="0 0 900 420" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg">
@@ -212,7 +259,7 @@
       </section>
 
       <section class="card" id="prise-reaction">
-        <header><h2>6 — Prise de liquidité : continuer ou rejeter ?</h2><span>Réaction</span></header>
+        <header><h2>7 — Prise de liquidité : continuer ou rejeter ?</h2><span>Réaction</span></header>
         <p>Le piège du débutant est de croire qu'une prise de liquidité annonce forcément un retournement. Ce n'est pas vrai. Après avoir pris un niveau, le prix peut continuer dans le même sens, bloquer, ou rejeter fortement. Ce qui compte, c'est la réaction après la prise.</p>
         <div class="chart">
           <svg aria-label="Trois réactions possibles après une prise de liquidité : continuation, rejet, absorption" role="img" viewBox="0 0 900 460" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg">
@@ -264,7 +311,7 @@
       </section>
 
       <section class="card" id="spread-pip-lot">
-        <header><h2>7 — Spread, pip/point et lot</h2><span>Coût et taille</span></header>
+        <header><h2>8 — Spread, pip/point et lot</h2><span>Coût et taille</span></header>
         <p>Le spread est l'écart entre le prix d'achat et le prix de vente. Le pip ou le point mesure un petit déplacement du prix. Le lot détermine la taille de la position, donc le gain ou la perte par mouvement.</p>
         <div class="chart">
           <svg aria-label="Spread pip point et taille de position" role="img" viewBox="0 0 900 330" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg">
@@ -292,7 +339,7 @@
       </section>
 
       <section class="card" id="levier-risque">
-        <header><h2>8 — Levier, marge et risque réel</h2><span>Protection</span></header>
+        <header><h2>9 — Levier, marge et risque réel</h2><span>Protection</span></header>
         <p>Le levier permet de contrôler une position plus grande que ton capital disponible. Il n'augmente pas ton niveau technique ; il augmente surtout la vitesse à laquelle une erreur coûte cher.</p>
         <div class="academy-grid">
           <div class="academy-card"><h3>Capital</h3><p>Ce que tu as réellement sur le compte.</p></div>
@@ -303,7 +350,7 @@
       </section>
 
       <section class="card" id="sl-tp-r">
-        <header><h2>9 — Stop loss, take profit et multiple R</h2><span>Plan</span></header>
+        <header><h2>10 — Stop loss, take profit et multiple R</h2><span>Plan</span></header>
         <p>Le stop loss protège le compte quand l'idée est fausse. Le take profit définit où tu prends ton gain. Le multiple R compare le gain potentiel au risque pris.</p>
         <div class="chart">
           <svg aria-label="Plan de trade avec entrée stop take profit et multiple R" role="img" viewBox="0 0 900 380" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg">
@@ -331,15 +378,33 @@
         </div>
       </section>
 
+      <section class="card" id="traduction-ict">
+        <header><h2>11 — Traduire les mots simples en langage ICT</h2><span>Pont vocabulaire</span></header>
+        <p>Tu n'as pas appris des sigles pour l'instant, et c'est volontaire. La suite du cours utilise le vocabulaire ICT, mais les idées sont déjà posées. Cette table sert de pont : elle transforme ce que tu viens de comprendre en noms que tu reverras dans les leçons.</p>
+        <div class="academy-grid">
+          <div class="academy-card"><h3>Liquidité au-dessus d'un high</h3><p>En ICT, tu verras souvent <strong>BSL</strong> : Buy-Side Liquidity. C'est une zone au-dessus d'un sommet visible.</p></div>
+          <div class="academy-card"><h3>Liquidité sous un low</h3><p>En ICT, tu verras <strong>SSL</strong> : Sell-Side Liquidity. C'est une zone sous un creux visible.</p></div>
+          <div class="academy-card"><h3>Cible de liquidité</h3><p>Quand une zone devient la cible la plus logique, le cours parle de <strong>DOL</strong> : Draw on Liquidity.</p></div>
+          <div class="academy-card"><h3>Prise d'un niveau</h3><p>Quand le prix dépasse un high/low visible pour prendre les ordres, le cours parle de <strong>sweep</strong> ou raid.</p></div>
+          <div class="academy-card"><h3>Impulsion qui montre le contrôle</h3><p>Quand la réaction est rapide et directionnelle, le cours parle de <strong>displacement</strong>.</p></div>
+          <div class="academy-card"><h3>Structure qui change</h3><p>Quand un swing pertinent est cassé après une prise de liquidité, tu verras <strong>MSS</strong>.</p></div>
+          <div class="academy-card"><h3>Zone laissée par l'impulsion</h3><p>Quand le prix laisse un déséquilibre exploitable, le cours parle de <strong>FVG</strong> et parfois de <strong>CE</strong>.</p></div>
+          <div class="academy-card"><h3>Zone source du mouvement</h3><p>Quand une dernière zone opposée précède une impulsion importante, tu verras <strong>OB</strong> : Order Block.</p></div>
+        </div>
+        <div class="rule-block"><strong>Règle :</strong> si un acronyme te bloque, reviens à la phrase simple. BSL = liquidité au-dessus. SSL = liquidité dessous. MSS = structure qui change. Le mot ne doit jamais remplacer l'idée.</div>
+      </section>
+
       <section class="card" id="test-final">
-        <header><h2>10 — Test de sortie du pré-cours</h2><span>Validation</span></header>
+        <header><h2>12 — Test de sortie du pré-cours</h2><span>Validation</span></header>
         <p>Avant de commencer ICT Atlas, réponds sans regarder tes notes. Si tu bloques sur plus de deux questions, relis la section concernée.</p>
         <div class="academy-grid">
           <div class="academy-card"><h3>Bougie</h3><p>Explique open, high, low et close avec tes mots.</p></div>
+          <div class="academy-card"><h3>Structure</h3><p>Quelle différence entre une bougie seule, un swing et une structure ?</p></div>
           <div class="academy-card"><h3>Direction</h3><p>Quelle différence entre un trade long et un trade short ?</p></div>
           <div class="academy-card"><h3>Ordres</h3><p>Quand utiliserais-tu un ordre market, limit ou stop ?</p></div>
           <div class="academy-card"><h3>Liquidité</h3><p>Pourquoi un ancien high ou low peut-il attirer le prix ?</p></div>
           <div class="academy-card"><h3>Réaction</h3><p>Pourquoi une prise de liquidité ne veut-elle pas dire retournement automatique ?</p></div>
+          <div class="academy-card"><h3>Traduction ICT</h3><p>Que signifient BSL, SSL, DOL, sweep et MSS en mots simples ?</p></div>
           <div class="academy-card"><h3>Risque</h3><p>Pourquoi le lot/taille de position peut rendre un trade dangereux ?</p></div>
           <div class="academy-card"><h3>Plan</h3><p>Pourquoi une entrée sans stop et TP n'est pas encore un plan ?</p></div>
           <div class="academy-card"><h3>ICT</h3><p>Pourquoi ce pré-cours ne suffit pas pour trader, mais aide à lire la suite ?</p></div>

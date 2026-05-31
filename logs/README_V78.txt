@@ -9,6 +9,7 @@ Ajouts
 - pages/00-precours-bases-trading.html
   - mini-menu propre au pré-cours ;
   - bougie et timeframe ;
+  - swing high, swing low et structure de marché simple ;
   - long / short ;
   - ordres market / limit / stop ;
   - liquidité débutant : ordres disponibles, niveaux visibles, stops ;
@@ -16,6 +17,7 @@ Ajouts
   - spread, pip/point, lot ;
   - levier, marge, risque ;
   - stop loss, take profit, multiple R ;
+  - traduction vers acronymes ICT : BSL, SSL, DOL, sweep, displacement, MSS, FVG, CE, OB ;
   - test de sortie avant le modèle mental ICT.
 
 Mises à jour

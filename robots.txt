@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://kinsuka.github.io/ICT-ATLAS/sitemap.xml
+LLMs: https://kinsuka.github.io/ICT-ATLAS/llms.txt
+

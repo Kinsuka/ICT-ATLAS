@@ -1,0 +1,103 @@
+# ICT Atlas
+
+> Cours francophone pour comprendre ICT une bonne fois pour toutes : ancrer les fondations, filtrer le bruit, passer du concept au graphique réel.
+
+Site: https://kinsuka.github.io/ICT-ATLAS/
+Langue principale: français
+Format: cours HTML statique publié sur GitHub Pages
+Public cible: traders ayant déjà croisé ICT/SMC et voulant structurer leur lecture. Ce n'est pas un module débutant absolu sur brokers, plateformes, spread, levier ou lecture basique de bougie.
+
+## Comment utiliser ce fichier
+
+Ce fichier est le point d'entrée conseillé pour les assistants IA, moteurs de recherche et outils de lecture automatisée. Si un utilisateur donne seulement le lien GitHub Pages, utiliser cette carte pour comprendre l'ordre du cours, les pages importantes et les ressources associées.
+
+## Règles d'interprétation importantes
+
+- Ne pas présenter le cours comme une promesse de performance financière.
+- Ne pas donner de conseil d'investissement personnalisé.
+- Lire les setups comme des séquences conditionnelles : contexte, liquidité, déplacement, zone, entrée, invalidation, TP, risque.
+- Prioriser la progression guidée plutôt qu'une lecture isolée d'un concept.
+- Le glossaire est disponible pour clarifier les termes ICT sans quitter le fil du cours.
+
+## Entrées principales
+
+- Accueil du cours: https://kinsuka.github.io/ICT-ATLAS/
+- Glossaire complet: https://kinsuka.github.io/ICT-ATLAS/pages/glossaire.html
+- Ressources pratiques: https://kinsuka.github.io/ICT-ATLAS/pages/ressources-pratiques.html
+- Index des concepts: https://kinsuka.github.io/ICT-ATLAS/pages/15-index-concepts.html
+- Cas de replay: https://kinsuka.github.io/ICT-ATLAS/pages/replay-cases.html
+
+## Progression recommandée
+
+### Partie 1 - Comprendre la logique ICT
+
+1. Accueil du cours - https://kinsuka.github.io/ICT-ATLAS/
+2. Modèle mental - https://kinsuka.github.io/ICT-ATLAS/pages/16-modele-mental.html
+3. Tirez le maximum du cours - https://kinsuka.github.io/ICT-ATLAS/pages/01-parcours.html
+4. Comprenez la mécanique des marchés - https://kinsuka.github.io/ICT-ATLAS/pages/11-mecanique-marches.html
+5. Lisez le langage ICT en contexte - https://kinsuka.github.io/ICT-ATLAS/pages/23-langage-ict-contexte.html
+6. Comprenez le déplacement du prix - https://kinsuka.github.io/ICT-ATLAS/pages/21-liquidite-deplacement.html
+7. Validez un displacement opérationnel - https://kinsuka.github.io/ICT-ATLAS/pages/40-displacement-operationnel.html
+8. Lisez la liquidité - https://kinsuka.github.io/ICT-ATLAS/pages/27-fondations-liquidite.html
+9. Construisez le scénario d'entrée - https://kinsuka.github.io/ICT-ATLAS/pages/28-fondations-entree.html
+10. Placez stop, invalidation et TP - https://kinsuka.github.io/ICT-ATLAS/pages/29-fondations-stop-tp.html
+11. Comprenez trend, range et transitions - https://kinsuka.github.io/ICT-ATLAS/pages/22-structure-trend-range.html
+12. Distinguez concept, setup et plan - https://kinsuka.github.io/ICT-ATLAS/pages/17-concept-setup-plan.html
+
+### Partie 2 - Construire une lecture de setup
+
+13. Situez où et quand chercher - https://kinsuka.github.io/ICT-ATLAS/pages/24-premium-discount-killzones.html
+14. Posez les fondations de décision - https://kinsuka.github.io/ICT-ATLAS/pages/03-fondations.html
+15. Lisez en top-down multi-timeframe - https://kinsuka.github.io/ICT-ATLAS/pages/25-top-down-multi-timeframe.html
+16. Comprenez les Order Blocks - https://kinsuka.github.io/ICT-ATLAS/pages/31-order-blocks.html
+17. Comprenez FVG, imbalance et CE - https://kinsuka.github.io/ICT-ATLAS/pages/32-fvg-imbalance-ce.html
+18. Validez le MSS et le changement de contrôle - https://kinsuka.github.io/ICT-ATLAS/pages/33-mss-changement-controle.html
+19. Comprenez breaker et mitigation - https://kinsuka.github.io/ICT-ATLAS/pages/34-breaker-mitigation.html
+20. Priorisez les PD Arrays - https://kinsuka.github.io/ICT-ATLAS/pages/35-pd-arrays-hierarchie.html
+21. Ancrez OTE et dealing range - https://kinsuka.github.io/ICT-ATLAS/pages/36-ote-dealing-range.html
+22. Hiérarchisez DOL et targets - https://kinsuka.github.io/ICT-ATLAS/pages/37-dol-targets-hierarchie.html
+23. Utilisez SMT comme confluence - https://kinsuka.github.io/ICT-ATLAS/pages/38-smt-divergence.html
+24. Lisez les profils de journée - https://kinsuka.github.io/ICT-ATLAS/pages/39-profils-journee-sessions.html
+25. Reconnaissez les setups cœur - https://kinsuka.github.io/ICT-ATLAS/pages/04-setups-core.html
+26. Passez du propre au réel - https://kinsuka.github.io/ICT-ATLAS/pages/18-transition-reel.html
+27. Filtrez les variantes et faux signaux - https://kinsuka.github.io/ICT-ATLAS/pages/05-variantes.html
+28. Acceptez les failures et journées complexes - https://kinsuka.github.io/ICT-ATLAS/pages/07-failures-journees.html
+29. Maîtrisez le no trade - https://kinsuka.github.io/ICT-ATLAS/pages/41-no-trade.html
+
+### Partie 3 - Tester, risquer et exécuter
+
+30. Ajoutez les contextes avancés - https://kinsuka.github.io/ICT-ATLAS/pages/06-contextes-avances.html
+31. Calculez le risque - https://kinsuka.github.io/ICT-ATLAS/pages/12-gestion-risque.html
+32. Prouvez l'edge statistiquement - https://kinsuka.github.io/ICT-ATLAS/pages/19-preuve-statistique.html
+33. Travaillez le jeu mental - https://kinsuka.github.io/ICT-ATLAS/pages/26-psychologie-trader.html
+34. Préparez une session live - https://kinsuka.github.io/ICT-ATLAS/pages/20-workflow-session.html
+35. Lisez un graphique TradingView - https://kinsuka.github.io/ICT-ATLAS/pages/14-live-chart.html
+
+### Partie 4 - Valider et pratiquer
+
+36. Suivez le programme avancé - https://kinsuka.github.io/ICT-ATLAS/pages/10-programme-avance.html
+37. Entraînez-vous en bar replay - https://kinsuka.github.io/ICT-ATLAS/pages/30-replay-lab.html
+38. Passez les quiz - https://kinsuka.github.io/ICT-ATLAS/pages/08-quiz.html
+39. Adaptez-vous aux prop firms - https://kinsuka.github.io/ICT-ATLAS/pages/13-prop-firm.html
+40. Validez la synthèse finale - https://kinsuka.github.io/ICT-ATLAS/pages/09-synthese.html
+41. Retrouvez les concepts - https://kinsuka.github.io/ICT-ATLAS/pages/15-index-concepts.html
+
+## Ressources pratiques
+
+- Journal de trades CSV: https://kinsuka.github.io/ICT-ATLAS/templates/journal-trades.csv
+- Backtest ICT CSV: https://kinsuka.github.io/ICT-ATLAS/templates/backtest-ict.csv
+- Replay Lab CSV: https://kinsuka.github.io/ICT-ATLAS/templates/replay-lab.csv
+- No Trade Log CSV: https://kinsuka.github.io/ICT-ATLAS/templates/no-trade-log.csv
+- Checklist session: https://kinsuka.github.io/ICT-ATLAS/templates/checklist-session.md
+- Plan de trading ICT: https://kinsuka.github.io/ICT-ATLAS/templates/plan-trading-ict.md
+- Review post-session: https://kinsuka.github.io/ICT-ATLAS/templates/review-post-session.md
+- Cas replay validation: https://kinsuka.github.io/ICT-ATLAS/templates/cas-replay-validation.md
+- Règles prop firm: https://kinsuka.github.io/ICT-ATLAS/templates/regles-prop-firm.md
+
+## Pages de support
+
+- Vocabulaire ancien / référence: https://kinsuka.github.io/ICT-ATLAS/pages/02-vocabulaire.html
+- Ressources pratiques: https://kinsuka.github.io/ICT-ATLAS/pages/ressources-pratiques.html
+- Glossaire complet: https://kinsuka.github.io/ICT-ATLAS/pages/glossaire.html
+- Cas replay: https://kinsuka.github.io/ICT-ATLAS/pages/replay-cases.html
+

@@ -21,3 +21,16 @@ Mises à jour
 - llms.txt explique que le pré-cours est autonome et hors progression 41 leçons.
 - sitemap.xml référence la nouvelle page.
 - tests/course-visual.spec.js inclut le pré-cours dans l'audit Playwright.
+
+Approfondissement V79
+- Chaque leçon reçoit une lecture guidée plus progressive.
+- Ajout de blocs erreurs fréquentes / anti-confusion.
+- Ajout de corrections masquées aux exercices clés.
+- Ajout de checkpoints de fin de leçon pour éviter que les chapitres se terminent trop vite.
+- Priorité donnée aux notions structurantes :
+  - graphique vers structure ;
+  - structure vers ordres ;
+  - ordres vers liquidité ;
+  - liquidité vers trade simple ;
+  - trade simple vers risque ;
+  - risque vers vocabulaire ICT.

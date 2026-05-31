@@ -22,12 +22,19 @@ Ce fichier est le point d'entrée conseillé pour les assistants IA, moteurs de 
 ## Entrées principales
 
 - Accueil du cours: https://kinsuka.github.io/ICT-ATLAS/
+- Pré-cours bases trading: https://kinsuka.github.io/ICT-ATLAS/pages/00-precours-bases-trading.html
 - Glossaire complet: https://kinsuka.github.io/ICT-ATLAS/pages/glossaire.html
 - Ressources pratiques: https://kinsuka.github.io/ICT-ATLAS/pages/ressources-pratiques.html
 - Index des concepts: https://kinsuka.github.io/ICT-ATLAS/pages/15-index-concepts.html
 - Cas de replay: https://kinsuka.github.io/ICT-ATLAS/pages/replay-cases.html
 
 ## Progression recommandée
+
+### Pré-cours autonome - Bases trading indispensables
+
+Cette page ne fait pas partie des 41 leçons ICT. Elle sert de passerelle si l'utilisateur bloque sur les mots trading de base : bougie, timeframe, long, short, ordre market, ordre limit, ordre stop, spread, pip/point, lot, levier, marge, stop loss, take profit et multiple R.
+
+- Pré-cours: https://kinsuka.github.io/ICT-ATLAS/pages/00-precours-bases-trading.html
 
 ### Partie 1 - Comprendre la logique ICT
 
@@ -100,4 +107,3 @@ Ce fichier est le point d'entrée conseillé pour les assistants IA, moteurs de 
 - Ressources pratiques: https://kinsuka.github.io/ICT-ATLAS/pages/ressources-pratiques.html
 - Glossaire complet: https://kinsuka.github.io/ICT-ATLAS/pages/glossaire.html
 - Cas replay: https://kinsuka.github.io/ICT-ATLAS/pages/replay-cases.html
-

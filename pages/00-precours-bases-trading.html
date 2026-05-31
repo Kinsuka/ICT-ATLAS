@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width,initial-scale=1" name="viewport"/>
+  <title>ICT Atlas — Pré-cours · Bases trading indispensables</title>
+  <link href="../css/style.css" rel="stylesheet"/>
+</head>
+<body>
+  <div class="app-shell">
+    <aside aria-label="Navigation du pré-cours" class="site-nav">
+      <div class="nav-brand">
+        <strong>ICT Atlas</strong>
+        <span>Pré-cours · bases trading</span>
+      </div>
+      <a class="resources-nav-link" href="../index.html">
+        <strong>Retour au cours ICT</strong>
+        <span>Revenir à l'accueil principal</span>
+      </a>
+      <div class="nav-section">
+        <h2 class="nav-section-title">Menu du pré-cours</h2>
+        <nav class="nav-links toc-links">
+          <a class="active" href="#objectif"><span class="nav-num">0</span>Pourquoi ce pré-cours</a>
+          <a href="#bougie-timeframe"><span class="nav-num">1</span>Bougie et timeframe</a>
+          <a href="#long-short"><span class="nav-num">2</span>Long, short et prix</a>
+          <a href="#ordres"><span class="nav-num">3</span>Market, limit, stop</a>
+          <a href="#spread-pip-lot"><span class="nav-num">4</span>Spread, pip, lot</a>
+          <a href="#levier-risque"><span class="nav-num">5</span>Levier, marge, risque</a>
+          <a href="#sl-tp-r"><span class="nav-num">6</span>SL, TP et R</a>
+          <a href="#test-final"><span class="nav-num">7</span>Test de sortie</a>
+        </nav>
+      </div>
+      <div class="nav-help">
+        <strong>But</strong><br/>
+        Lire cette page seulement si les mots trading de base bloquent la lecture du cours ICT.
+      </div>
+    </aside>
+
+    <main class="page" id="contenu">
+      <div class="lesson-header">
+        <div class="lesson-meta"><span>Pré-cours autonome</span><span>Hors parcours 41 leçons</span></div>
+        <div class="lesson-part-title">Bases trading indispensables avant ICT</div>
+        <nav aria-label="Navigation du pré-cours" class="lesson-pager">
+          <a class="pager-link" href="../index.html"><small>Retour</small><span>Accueil ICT Atlas</span></a>
+          <a class="pager-link next" href="16-modele-mental.html"><small>Après ce pré-cours</small><span>Modèle mental ICT</span></a>
+        </nav>
+      </div>
+
+      <div class="hero">
+        <h1>Pré-cours — Bases trading indispensables</h1>
+        <p>Une passerelle courte pour comprendre les mots techniques avant d'entrer dans la logique ICT : bougie, timeframe, ordre, spread, risque, stop et take profit.</p>
+        <div class="tagline"><span>Hors parcours principal</span><span>Débutant trading</span><span>Passerelle ICT</span></div>
+      </div>
+
+      <section class="lesson-objectives" id="objectif">
+        <h2>À quoi sert cette page ?</h2>
+        <div class="lesson-objective-grid">
+          <div class="lesson-objective"><strong>Objectif</strong><p>Donner le vocabulaire minimum pour lire ICT Atlas sans bloquer sur les bases trading.</p></div>
+          <div class="lesson-objective"><strong>Limite</strong><p>Ce n'est pas une formation broker ou plateforme. C'est une rampe d'accès.</p></div>
+          <div class="lesson-objective"><strong>Validation</strong><p>Tu peux passer au cours si tu sais expliquer long, short, stop, TP et risque en R.</p></div>
+        </div>
+      </section>
+
+      <section class="card" id="bougie-timeframe">
+        <header><h2>1 — Lire une bougie et un timeframe</h2><span>Graphique</span></header>
+        <p>Une bougie résume ce qui s'est passé pendant une période donnée. Sur un graphique 15 minutes, chaque bougie représente 15 minutes. Sur un graphique 1 heure, chaque bougie représente 1 heure.</p>
+        <div class="chart">
+          <svg aria-label="Anatomie d'une bougie et rôle du timeframe" role="img" viewBox="0 0 900 360" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg">
+            <rect width="900" height="360" fill="#081222"/>
+            <g opacity=".45" stroke="#1e3a5f"><line x1="70" x2="830" y1="78" y2="78"/><line x1="70" x2="830" y1="150" y2="150"/><line x1="70" x2="830" y1="222" y2="222"/><line x1="70" x2="830" y1="294" y2="294"/></g>
+            <text x="450" y="36" text-anchor="middle" fill="#8ee5fa" font-size="20" font-weight="900">Une bougie = open, high, low, close sur une période</text>
+            <line x1="210" x2="210" y1="86" y2="288" stroke="#34d399" stroke-width="7" stroke-linecap="round"/>
+            <rect x="174" y="130" width="72" height="118" rx="8" fill="#34d399"/>
+            <text x="105" y="118" fill="#d9e6f2" font-size="15" font-weight="800">High</text>
+            <path d="M150 114 L204 92" stroke="#8ee5fa" stroke-width="2" stroke-dasharray="5 6"/>
+            <circle cx="210" cy="88" r="5" fill="#8ee5fa"/>
+            <text x="108" y="254" fill="#d9e6f2" font-size="15" font-weight="800">Low</text>
+            <path d="M148 250 L204 285" stroke="#8ee5fa" stroke-width="2" stroke-dasharray="5 6"/>
+            <circle cx="210" cy="288" r="5" fill="#8ee5fa"/>
+            <text x="270" y="148" fill="#34d399" font-size="15" font-weight="900">Close</text>
+            <path d="M260 144 L246 144" stroke="#34d399" stroke-width="2"/>
+            <text x="270" y="248" fill="#f8c24e" font-size="15" font-weight="900">Open</text>
+            <path d="M260 244 L246 244" stroke="#f8c24e" stroke-width="2"/>
+
+            <rect x="430" y="92" width="320" height="188" rx="18" fill="#0e1624" stroke="rgba(255,255,255,.12)"/>
+            <text x="456" y="130" fill="#f0f4f8" font-size="18" font-weight="900">Timeframe</text>
+            <text x="456" y="166" fill="#a0b2c6" font-size="15">M5 : une bougie = 5 minutes</text>
+            <text x="456" y="196" fill="#a0b2c6" font-size="15">M15 : une bougie = 15 minutes</text>
+            <text x="456" y="226" fill="#a0b2c6" font-size="15">H1 : une bougie = 1 heure</text>
+            <text x="456" y="256" fill="#a0b2c6" font-size="15">D1 : une bougie = 1 journée</text>
+            <text x="450" y="324" text-anchor="middle" fill="#f8c24e" font-size="15" font-weight="800">Plus le timeframe est haut, plus l'information est large et lente.</text>
+          </svg>
+        </div>
+        <div class="rule-block"><strong>Tu dois savoir faire :</strong> regarder une bougie et dire où elle a ouvert, où elle a clôturé, quel niveau a été le plus haut et quel niveau a été le plus bas.</div>
+      </section>
+
+      <section class="card" id="long-short">
+        <header><h2>2 — Comprendre long, short et mouvement du prix</h2><span>Direction</span></header>
+        <p>Un trade long cherche à profiter d'une hausse. Un trade short cherche à profiter d'une baisse. Dans les deux cas, le raisonnement est le même : entrée, invalidation, objectif, risque.</p>
+        <div class="academy-grid">
+          <div class="academy-card"><h3>Long</h3><p>Tu achètes d'abord, puis tu veux revendre plus haut. Ton scénario échoue si le prix casse ton invalidation sous l'entrée.</p><span class="badge">Hausse</span></div>
+          <div class="academy-card"><h3>Short</h3><p>Tu vends d'abord, puis tu veux racheter plus bas. Ton scénario échoue si le prix casse ton invalidation au-dessus de l'entrée.</p><span class="badge">Baisse</span></div>
+          <div class="academy-card"><h3>Neutre</h3><p>Si tu ne peux pas expliquer la direction, l'invalidation et la cible, ce n'est pas encore un trade. C'est une observation.</p><span class="badge">No trade</span></div>
+        </div>
+        <div class="chart">
+          <svg aria-label="Différence entre trade long et trade short" role="img" viewBox="0 0 900 340" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg">
+            <rect width="900" height="340" fill="#081222"/>
+            <text x="235" y="38" text-anchor="middle" fill="#34d399" font-size="19" font-weight="900">Long : entrée puis objectif au-dessus</text>
+            <text x="665" y="38" text-anchor="middle" fill="#f87171" font-size="19" font-weight="900">Short : entrée puis objectif en-dessous</text>
+            <polyline points="80,250 145,224 210,236 275,174 340,122 410,88" fill="none" stroke="#34d399" stroke-width="4"/>
+            <line x1="105" x2="410" y1="218" y2="218" stroke="#8ee5fa" stroke-width="2" stroke-dasharray="8 7"/>
+            <line x1="105" x2="410" y1="286" y2="286" stroke="#f87171" stroke-width="2"/>
+            <line x1="105" x2="410" y1="92" y2="92" stroke="#34d399" stroke-width="2"/>
+            <text x="116" y="210" fill="#8ee5fa" font-size="14" font-weight="800">Entrée</text>
+            <text x="116" y="278" fill="#f87171" font-size="14" font-weight="800">Stop</text>
+            <text x="116" y="84" fill="#34d399" font-size="14" font-weight="800">TP</text>
+            <polyline points="490,86 558,116 620,102 680,166 744,214 820,252" fill="none" stroke="#f87171" stroke-width="4"/>
+            <line x1="490" x2="820" y1="128" y2="128" stroke="#8ee5fa" stroke-width="2" stroke-dasharray="8 7"/>
+            <line x1="490" x2="820" y1="72" y2="72" stroke="#f87171" stroke-width="2"/>
+            <line x1="490" x2="820" y1="260" y2="260" stroke="#34d399" stroke-width="2"/>
+            <text x="720" y="120" fill="#8ee5fa" font-size="14" font-weight="800">Entrée</text>
+            <text x="720" y="64" fill="#f87171" font-size="14" font-weight="800">Stop</text>
+            <text x="720" y="286" fill="#34d399" font-size="14" font-weight="800">TP</text>
+          </svg>
+        </div>
+      </section>
+
+      <section class="card" id="ordres">
+        <header><h2>3 — Les ordres : market, limit, stop</h2><span>Exécution</span></header>
+        <p>Un ordre est une instruction envoyée au marché. Avant ICT, retiens seulement la logique : entrer maintenant, attendre un meilleur prix, ou déclencher si un niveau est cassé.</p>
+        <div class="academy-grid">
+          <div class="academy-card"><h3>Market</h3><p>Tu entres maintenant au prix disponible. C'est rapide, mais tu acceptes le prix réel d'exécution.</p></div>
+          <div class="academy-card"><h3>Limit</h3><p>Tu demandes un prix précis ou meilleur. Exemple : acheter plus bas sur un retour en zone.</p></div>
+          <div class="academy-card"><h3>Stop</h3><p>Tu déclenches un ordre si le prix atteint un niveau. Un stop loss est aussi un ordre stop.</p></div>
+        </div>
+        <div class="rule-block"><strong>Erreur fréquente :</strong> confondre “je vois une zone” avec “j'entre”. Une zone peut seulement préparer un ordre ; elle ne justifie pas toujours l'exécution.</div>
+      </section>
+
+      <section class="card" id="spread-pip-lot">
+        <header><h2>4 — Spread, pip/point et lot</h2><span>Coût et taille</span></header>
+        <p>Le spread est l'écart entre le prix d'achat et le prix de vente. Le pip ou le point mesure un petit déplacement du prix. Le lot détermine la taille de la position, donc le gain ou la perte par mouvement.</p>
+        <div class="chart">
+          <svg aria-label="Spread pip point et taille de position" role="img" viewBox="0 0 900 330" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg">
+            <rect width="900" height="330" fill="#081222"/>
+            <text x="450" y="36" text-anchor="middle" fill="#8ee5fa" font-size="20" font-weight="900">Le spread est un coût invisible si tu ne le regardes pas</text>
+            <line x1="140" x2="760" y1="156" y2="156" stroke="#1e3a5f" stroke-width="3"/>
+            <line x1="250" x2="250" y1="104" y2="206" stroke="#34d399" stroke-width="4"/>
+            <line x1="322" x2="322" y1="104" y2="206" stroke="#f87171" stroke-width="4"/>
+            <text x="250" y="86" text-anchor="middle" fill="#34d399" font-size="16" font-weight="900">Bid</text>
+            <text x="322" y="86" text-anchor="middle" fill="#f87171" font-size="16" font-weight="900">Ask</text>
+            <path d="M254 230 L318 230" stroke="#f8c24e" stroke-width="3" marker-end="url(#arrowSpread)"/>
+            <path d="M318 230 L254 230" stroke="#f8c24e" stroke-width="3" marker-end="url(#arrowSpread)"/>
+            <text x="286" y="260" text-anchor="middle" fill="#f8c24e" font-size="15" font-weight="900">Spread</text>
+            <g transform="translate(500 96)">
+              <rect width="250" height="142" rx="16" fill="#0e1624" stroke="rgba(255,255,255,.12)"/>
+              <text x="22" y="36" fill="#f0f4f8" font-size="17" font-weight="900">Lot = taille</text>
+              <text x="22" y="72" fill="#a0b2c6" font-size="14">Plus la taille augmente,</text>
+              <text x="22" y="98" fill="#a0b2c6" font-size="14">plus chaque pip/point vaut cher.</text>
+              <text x="22" y="124" fill="#f87171" font-size="14" font-weight="900">Le risque vient de la taille.</text>
+            </g>
+            <defs><marker id="arrowSpread" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8 Z" fill="#f8c24e"/></marker></defs>
+          </svg>
+        </div>
+        <div class="rule-block"><strong>Tu dois savoir faire :</strong> expliquer que deux trades avec le même stop graphique peuvent avoir un risque différent si la taille de position change.</div>
+      </section>
+
+      <section class="card" id="levier-risque">
+        <header><h2>5 — Levier, marge et risque réel</h2><span>Protection</span></header>
+        <p>Le levier permet de contrôler une position plus grande que ton capital disponible. Il n'augmente pas ton niveau technique ; il augmente surtout la vitesse à laquelle une erreur coûte cher.</p>
+        <div class="academy-grid">
+          <div class="academy-card"><h3>Capital</h3><p>Ce que tu as réellement sur le compte.</p></div>
+          <div class="academy-card"><h3>Marge</h3><p>Montant immobilisé pour ouvrir et maintenir une position.</p></div>
+          <div class="academy-card"><h3>Risque %</h3><p>Part du compte que tu acceptes de perdre si le scénario est invalidé.</p></div>
+        </div>
+        <div class="rule-block"><strong>Règle débutant :</strong> ne pense jamais “combien je peux gagner ?” avant “combien je peux perdre si j'ai tort ?”.</div>
+      </section>
+
+      <section class="card" id="sl-tp-r">
+        <header><h2>6 — Stop loss, take profit et multiple R</h2><span>Plan</span></header>
+        <p>Le stop loss protège le compte quand l'idée est fausse. Le take profit définit où tu prends ton gain. Le multiple R compare le gain potentiel au risque pris.</p>
+        <div class="chart">
+          <svg aria-label="Plan de trade avec entrée stop take profit et multiple R" role="img" viewBox="0 0 900 380" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg">
+            <rect width="900" height="380" fill="#081222"/>
+            <g opacity=".45" stroke="#1e3a5f"><line x1="90" x2="810" y1="80" y2="80"/><line x1="90" x2="810" y1="150" y2="150"/><line x1="90" x2="810" y1="220" y2="220"/><line x1="90" x2="810" y1="290" y2="290"/></g>
+            <text x="450" y="36" text-anchor="middle" fill="#8ee5fa" font-size="20" font-weight="900">Un trade complet existe seulement avec entrée, stop et cible</text>
+            <polyline points="120,270 190,238 260,248 330,206 405,216 480,158 560,130 640,96 760,112" fill="none" stroke="#34d399" stroke-width="4"/>
+            <line x1="120" x2="790" y1="220" y2="220" stroke="#8ee5fa" stroke-width="2.5" stroke-dasharray="8 7"/>
+            <line x1="120" x2="790" y1="292" y2="292" stroke="#f87171" stroke-width="3"/>
+            <line x1="120" x2="790" y1="96" y2="96" stroke="#34d399" stroke-width="3"/>
+            <text x="132" y="210" fill="#8ee5fa" font-size="15" font-weight="900">Entrée</text>
+            <text x="132" y="318" fill="#f87171" font-size="15" font-weight="900">Stop = -1R</text>
+            <text x="132" y="86" fill="#34d399" font-size="15" font-weight="900">TP = +?R</text>
+            <path d="M815 220 L815 292" stroke="#f87171" stroke-width="3"/>
+            <path d="M815 96 L815 220" stroke="#34d399" stroke-width="3"/>
+            <text x="836" y="260" fill="#f87171" font-size="15" font-weight="900">Risque</text>
+            <text x="836" y="160" fill="#34d399" font-size="15" font-weight="900">Gain</text>
+            <text x="450" y="350" text-anchor="middle" fill="#f8c24e" font-size="15" font-weight="800">Si le gain potentiel est trop proche du risque, le trade peut être refusé.</text>
+          </svg>
+        </div>
+        <div class="academy-grid">
+          <div class="academy-card"><h3>1R</h3><p>La perte prévue si ton stop est touché. Exemple : tu risques 1% du compte.</p></div>
+          <div class="academy-card"><h3>2R</h3><p>Le gain vaut deux fois le risque. Si tu risques 1%, tu vises 2% avant frais.</p></div>
+          <div class="academy-card"><h3>No trade</h3><p>Si la cible logique est trop proche pour compenser le risque, tu refuses.</p></div>
+        </div>
+      </section>
+
+      <section class="card" id="test-final">
+        <header><h2>7 — Test de sortie du pré-cours</h2><span>Validation</span></header>
+        <p>Avant de commencer ICT Atlas, réponds sans regarder tes notes. Si tu bloques sur plus de deux questions, relis la section concernée.</p>
+        <div class="academy-grid">
+          <div class="academy-card"><h3>Bougie</h3><p>Explique open, high, low et close avec tes mots.</p></div>
+          <div class="academy-card"><h3>Direction</h3><p>Quelle différence entre un trade long et un trade short ?</p></div>
+          <div class="academy-card"><h3>Ordres</h3><p>Quand utiliserais-tu un ordre market, limit ou stop ?</p></div>
+          <div class="academy-card"><h3>Risque</h3><p>Pourquoi le lot/taille de position peut rendre un trade dangereux ?</p></div>
+          <div class="academy-card"><h3>Plan</h3><p>Pourquoi une entrée sans stop et TP n'est pas encore un plan ?</p></div>
+          <div class="academy-card"><h3>ICT</h3><p>Pourquoi ce pré-cours ne suffit pas pour trader, mais aide à lire la suite ?</p></div>
+        </div>
+        <div class="rule-block"><strong>Passage au cours :</strong> si ces réponses sont claires, continue avec le modèle mental ICT. Sinon, reste ici jusqu'à pouvoir expliquer les bases simplement.</div>
+      </section>
+
+      <nav aria-label="Navigation finale du pré-cours" class="lesson-bottom-nav">
+        <a class="bottom-link" href="../index.html"><small>Retour</small><span>Accueil ICT Atlas</span></a>
+        <a class="bottom-link next" href="16-modele-mental.html"><small>Commencer</small><span>Modèle mental ICT</span></a>
+      </nav>
+    </main>
+  </div>
+</body>
+</html>
+

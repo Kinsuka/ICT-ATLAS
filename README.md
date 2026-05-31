@@ -4,6 +4,7 @@ Mini-site autonome organisé autour de l’atlas visuel ICT : parcours, mécaniq
 
 Version actuelle :
 - 41 leçons guidées.
+- Pré-cours autonome hors parcours principal pour les bases trading indispensables.
 - Glossaire permanent accessible depuis toutes les pages.
 - Graphismes SVG pédagogiques intégrés aux chapitres.
 - Navigation pensée pour GitHub Pages.
@@ -11,5 +12,6 @@ Version actuelle :
 
 Entrées utiles :
 - Site : https://kinsuka.github.io/ICT-ATLAS/
+- Pré-cours : https://kinsuka.github.io/ICT-ATLAS/pages/00-precours-bases-trading.html
 - Guide IA : https://kinsuka.github.io/ICT-ATLAS/llms.txt
 - Sitemap : https://kinsuka.github.io/ICT-ATLAS/sitemap.xml

@@ -11,6 +11,8 @@ Ajouts
   - bougie et timeframe ;
   - long / short ;
   - ordres market / limit / stop ;
+  - liquidité débutant : ordres disponibles, niveaux visibles, stops ;
+  - prise de liquidité : continuation, rejet ou absorption ;
   - spread, pip/point, lot ;
   - levier, marge, risque ;
   - stop loss, take profit, multiple R ;
@@ -21,4 +23,3 @@ Mises à jour
 - llms.txt explique que le pré-cours est autonome et hors progression 41 leçons.
 - sitemap.xml référence la nouvelle page.
 - tests/course-visual.spec.js inclut le pré-cours dans l'audit Playwright.
-

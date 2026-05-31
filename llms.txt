@@ -32,7 +32,7 @@ Ce fichier est le point d'entrée conseillé pour les assistants IA, moteurs de 
 
 ### Pré-cours autonome - Bases trading indispensables
 
-Cette page ne fait pas partie des 41 leçons ICT. Elle sert de passerelle si l'utilisateur bloque sur les mots trading de base : bougie, timeframe, long, short, ordre market, ordre limit, ordre stop, spread, pip/point, lot, levier, marge, stop loss, take profit et multiple R.
+Cette page ne fait pas partie des 41 leçons ICT. Elle sert de passerelle si l'utilisateur bloque sur les mots trading de base : bougie, timeframe, long, short, ordre market, ordre limit, ordre stop, liquidité débutant, stops autour des niveaux visibles, réaction après prise de liquidité, spread, pip/point, lot, levier, marge, stop loss, take profit et multiple R.
 
 - Pré-cours: https://kinsuka.github.io/ICT-ATLAS/pages/00-precours-bases-trading.html
 

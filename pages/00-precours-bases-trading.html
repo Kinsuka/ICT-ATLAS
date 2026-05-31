@@ -3,418 +3,102 @@
 <head>
   <meta charset="utf-8"/>
   <meta content="width=device-width,initial-scale=1" name="viewport"/>
-  <title>ICT Atlas — Pré-cours · Bases trading indispensables</title>
+  <title>ICT Atlas — Pré-cours Trading Basics</title>
   <link href="../css/style.css" rel="stylesheet"/>
 </head>
 <body>
   <div class="app-shell">
     <aside aria-label="Navigation du pré-cours" class="site-nav">
-      <div class="nav-brand">
-        <strong>ICT Atlas</strong>
-        <span>Pré-cours · bases trading</span>
-      </div>
-      <a class="resources-nav-link" href="../index.html">
-        <strong>Retour au cours ICT</strong>
-        <span>Revenir à l'accueil principal</span>
-      </a>
+      <div class="nav-brand"><strong>ICT Atlas</strong><span>Pré-cours · mini-cours autonome</span></div>
+      <a class="resources-nav-link" href="../index.html"><strong>Retour au cours ICT</strong><span>Accueil principal</span></a>
       <div class="nav-section">
-        <h2 class="nav-section-title">Menu du pré-cours</h2>
+        <h2 class="nav-section-title">Pré-cours</h2>
         <nav class="nav-links toc-links">
-          <a class="active" href="#objectif"><span class="nav-num">0</span>Pourquoi ce pré-cours</a>
-          <a href="#bougie-timeframe"><span class="nav-num">1</span>Bougie et timeframe</a>
-          <a href="#swing-structure"><span class="nav-num">2</span>Swing et structure</a>
-          <a href="#long-short"><span class="nav-num">3</span>Long, short et prix</a>
-          <a href="#ordres"><span class="nav-num">4</span>Market, limit, stop</a>
-          <a href="#liquidite-debutant"><span class="nav-num">5</span>Liquidité débutant</a>
-          <a href="#stops-niveaux-visibles"><span class="nav-num">6</span>Stops et niveaux visibles</a>
-          <a href="#prise-reaction"><span class="nav-num">7</span>Prise et réaction</a>
-          <a href="#spread-pip-lot"><span class="nav-num">8</span>Spread, pip, lot</a>
-          <a href="#levier-risque"><span class="nav-num">9</span>Levier, marge, risque</a>
-          <a href="#sl-tp-r"><span class="nav-num">10</span>SL, TP et R</a>
-          <a href="#traduction-ict"><span class="nav-num">11</span>Traduction ICT</a>
-          <a href="#test-final"><span class="nav-num">12</span>Test de sortie</a>
+          <a class="active" href="00-precours-bases-trading.html"><span class="nav-num">0</span>Accueil du pré-cours</a>
+          <a href="00-precours-01-graphique.html"><span class="nav-num">1</span>Lire un graphique</a>
+          <a href="00-precours-02-structure.html"><span class="nav-num">2</span>Swings et structure</a>
+          <a href="00-precours-03-ordres.html"><span class="nav-num">3</span>Ordres et exécution</a>
+          <a href="00-precours-04-liquidite.html"><span class="nav-num">4</span>Liquidité débutant</a>
+          <a href="00-precours-05-trade-simple.html"><span class="nav-num">5</span>Trade simple</a>
+          <a href="00-precours-06-risque.html"><span class="nav-num">6</span>Risque et levier</a>
+          <a href="00-precours-07-pont-ict.html"><span class="nav-num">7</span>Pont vers ICT</a>
         </nav>
       </div>
-      <div class="nav-help">
-        <strong>But</strong><br/>
-        Lire cette page seulement si les mots trading de base bloquent la lecture du cours ICT.
-      </div>
+      <div class="nav-help"><strong>But</strong><br/>Construire les bases avant d'entrer dans les 41 leçons ICT.</div>
     </aside>
 
     <main class="page" id="contenu">
       <div class="lesson-header">
         <div class="lesson-meta"><span>Pré-cours autonome</span><span>Hors parcours 41 leçons</span></div>
-        <div class="lesson-part-title">Bases trading indispensables avant ICT</div>
+        <div class="lesson-part-title">Trading Basics avant ICT</div>
         <nav aria-label="Navigation du pré-cours" class="lesson-pager">
           <a class="pager-link" href="../index.html"><small>Retour</small><span>Accueil ICT Atlas</span></a>
-          <a class="pager-link next" href="16-modele-mental.html"><small>Après ce pré-cours</small><span>Modèle mental ICT</span></a>
+          <a class="pager-link next" href="00-precours-01-graphique.html"><small>Commencer</small><span>Lire un graphique</span></a>
         </nav>
       </div>
 
       <div class="hero">
-        <h1>Pré-cours — Bases trading indispensables</h1>
-        <p>Une passerelle pour comprendre les mots techniques avant ICT : bougie, timeframe, swing, structure, ordre, liquidité, spread, risque, stop et take profit.</p>
-        <div class="tagline"><span>Hors parcours principal</span><span>Débutant trading</span><span>Passerelle ICT</span></div>
+        <h1>Pré-cours Trading Basics</h1>
+        <p>Un mini-cours scolaire et visuel pour apprendre les bases nécessaires avant ICT : graphique, structure, ordres, liquidité, trade simple, risque et traduction vers les acronymes.</p>
+        <div class="tagline"><span>Mini-cours autonome</span><span>Beaucoup d'exemples</span><span>Avant ICT</span></div>
       </div>
 
-      <section class="lesson-objectives" id="objectif">
-        <h2>À quoi sert cette page ?</h2>
+      <section class="lesson-objectives">
+        <h2>Pourquoi ce mini-cours existe</h2>
         <div class="lesson-objective-grid">
-          <div class="lesson-objective"><strong>Objectif</strong><p>Donner le vocabulaire minimum et la logique des ordres pour lire ICT Atlas sans bloquer.</p></div>
-          <div class="lesson-objective"><strong>Limite</strong><p>Ce n'est pas une formation broker ou plateforme. C'est une rampe d'accès.</p></div>
-          <div class="lesson-objective"><strong>Validation</strong><p>Tu peux passer au cours si tu sais expliquer long, short, swing, structure, liquidité, stop, TP et risque en R.</p></div>
+          <div class="lesson-objective"><strong>Pour qui ?</strong><p>Pour un débutant qui ne maîtrise pas encore bougies, swings, ordres, liquidité, stop, TP ou risque en R.</p></div>
+          <div class="lesson-objective"><strong>Promesse</strong><p>Ne pas faire semblant que les acronymes ICT sont évidents. On pose le vocabulaire avant les sigles.</p></div>
+          <div class="lesson-objective"><strong>Sortie</strong><p>Tu dois pouvoir lire une structure simple et expliquer pourquoi un niveau visible peut attirer le prix.</p></div>
         </div>
       </section>
 
-      <section class="card" id="bougie-timeframe">
-        <header><h2>1 — Lire une bougie et un timeframe</h2><span>Graphique</span></header>
-        <p>Une bougie résume ce qui s'est passé pendant une période donnée. Sur un graphique 15 minutes, chaque bougie représente 15 minutes. Sur un graphique 1 heure, chaque bougie représente 1 heure.</p>
+      <section class="card">
+        <header><h2>Parcours du pré-cours</h2><span>7 leçons</span></header>
+        <p>Chaque leçon répète volontairement les concepts avec plusieurs visuels : cas propre, cas inverse, cas ambigu ou erreur fréquente. La répétition n'est pas du remplissage ; c'est ce qui permet d'assimiler.</p>
+        <div class="section-links">
+          <a class="section-link" href="00-precours-01-graphique.html"><h3>1 — Lire un graphique</h3><p>Bougie, OHLC, timeframe, mèches, corps, impulsion, indécision.</p></a>
+          <a class="section-link" href="00-precours-02-structure.html"><h3>2 — Swings et structure</h3><p>Swing high/low, tendance, range, cassure et fausse cassure.</p></a>
+          <a class="section-link" href="00-precours-03-ordres.html"><h3>3 — Ordres et exécution</h3><p>Market, limit, stop, stop loss, take profit et déclenchement.</p></a>
+          <a class="section-link" href="00-precours-04-liquidite.html"><h3>4 — Liquidité débutant</h3><p>Ordres disponibles, stops groupés, niveaux visibles, prise et réaction.</p></a>
+          <a class="section-link" href="00-precours-05-trade-simple.html"><h3>5 — Construire un trade simple</h3><p>Long/short, entrée, invalidation, stop, TP, no trade.</p></a>
+          <a class="section-link" href="00-precours-06-risque.html"><h3>6 — Risque et levier</h3><p>Lot, spread, marge, levier, risque en %, multiple R.</p></a>
+          <a class="section-link" href="00-precours-07-pont-ict.html"><h3>7 — Pont vers ICT</h3><p>Traduction vers BSL, SSL, DOL, sweep, displacement, MSS, FVG, OB.</p></a>
+        </div>
+      </section>
+
+      <section class="card">
+        <header><h2>Carte mentale du mini-cours</h2><span>Vue d'ensemble</span></header>
         <div class="chart">
-          <svg aria-label="Anatomie d'une bougie et rôle du timeframe" role="img" viewBox="0 0 900 360" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg">
+          <svg aria-label="Carte du pré-cours trading basics avant ICT" role="img" viewBox="0 0 900 360" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg">
             <rect width="900" height="360" fill="#081222"/>
-            <g opacity=".45" stroke="#1e3a5f"><line x1="70" x2="830" y1="78" y2="78"/><line x1="70" x2="830" y1="150" y2="150"/><line x1="70" x2="830" y1="222" y2="222"/><line x1="70" x2="830" y1="294" y2="294"/></g>
-            <text x="450" y="36" text-anchor="middle" fill="#8ee5fa" font-size="20" font-weight="900">Une bougie = open, high, low, close sur une période</text>
-            <line x1="210" x2="210" y1="86" y2="288" stroke="#34d399" stroke-width="7" stroke-linecap="round"/>
-            <rect x="174" y="130" width="72" height="118" rx="8" fill="#34d399"/>
-            <text x="105" y="118" fill="#d9e6f2" font-size="15" font-weight="800">High</text>
-            <path d="M150 114 L204 92" stroke="#8ee5fa" stroke-width="2" stroke-dasharray="5 6"/>
-            <circle cx="210" cy="88" r="5" fill="#8ee5fa"/>
-            <text x="108" y="254" fill="#d9e6f2" font-size="15" font-weight="800">Low</text>
-            <path d="M148 250 L204 285" stroke="#8ee5fa" stroke-width="2" stroke-dasharray="5 6"/>
-            <circle cx="210" cy="288" r="5" fill="#8ee5fa"/>
-            <text x="270" y="148" fill="#34d399" font-size="15" font-weight="900">Close</text>
-            <path d="M260 144 L246 144" stroke="#34d399" stroke-width="2"/>
-            <text x="270" y="248" fill="#f8c24e" font-size="15" font-weight="900">Open</text>
-            <path d="M260 244 L246 244" stroke="#f8c24e" stroke-width="2"/>
-
-            <rect x="430" y="92" width="320" height="188" rx="18" fill="#0e1624" stroke="rgba(255,255,255,.12)"/>
-            <text x="456" y="130" fill="#f0f4f8" font-size="18" font-weight="900">Timeframe</text>
-            <text x="456" y="166" fill="#a0b2c6" font-size="15">M5 : une bougie = 5 minutes</text>
-            <text x="456" y="196" fill="#a0b2c6" font-size="15">M15 : une bougie = 15 minutes</text>
-            <text x="456" y="226" fill="#a0b2c6" font-size="15">H1 : une bougie = 1 heure</text>
-            <text x="456" y="256" fill="#a0b2c6" font-size="15">D1 : une bougie = 1 journée</text>
-            <text x="450" y="324" text-anchor="middle" fill="#f8c24e" font-size="15" font-weight="800">Plus le timeframe est haut, plus l'information est large et lente.</text>
-          </svg>
-        </div>
-        <div class="rule-block"><strong>Tu dois savoir faire :</strong> regarder une bougie et dire où elle a ouvert, où elle a clôturé, quel niveau a été le plus haut et quel niveau a été le plus bas.</div>
-      </section>
-
-      <section class="card" id="swing-structure">
-        <header><h2>2 — Comprendre swing et structure</h2><span>Mouvement</span></header>
-        <p>Une bougie seule donne une information locale. Pour lire un mouvement, il faut relier plusieurs bougies entre elles. Un <strong>swing high</strong> est un sommet local : le prix monte, bloque, puis redescend. Un <strong>swing low</strong> est un creux local : le prix descend, bloque, puis remonte.</p>
-        <p>La structure vient de la répétition de ces swings. Si les sommets et les creux montent, le marché pousse vers le haut. S'ils descendent, il pousse vers le bas. S'ils restent enfermés entre deux zones, il est plutôt en range.</p>
-        <div class="chart">
-          <svg aria-label="Swing high swing low et structure de marché simple" role="img" viewBox="0 0 900 430" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg">
-            <rect width="900" height="430" fill="#081222"/>
-            <g opacity=".45" stroke="#1e3a5f">
-              <line x1="70" x2="830" y1="92" y2="92"/>
-              <line x1="70" x2="830" y1="172" y2="172"/>
-              <line x1="70" x2="830" y1="252" y2="252"/>
-              <line x1="70" x2="830" y1="332" y2="332"/>
+            <text x="450" y="38" text-anchor="middle" fill="#8ee5fa" font-size="20" font-weight="900">Graphique → Structure → Ordres → Liquidité → Trade → Risque → ICT</text>
+            <g fill="#0e1624" stroke="rgba(255,255,255,.14)" stroke-width="2">
+              <rect x="54" y="120" width="100" height="86" rx="14"/><rect x="174" y="120" width="100" height="86" rx="14"/>
+              <rect x="294" y="120" width="100" height="86" rx="14"/><rect x="414" y="120" width="100" height="86" rx="14"/>
+              <rect x="534" y="120" width="100" height="86" rx="14"/><rect x="654" y="120" width="100" height="86" rx="14"/>
+              <rect x="774" y="120" width="80" height="86" rx="14"/>
             </g>
-            <text x="450" y="38" text-anchor="middle" fill="#8ee5fa" font-size="20" font-weight="900">La structure se lit avec une suite de swings</text>
-            <polyline points="90,316 160,252 230,278 300,212 370,238 450,166 520,194 610,122 690,150 790,92" fill="none" stroke="#34d399" stroke-width="4"/>
-
-            <circle cx="160" cy="252" r="6" fill="#f8c24e"/>
-            <circle cx="300" cy="212" r="6" fill="#f8c24e"/>
-            <circle cx="450" cy="166" r="6" fill="#f8c24e"/>
-            <circle cx="610" cy="122" r="6" fill="#f8c24e"/>
-            <text x="168" y="232" fill="#f8c24e" font-size="13" font-weight="900">swing high</text>
-            <text x="460" y="146" fill="#f8c24e" font-size="13" font-weight="900">swing high</text>
-
-            <circle cx="230" cy="278" r="6" fill="#8ee5fa"/>
-            <circle cx="370" cy="238" r="6" fill="#8ee5fa"/>
-            <circle cx="520" cy="194" r="6" fill="#8ee5fa"/>
-            <circle cx="690" cy="150" r="6" fill="#8ee5fa"/>
-            <text x="238" y="306" fill="#8ee5fa" font-size="13" font-weight="900">swing low</text>
-            <text x="530" y="222" fill="#8ee5fa" font-size="13" font-weight="900">swing low</text>
-
-            <path d="M250 350 L710 230" stroke="#34d399" stroke-width="3" stroke-dasharray="8 7"/>
-            <text x="450" y="382" text-anchor="middle" fill="#34d399" font-size="15" font-weight="900">Exemple simple : sommets plus hauts + creux plus hauts = tendance haussière</text>
-          </svg>
-        </div>
-        <div class="academy-grid">
-          <div class="academy-card"><h3>Swing high</h3><p>Un sommet local. Il devient important si beaucoup de traders le voient.</p></div>
-          <div class="academy-card"><h3>Swing low</h3><p>Un creux local. Il peut attirer les stops des traders déjà acheteurs.</p></div>
-          <div class="academy-card"><h3>Structure</h3><p>La façon dont les highs et lows s'enchaînent : tendance, range ou transition.</p></div>
-        </div>
-        <details class="rule-block">
-          <summary><strong>Exercice :</strong> marque les swings</summary>
-          <p>Sur un graphique simple, entoure trois sommets locaux et trois creux locaux. Ensuite, demande-toi : est-ce que les niveaux montent, descendent ou restent enfermés dans une zone ?</p>
-        </details>
-      </section>
-
-      <section class="card" id="long-short">
-        <header><h2>3 — Comprendre long, short et mouvement du prix</h2><span>Direction</span></header>
-        <p>Un trade long cherche à profiter d'une hausse. Un trade short cherche à profiter d'une baisse. Dans les deux cas, le raisonnement est le même : entrée, invalidation, objectif, risque.</p>
-        <div class="academy-grid">
-          <div class="academy-card"><h3>Long</h3><p>Tu achètes d'abord, puis tu veux revendre plus haut. Ton scénario échoue si le prix casse ton invalidation sous l'entrée.</p><span class="badge">Hausse</span></div>
-          <div class="academy-card"><h3>Short</h3><p>Tu vends d'abord, puis tu veux racheter plus bas. Ton scénario échoue si le prix casse ton invalidation au-dessus de l'entrée.</p><span class="badge">Baisse</span></div>
-          <div class="academy-card"><h3>Neutre</h3><p>Si tu ne peux pas expliquer la direction, l'invalidation et la cible, ce n'est pas encore un trade. C'est une observation.</p><span class="badge">No trade</span></div>
-        </div>
-        <div class="chart">
-          <svg aria-label="Différence entre trade long et trade short" role="img" viewBox="0 0 900 340" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg">
-            <rect width="900" height="340" fill="#081222"/>
-            <text x="235" y="38" text-anchor="middle" fill="#34d399" font-size="19" font-weight="900">Long : entrée puis objectif au-dessus</text>
-            <text x="665" y="38" text-anchor="middle" fill="#f87171" font-size="19" font-weight="900">Short : entrée puis objectif en-dessous</text>
-            <polyline points="80,250 145,224 210,236 275,174 340,122 410,88" fill="none" stroke="#34d399" stroke-width="4"/>
-            <line x1="105" x2="410" y1="218" y2="218" stroke="#8ee5fa" stroke-width="2" stroke-dasharray="8 7"/>
-            <line x1="105" x2="410" y1="286" y2="286" stroke="#f87171" stroke-width="2"/>
-            <line x1="105" x2="410" y1="92" y2="92" stroke="#34d399" stroke-width="2"/>
-            <text x="116" y="210" fill="#8ee5fa" font-size="14" font-weight="800">Entrée</text>
-            <text x="116" y="278" fill="#f87171" font-size="14" font-weight="800">Stop</text>
-            <text x="116" y="84" fill="#34d399" font-size="14" font-weight="800">TP</text>
-            <polyline points="490,86 558,116 620,102 680,166 744,214 820,252" fill="none" stroke="#f87171" stroke-width="4"/>
-            <line x1="490" x2="820" y1="128" y2="128" stroke="#8ee5fa" stroke-width="2" stroke-dasharray="8 7"/>
-            <line x1="490" x2="820" y1="72" y2="72" stroke="#f87171" stroke-width="2"/>
-            <line x1="490" x2="820" y1="260" y2="260" stroke="#34d399" stroke-width="2"/>
-            <text x="720" y="120" fill="#8ee5fa" font-size="14" font-weight="800">Entrée</text>
-            <text x="720" y="64" fill="#f87171" font-size="14" font-weight="800">Stop</text>
-            <text x="720" y="286" fill="#34d399" font-size="14" font-weight="800">TP</text>
-          </svg>
-        </div>
-      </section>
-
-      <section class="card" id="ordres">
-        <header><h2>4 — Les ordres : market, limit, stop</h2><span>Exécution</span></header>
-        <p>Un ordre est une instruction envoyée au marché. Avant ICT, retiens seulement la logique : entrer maintenant, attendre un meilleur prix, ou déclencher si un niveau est cassé.</p>
-        <div class="academy-grid">
-          <div class="academy-card"><h3>Market</h3><p>Tu entres maintenant au prix disponible. C'est rapide, mais tu acceptes le prix réel d'exécution.</p></div>
-          <div class="academy-card"><h3>Limit</h3><p>Tu demandes un prix précis ou meilleur. Exemple : acheter plus bas sur un retour en zone.</p></div>
-          <div class="academy-card"><h3>Stop</h3><p>Tu déclenches un ordre si le prix atteint un niveau. Un stop loss est aussi un ordre stop.</p></div>
-        </div>
-        <div class="rule-block"><strong>Erreur fréquente :</strong> confondre “je vois une zone” avec “j'entre”. Une zone peut seulement préparer un ordre ; elle ne justifie pas toujours l'exécution.</div>
-      </section>
-
-      <section class="card" id="liquidite-debutant">
-        <header><h2>5 — Comprendre la liquidité avant ICT</h2><span>Fondation</span></header>
-        <p>La liquidité, version débutant, ce n'est pas un sigle compliqué. C'est simplement l'idée qu'un marché a besoin d'ordres disponibles pour échanger. Si personne n'accepte de vendre, un acheteur ne peut pas acheter facilement. Si personne n'accepte d'acheter, un vendeur ne peut pas vendre facilement.</p>
-        <p>Donc le prix ne bouge pas dans le vide. Il se déplace souvent vers des endroits où beaucoup de décisions sont probables : anciens plus hauts, anciens plus bas, zones rondes, stops, ordres en attente, niveaux que tout le monde voit.</p>
-        <div class="chart">
-          <svg aria-label="Liquidité débutant : le prix se déplace vers des zones où des ordres existent probablement" role="img" viewBox="0 0 900 410" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg">
-            <rect width="900" height="410" fill="#081222"/>
-            <g opacity=".45" stroke="#1e3a5f"><line x1="80" x2="820" y1="92" y2="92"/><line x1="80" x2="820" y1="170" y2="170"/><line x1="80" x2="820" y1="248" y2="248"/><line x1="80" x2="820" y1="326" y2="326"/></g>
-            <text x="450" y="38" text-anchor="middle" fill="#8ee5fa" font-size="20" font-weight="900">Le prix avance vers les zones où des ordres attendent probablement</text>
-
-            <polyline points="90,286 150,238 210,258 270,198 330,220 390,158 450,182 510,130 570,152 630,104 700,126 790,88" fill="none" stroke="#34d399" stroke-width="4"/>
-            <line x1="104" x2="804" y1="86" y2="86" stroke="#f87171" stroke-width="3" stroke-dasharray="9 8"/>
-            <line x1="104" x2="804" y1="330" y2="330" stroke="#34d399" stroke-width="3" stroke-dasharray="9 8"/>
-            <rect x="610" y="56" width="190" height="58" rx="12" fill="rgba(248,113,113,.12)" stroke="rgba(248,113,113,.55)"/>
-            <text x="705" y="80" text-anchor="middle" fill="#f87171" font-size="15" font-weight="900">Ordres probables</text>
-            <text x="705" y="101" text-anchor="middle" fill="#f6c0c0" font-size="13">au-dessus du high</text>
-            <rect x="102" y="300" width="200" height="58" rx="12" fill="rgba(52,211,153,.10)" stroke="rgba(52,211,153,.55)"/>
-            <text x="202" y="324" text-anchor="middle" fill="#34d399" font-size="15" font-weight="900">Ordres probables</text>
-            <text x="202" y="345" text-anchor="middle" fill="#b8f4dc" font-size="13">sous l'ancien low</text>
-
-            <path d="M640 150 C690 132 720 112 750 92" fill="none" stroke="#f8c24e" stroke-width="3" stroke-dasharray="7 7"/>
-            <circle cx="750" cy="92" r="6" fill="#f8c24e"/>
-            <text x="646" y="174" fill="#f8c24e" font-size="14" font-weight="900">Niveau visible :</text>
-            <text x="646" y="196" fill="#f8c24e" font-size="14" font-weight="900">décisions groupées</text>
-            <text x="450" y="388" text-anchor="middle" fill="#d9e6f2" font-size="15" font-weight="800">Important : une zone de liquidité est une cible possible, pas une entrée automatique.</text>
-          </svg>
-        </div>
-        <div class="academy-grid">
-          <div class="academy-card"><h3>Phrase simple</h3><p>La liquidité, c'est là où des ordres attendent probablement.</p></div>
-          <div class="academy-card"><h3>Usage trading</h3><p>Elle aide à comprendre où le prix peut être attiré avant de réagir.</p></div>
-          <div class="academy-card"><h3>Erreur à éviter</h3><p>Voir une liquidité ne veut pas dire acheter ou vendre immédiatement.</p></div>
-        </div>
-        <details class="rule-block">
-          <summary><strong>Exercice :</strong> trouve la liquidité la plus évidente</summary>
-          <p>Sur n'importe quel graphique, marque le dernier high visible et le dernier low visible. Demande-toi : où les traders impatients ont-ils probablement placé leurs stops ?</p>
-        </details>
-      </section>
-
-      <section class="card" id="stops-niveaux-visibles">
-        <header><h2>6 — Pourquoi les stops créent de la liquidité</h2><span>Mécanique simple</span></header>
-        <p>Un stop loss est un ordre. Quand beaucoup de traders placent leur stop au même endroit, ce niveau devient intéressant parce qu'il concentre des décisions. Un ancien high ou un ancien low est visible par tout le monde ; c'est pour cela qu'il peut devenir une zone importante.</p>
-        <div class="chart">
-          <svg aria-label="Les stops placés au-dessus des highs et sous les lows deviennent de la liquidité" role="img" viewBox="0 0 900 420" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg">
-            <rect width="900" height="420" fill="#081222"/>
-            <text x="450" y="38" text-anchor="middle" fill="#8ee5fa" font-size="20" font-weight="900">Les stops sont des ordres groupés autour des niveaux visibles</text>
-            <g opacity=".45" stroke="#1e3a5f"><line x1="70" x2="830" y1="92" y2="92"/><line x1="70" x2="830" y1="172" y2="172"/><line x1="70" x2="830" y1="252" y2="252"/><line x1="70" x2="830" y1="332" y2="332"/></g>
-
-            <polyline points="95,250 155,200 225,216 290,162 360,190 430,138 510,166 585,118 665,144 760,104" fill="none" stroke="#8ee5fa" stroke-width="3.5"/>
-            <line x1="96" x2="790" y1="104" y2="104" stroke="#f87171" stroke-width="3" stroke-dasharray="8 7"/>
-            <line x1="96" x2="790" y1="252" y2="252" stroke="#34d399" stroke-width="3" stroke-dasharray="8 7"/>
-
-            <g fill="#f87171">
-              <circle cx="598" cy="88" r="5"/><circle cx="626" cy="88" r="5"/><circle cx="654" cy="88" r="5"/><circle cx="682" cy="88" r="5"/>
+            <g fill="#f0f4f8" font-size="13" font-weight="900" text-anchor="middle">
+              <text x="104" y="154">Bougie</text><text x="104" y="178">timeframe</text>
+              <text x="224" y="154">Swings</text><text x="224" y="178">structure</text>
+              <text x="344" y="154">Ordres</text><text x="344" y="178">exécution</text>
+              <text x="464" y="154">Liquidité</text><text x="464" y="178">réaction</text>
+              <text x="584" y="154">Entrée</text><text x="584" y="178">SL / TP</text>
+              <text x="704" y="154">Risque</text><text x="704" y="178">R</text>
+              <text x="814" y="154">ICT</text><text x="814" y="178">sigles</text>
             </g>
-            <text x="642" y="72" text-anchor="middle" fill="#f87171" font-size="14" font-weight="900">Stops des shorts</text>
-            <path d="M642 78 L642 100" stroke="#f87171" stroke-width="2" stroke-dasharray="4 5"/>
-
-            <g fill="#34d399">
-              <circle cx="135" cy="272" r="5"/><circle cx="163" cy="272" r="5"/><circle cx="191" cy="272" r="5"/><circle cx="219" cy="272" r="5"/>
+            <g stroke="#f8c24e" stroke-width="3" marker-end="url(#arrowMap)">
+              <path d="M154 163 H174"/><path d="M274 163 H294"/><path d="M394 163 H414"/><path d="M514 163 H534"/><path d="M634 163 H654"/><path d="M754 163 H774"/>
             </g>
-            <text x="178" y="304" text-anchor="middle" fill="#34d399" font-size="14" font-weight="900">Stops des longs</text>
-            <path d="M178 278 L178 254" stroke="#34d399" stroke-width="2" stroke-dasharray="4 5"/>
-
-            <rect x="520" y="284" width="290" height="72" rx="14" fill="#0e1624" stroke="rgba(255,255,255,.12)"/>
-            <text x="542" y="310" fill="#f0f4f8" font-size="16" font-weight="900">Pourquoi c'est important ?</text>
-            <text x="542" y="335" fill="#a0b2c6" font-size="14">Les niveaux visibles concentrent les réactions.</text>
-            <text x="542" y="358" fill="#a0b2c6" font-size="14">ICT commence par cette idée simple.</text>
+            <text x="450" y="292" text-anchor="middle" fill="#d9e6f2" font-size="15" font-weight="800">Le but n'est pas de trader après ce pré-cours : c'est d'arriver dans ICT avec les bons repères.</text>
+            <defs><marker id="arrowMap" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8 Z" fill="#f8c24e"/></marker></defs>
           </svg>
         </div>
-        <div class="rule-block"><strong>Tu dois savoir faire :</strong> regarder un high/low visible et expliquer quels traders pourraient avoir des stops autour de ce niveau.</div>
-      </section>
-
-      <section class="card" id="prise-reaction">
-        <header><h2>7 — Prise de liquidité : continuer ou rejeter ?</h2><span>Réaction</span></header>
-        <p>Le piège du débutant est de croire qu'une prise de liquidité annonce forcément un retournement. Ce n'est pas vrai. Après avoir pris un niveau, le prix peut continuer dans le même sens, bloquer, ou rejeter fortement. Ce qui compte, c'est la réaction après la prise.</p>
-        <div class="chart">
-          <svg aria-label="Trois réactions possibles après une prise de liquidité : continuation, rejet, absorption" role="img" viewBox="0 0 900 460" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg">
-            <rect width="900" height="460" fill="#081222"/>
-            <text x="450" y="36" text-anchor="middle" fill="#8ee5fa" font-size="20" font-weight="900">Après la prise, on observe la réaction</text>
-
-            <g transform="translate(42 70)">
-              <rect width="250" height="320" rx="18" fill="#0e1624" stroke="rgba(255,255,255,.12)"/>
-              <text x="125" y="32" text-anchor="middle" fill="#34d399" font-size="17" font-weight="900">A — Continuation</text>
-              <line x1="28" x2="222" y1="102" y2="102" stroke="#f87171" stroke-width="2" stroke-dasharray="7 6"/>
-              <polyline points="28,230 64,202 100,214 132,162 164,132 194,96 222,70" fill="none" stroke="#34d399" stroke-width="3.5"/>
-              <circle cx="196" cy="96" r="5" fill="#f8c24e"/>
-              <text x="52" y="286" fill="#a0b2c6" font-size="13">Le prix prend le niveau</text>
-              <text x="52" y="308" fill="#a0b2c6" font-size="13">puis accepte au-dessus.</text>
-            </g>
-
-            <g transform="translate(325 70)">
-              <rect width="250" height="320" rx="18" fill="#0e1624" stroke="rgba(255,255,255,.12)"/>
-              <text x="125" y="32" text-anchor="middle" fill="#f87171" font-size="17" font-weight="900">B — Rejet</text>
-              <line x1="28" x2="222" y1="102" y2="102" stroke="#f87171" stroke-width="2" stroke-dasharray="7 6"/>
-              <polyline points="28,220 66,182 104,160 138,92 168,126 196,188 222,238" fill="none" stroke="#f87171" stroke-width="3.5"/>
-              <circle cx="138" cy="92" r="5" fill="#f8c24e"/>
-              <text x="52" y="286" fill="#a0b2c6" font-size="13">Le prix dépasse le niveau</text>
-              <text x="52" y="308" fill="#a0b2c6" font-size="13">puis réintègre vite.</text>
-            </g>
-
-            <g transform="translate(608 70)">
-              <rect width="250" height="320" rx="18" fill="#0e1624" stroke="rgba(255,255,255,.12)"/>
-              <text x="125" y="32" text-anchor="middle" fill="#f8c24e" font-size="17" font-weight="900">C — Absorption</text>
-              <line x1="28" x2="222" y1="102" y2="102" stroke="#f87171" stroke-width="2" stroke-dasharray="7 6"/>
-              <polyline points="28,212 60,170 96,126 126,94 154,106 180,100 222,108" fill="none" stroke="#f8c24e" stroke-width="3.5"/>
-              <circle cx="126" cy="94" r="5" fill="#f8c24e"/>
-              <text x="52" y="286" fill="#a0b2c6" font-size="13">Le prix prend le niveau</text>
-              <text x="52" y="308" fill="#a0b2c6" font-size="13">mais ne décide pas encore.</text>
-            </g>
-
-            <text x="450" y="430" text-anchor="middle" fill="#d9e6f2" font-size="15" font-weight="800">La prise n'est pas le signal. La réaction donne l'information.</text>
-          </svg>
-        </div>
-        <div class="academy-grid">
-          <div class="academy-card"><h3>Continuation</h3><p>Le prix prend la liquidité et reste accepté au-delà. La cassure peut être réelle.</p></div>
-          <div class="academy-card"><h3>Rejet</h3><p>Le prix prend le niveau puis revient rapidement dans l'ancienne zone. Le piège devient possible.</p></div>
-          <div class="academy-card"><h3>Absorption</h3><p>Le prix travaille le niveau sans décision nette. Le meilleur trade peut être aucun trade.</p></div>
-        </div>
-        <details class="rule-block">
-          <summary><strong>Exercice :</strong> classer la réaction</summary>
-          <p>Prends trois captures de graphiques. Pour chaque prise de high ou de low, écris seulement : continuation, rejet, absorption ou trop flou. Ne cherche pas encore une entrée.</p>
-        </details>
-      </section>
-
-      <section class="card" id="spread-pip-lot">
-        <header><h2>8 — Spread, pip/point et lot</h2><span>Coût et taille</span></header>
-        <p>Le spread est l'écart entre le prix d'achat et le prix de vente. Le pip ou le point mesure un petit déplacement du prix. Le lot détermine la taille de la position, donc le gain ou la perte par mouvement.</p>
-        <div class="chart">
-          <svg aria-label="Spread pip point et taille de position" role="img" viewBox="0 0 900 330" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg">
-            <rect width="900" height="330" fill="#081222"/>
-            <text x="450" y="36" text-anchor="middle" fill="#8ee5fa" font-size="20" font-weight="900">Le spread est un coût invisible si tu ne le regardes pas</text>
-            <line x1="140" x2="760" y1="156" y2="156" stroke="#1e3a5f" stroke-width="3"/>
-            <line x1="250" x2="250" y1="104" y2="206" stroke="#34d399" stroke-width="4"/>
-            <line x1="322" x2="322" y1="104" y2="206" stroke="#f87171" stroke-width="4"/>
-            <text x="250" y="86" text-anchor="middle" fill="#34d399" font-size="16" font-weight="900">Bid</text>
-            <text x="322" y="86" text-anchor="middle" fill="#f87171" font-size="16" font-weight="900">Ask</text>
-            <path d="M254 230 L318 230" stroke="#f8c24e" stroke-width="3" marker-end="url(#arrowSpread)"/>
-            <path d="M318 230 L254 230" stroke="#f8c24e" stroke-width="3" marker-end="url(#arrowSpread)"/>
-            <text x="286" y="260" text-anchor="middle" fill="#f8c24e" font-size="15" font-weight="900">Spread</text>
-            <g transform="translate(500 96)">
-              <rect width="250" height="142" rx="16" fill="#0e1624" stroke="rgba(255,255,255,.12)"/>
-              <text x="22" y="36" fill="#f0f4f8" font-size="17" font-weight="900">Lot = taille</text>
-              <text x="22" y="72" fill="#a0b2c6" font-size="14">Plus la taille augmente,</text>
-              <text x="22" y="98" fill="#a0b2c6" font-size="14">plus chaque pip/point vaut cher.</text>
-              <text x="22" y="124" fill="#f87171" font-size="14" font-weight="900">Le risque vient de la taille.</text>
-            </g>
-            <defs><marker id="arrowSpread" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8 Z" fill="#f8c24e"/></marker></defs>
-          </svg>
-        </div>
-        <div class="rule-block"><strong>Tu dois savoir faire :</strong> expliquer que deux trades avec le même stop graphique peuvent avoir un risque différent si la taille de position change.</div>
-      </section>
-
-      <section class="card" id="levier-risque">
-        <header><h2>9 — Levier, marge et risque réel</h2><span>Protection</span></header>
-        <p>Le levier permet de contrôler une position plus grande que ton capital disponible. Il n'augmente pas ton niveau technique ; il augmente surtout la vitesse à laquelle une erreur coûte cher.</p>
-        <div class="academy-grid">
-          <div class="academy-card"><h3>Capital</h3><p>Ce que tu as réellement sur le compte.</p></div>
-          <div class="academy-card"><h3>Marge</h3><p>Montant immobilisé pour ouvrir et maintenir une position.</p></div>
-          <div class="academy-card"><h3>Risque %</h3><p>Part du compte que tu acceptes de perdre si le scénario est invalidé.</p></div>
-        </div>
-        <div class="rule-block"><strong>Règle débutant :</strong> ne pense jamais “combien je peux gagner ?” avant “combien je peux perdre si j'ai tort ?”.</div>
-      </section>
-
-      <section class="card" id="sl-tp-r">
-        <header><h2>10 — Stop loss, take profit et multiple R</h2><span>Plan</span></header>
-        <p>Le stop loss protège le compte quand l'idée est fausse. Le take profit définit où tu prends ton gain. Le multiple R compare le gain potentiel au risque pris.</p>
-        <div class="chart">
-          <svg aria-label="Plan de trade avec entrée stop take profit et multiple R" role="img" viewBox="0 0 900 380" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg">
-            <rect width="900" height="380" fill="#081222"/>
-            <g opacity=".45" stroke="#1e3a5f"><line x1="90" x2="810" y1="80" y2="80"/><line x1="90" x2="810" y1="150" y2="150"/><line x1="90" x2="810" y1="220" y2="220"/><line x1="90" x2="810" y1="290" y2="290"/></g>
-            <text x="450" y="36" text-anchor="middle" fill="#8ee5fa" font-size="20" font-weight="900">Un trade complet existe seulement avec entrée, stop et cible</text>
-            <polyline points="120,270 190,238 260,248 330,206 405,216 480,158 560,130 640,96 760,112" fill="none" stroke="#34d399" stroke-width="4"/>
-            <line x1="120" x2="790" y1="220" y2="220" stroke="#8ee5fa" stroke-width="2.5" stroke-dasharray="8 7"/>
-            <line x1="120" x2="790" y1="292" y2="292" stroke="#f87171" stroke-width="3"/>
-            <line x1="120" x2="790" y1="96" y2="96" stroke="#34d399" stroke-width="3"/>
-            <text x="132" y="210" fill="#8ee5fa" font-size="15" font-weight="900">Entrée</text>
-            <text x="132" y="318" fill="#f87171" font-size="15" font-weight="900">Stop = -1R</text>
-            <text x="132" y="86" fill="#34d399" font-size="15" font-weight="900">TP = +?R</text>
-            <path d="M815 220 L815 292" stroke="#f87171" stroke-width="3"/>
-            <path d="M815 96 L815 220" stroke="#34d399" stroke-width="3"/>
-            <text x="836" y="260" fill="#f87171" font-size="15" font-weight="900">Risque</text>
-            <text x="836" y="160" fill="#34d399" font-size="15" font-weight="900">Gain</text>
-            <text x="450" y="350" text-anchor="middle" fill="#f8c24e" font-size="15" font-weight="800">Si le gain potentiel est trop proche du risque, le trade peut être refusé.</text>
-          </svg>
-        </div>
-        <div class="academy-grid">
-          <div class="academy-card"><h3>1R</h3><p>La perte prévue si ton stop est touché. Exemple : tu risques 1% du compte.</p></div>
-          <div class="academy-card"><h3>2R</h3><p>Le gain vaut deux fois le risque. Si tu risques 1%, tu vises 2% avant frais.</p></div>
-          <div class="academy-card"><h3>No trade</h3><p>Si la cible logique est trop proche pour compenser le risque, tu refuses.</p></div>
-        </div>
-      </section>
-
-      <section class="card" id="traduction-ict">
-        <header><h2>11 — Traduire les mots simples en langage ICT</h2><span>Pont vocabulaire</span></header>
-        <p>Tu n'as pas appris des sigles pour l'instant, et c'est volontaire. La suite du cours utilise le vocabulaire ICT, mais les idées sont déjà posées. Cette table sert de pont : elle transforme ce que tu viens de comprendre en noms que tu reverras dans les leçons.</p>
-        <div class="academy-grid">
-          <div class="academy-card"><h3>Liquidité au-dessus d'un high</h3><p>En ICT, tu verras souvent <strong>BSL</strong> : Buy-Side Liquidity. C'est une zone au-dessus d'un sommet visible.</p></div>
-          <div class="academy-card"><h3>Liquidité sous un low</h3><p>En ICT, tu verras <strong>SSL</strong> : Sell-Side Liquidity. C'est une zone sous un creux visible.</p></div>
-          <div class="academy-card"><h3>Cible de liquidité</h3><p>Quand une zone devient la cible la plus logique, le cours parle de <strong>DOL</strong> : Draw on Liquidity.</p></div>
-          <div class="academy-card"><h3>Prise d'un niveau</h3><p>Quand le prix dépasse un high/low visible pour prendre les ordres, le cours parle de <strong>sweep</strong> ou raid.</p></div>
-          <div class="academy-card"><h3>Impulsion qui montre le contrôle</h3><p>Quand la réaction est rapide et directionnelle, le cours parle de <strong>displacement</strong>.</p></div>
-          <div class="academy-card"><h3>Structure qui change</h3><p>Quand un swing pertinent est cassé après une prise de liquidité, tu verras <strong>MSS</strong>.</p></div>
-          <div class="academy-card"><h3>Zone laissée par l'impulsion</h3><p>Quand le prix laisse un déséquilibre exploitable, le cours parle de <strong>FVG</strong> et parfois de <strong>CE</strong>.</p></div>
-          <div class="academy-card"><h3>Zone source du mouvement</h3><p>Quand une dernière zone opposée précède une impulsion importante, tu verras <strong>OB</strong> : Order Block.</p></div>
-        </div>
-        <div class="rule-block"><strong>Règle :</strong> si un acronyme te bloque, reviens à la phrase simple. BSL = liquidité au-dessus. SSL = liquidité dessous. MSS = structure qui change. Le mot ne doit jamais remplacer l'idée.</div>
-      </section>
-
-      <section class="card" id="test-final">
-        <header><h2>12 — Test de sortie du pré-cours</h2><span>Validation</span></header>
-        <p>Avant de commencer ICT Atlas, réponds sans regarder tes notes. Si tu bloques sur plus de deux questions, relis la section concernée.</p>
-        <div class="academy-grid">
-          <div class="academy-card"><h3>Bougie</h3><p>Explique open, high, low et close avec tes mots.</p></div>
-          <div class="academy-card"><h3>Structure</h3><p>Quelle différence entre une bougie seule, un swing et une structure ?</p></div>
-          <div class="academy-card"><h3>Direction</h3><p>Quelle différence entre un trade long et un trade short ?</p></div>
-          <div class="academy-card"><h3>Ordres</h3><p>Quand utiliserais-tu un ordre market, limit ou stop ?</p></div>
-          <div class="academy-card"><h3>Liquidité</h3><p>Pourquoi un ancien high ou low peut-il attirer le prix ?</p></div>
-          <div class="academy-card"><h3>Réaction</h3><p>Pourquoi une prise de liquidité ne veut-elle pas dire retournement automatique ?</p></div>
-          <div class="academy-card"><h3>Traduction ICT</h3><p>Que signifient BSL, SSL, DOL, sweep et MSS en mots simples ?</p></div>
-          <div class="academy-card"><h3>Risque</h3><p>Pourquoi le lot/taille de position peut rendre un trade dangereux ?</p></div>
-          <div class="academy-card"><h3>Plan</h3><p>Pourquoi une entrée sans stop et TP n'est pas encore un plan ?</p></div>
-          <div class="academy-card"><h3>ICT</h3><p>Pourquoi ce pré-cours ne suffit pas pour trader, mais aide à lire la suite ?</p></div>
-        </div>
-        <div class="rule-block"><strong>Passage au cours :</strong> si ces réponses sont claires, continue avec le modèle mental ICT. Sinon, reste ici jusqu'à pouvoir expliquer les bases simplement.</div>
       </section>
 
       <nav aria-label="Navigation finale du pré-cours" class="lesson-bottom-nav">
         <a class="bottom-link" href="../index.html"><small>Retour</small><span>Accueil ICT Atlas</span></a>
-        <a class="bottom-link next" href="16-modele-mental.html"><small>Commencer</small><span>Modèle mental ICT</span></a>
+        <a class="bottom-link next" href="00-precours-01-graphique.html"><small>Commencer</small><span>Lire un graphique</span></a>
       </nav>
     </main>
   </div>

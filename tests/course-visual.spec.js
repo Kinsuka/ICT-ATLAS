@@ -6,6 +6,13 @@ const { pathToFileURL } = require('node:url');
 const pages = [
   'index.html',
   'pages/00-precours-bases-trading.html',
+  'pages/00-precours-01-graphique.html',
+  'pages/00-precours-02-structure.html',
+  'pages/00-precours-03-ordres.html',
+  'pages/00-precours-04-liquidite.html',
+  'pages/00-precours-05-trade-simple.html',
+  'pages/00-precours-06-risque.html',
+  'pages/00-precours-07-pont-ict.html',
   'pages/04-setups-core.html',
   'pages/08-quiz.html',
   'pages/11-mecanique-marches.html',

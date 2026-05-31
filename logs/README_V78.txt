@@ -2,23 +2,19 @@ ICT Atlas V78 - Branche precours-bases-trading
 
 Objectif
 - Ajouter un pré-cours autonome, hors parcours principal, pour les bases trading indispensables.
+- Transformer la page passerelle en mini-cours scolaire de 7 leçons avec plusieurs exemples visuels par concept.
 - Ne pas modifier la structure des 41 leçons ICT.
 - Garder le positionnement du cours principal : clarification ICT, avec passerelle facultative pour les débutants trading.
 
 Ajouts
-- pages/00-precours-bases-trading.html
-  - mini-menu propre au pré-cours ;
-  - bougie et timeframe ;
-  - swing high, swing low et structure de marché simple ;
-  - long / short ;
-  - ordres market / limit / stop ;
-  - liquidité débutant : ordres disponibles, niveaux visibles, stops ;
-  - prise de liquidité : continuation, rejet ou absorption ;
-  - spread, pip/point, lot ;
-  - levier, marge, risque ;
-  - stop loss, take profit, multiple R ;
-  - traduction vers acronymes ICT : BSL, SSL, DOL, sweep, displacement, MSS, FVG, CE, OB ;
-  - test de sortie avant le modèle mental ICT.
+- pages/00-precours-bases-trading.html : accueil du mini-cours.
+- pages/00-precours-01-graphique.html : bougies, OHLC, mèches, timeframe.
+- pages/00-precours-02-structure.html : swing high/low, tendance, range, faux breakout.
+- pages/00-precours-03-ordres.html : market, limit, stop, SL, TP.
+- pages/00-precours-04-liquidite.html : niveaux visibles, stops, prise et réaction.
+- pages/00-precours-05-trade-simple.html : long/short, entrée, invalidation, TP, no trade.
+- pages/00-precours-06-risque.html : R, lot, spread, marge, levier.
+- pages/00-precours-07-pont-ict.html : traduction vers BSL, SSL, DOL, sweep, displacement, MSS, FVG, CE, OB.
 
 Mises à jour
 - README.md référence le pré-cours.

@@ -4,7 +4,7 @@ Mini-site autonome organisé autour de l’atlas visuel ICT : parcours, mécaniq
 
 Version actuelle :
 - 41 leçons guidées.
-- Pré-cours autonome hors parcours principal pour les bases trading indispensables, avec swing/structure, liquidité débutant et pont vers les acronymes ICT.
+- Pré-cours autonome hors parcours principal, organisé comme un mini-cours de 7 leçons avec exemples visuels répétés.
 - Glossaire permanent accessible depuis toutes les pages.
 - Graphismes SVG pédagogiques intégrés aux chapitres.
 - Navigation pensée pour GitHub Pages.

@@ -30,11 +30,18 @@ Ce fichier est le point d'entrée conseillé pour les assistants IA, moteurs de 
 
 ## Progression recommandée
 
-### Pré-cours autonome - Bases trading indispensables
+### Pré-cours autonome - Trading Basics
 
-Cette page ne fait pas partie des 41 leçons ICT. Elle sert de passerelle si l'utilisateur bloque sur les mots trading de base : bougie, timeframe, swing high, swing low, structure, long, short, ordre market, ordre limit, ordre stop, liquidité débutant, stops autour des niveaux visibles, réaction après prise de liquidité, spread, pip/point, lot, levier, marge, stop loss, take profit, multiple R et traduction vers BSL/SSL/DOL/sweep/MSS/FVG/CE/OB.
+Ce mini-cours ne fait pas partie des 41 leçons ICT. Il sert de passerelle si l'utilisateur bloque sur les mots trading de base. Il est organisé en 7 leçons visuelles avec plusieurs exemples par concept.
 
-- Pré-cours: https://kinsuka.github.io/ICT-ATLAS/pages/00-precours-bases-trading.html
+- Accueil du pré-cours: https://kinsuka.github.io/ICT-ATLAS/pages/00-precours-bases-trading.html
+- 1. Lire un graphique: https://kinsuka.github.io/ICT-ATLAS/pages/00-precours-01-graphique.html
+- 2. Swings et structure: https://kinsuka.github.io/ICT-ATLAS/pages/00-precours-02-structure.html
+- 3. Ordres et exécution: https://kinsuka.github.io/ICT-ATLAS/pages/00-precours-03-ordres.html
+- 4. Liquidité débutant: https://kinsuka.github.io/ICT-ATLAS/pages/00-precours-04-liquidite.html
+- 5. Construire un trade simple: https://kinsuka.github.io/ICT-ATLAS/pages/00-precours-05-trade-simple.html
+- 6. Risque, lot et levier: https://kinsuka.github.io/ICT-ATLAS/pages/00-precours-06-risque.html
+- 7. Pont vers ICT: https://kinsuka.github.io/ICT-ATLAS/pages/00-precours-07-pont-ict.html
 
 ### Partie 1 - Comprendre la logique ICT
 

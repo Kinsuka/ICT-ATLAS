@@ -13,6 +13,7 @@
   const reset = exam.querySelector('[data-exam-reset]');
   const bestLabels = [...exam.querySelectorAll('[data-exam-best], [data-exam-best-result]')];
   const storageKey = 'ict-atlas-session-exam-best-v1';
+  const masteryStorageKey = 'ict-atlas-session-exam-mastery-v1';
 
   function getBest() {
     try {
@@ -128,6 +129,9 @@
     });
 
     const mastered = score >= 10 && !hasZeroCategory;
+    if (mastered) {
+      try { localStorage.setItem(masteryStorageKey, 'true'); } catch (_) { /* local storage can be unavailable */ }
+    }
     let bandCode = 'RECONSTRUCTION';
     let band = 'Processus encore fragmenté';
     let summary = 'Reprends les portes indiquées avant un nouveau passage. Le but n’est pas de mémoriser les réponses, mais de restaurer l’ordre de décision.';

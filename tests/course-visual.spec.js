@@ -113,6 +113,39 @@ test.describe('ICT Atlas visual smoke audit', () => {
       expect(audit.missingLabels, 'SVGs should describe what they illustrate').toEqual([]);
       expect(audit.clippedText, 'SVG text should stay inside its chart').toEqual([]);
 
+      if (fileName === 'index.html') {
+        await expect(page.locator('.roadmap-stages > li')).toHaveCount(6);
+        const roadmapHrefs = await page.locator('.roadmap-stages > li > a').evaluateAll((links) => links.map((link) => link.getAttribute('href')));
+        expect(roadmapHrefs).toEqual([
+          'pages/20-workflow-session.html',
+          'pages/replay-cases.html#pack-six-cas',
+          'pages/replay-cases.html#simulateur-session',
+          'pages/examen-decision-session.html',
+          'pages/programme-validation-20-sessions.html',
+          'pages/19-preuve-statistique.html',
+        ]);
+        await expect(page.locator('[data-roadmap-next-link]')).toHaveAttribute('href', 'pages/20-workflow-session.html');
+
+        await page.evaluate(() => localStorage.setItem('ict-atlas-session-exam-best-v1', '8'));
+        await page.reload();
+        await expect(page.locator('[data-roadmap-exam-status]')).toHaveText('MEILLEUR · 8 / 12');
+        await expect(page.locator('[data-roadmap-next-link]')).toHaveAttribute('href', 'pages/examen-decision-session.html');
+
+        await page.evaluate(() => localStorage.setItem('ict-atlas-session-exam-mastery-v1', 'true'));
+        await page.reload();
+        await expect(page.locator('[data-roadmap-exam-status]')).toHaveText('SEUIL VALIDÉ');
+        await expect(page.locator('[data-roadmap-next-link]')).toHaveAttribute('href', 'pages/programme-validation-20-sessions.html');
+
+        await page.evaluate(() => {
+          const records = Array.from({ length: 20 }, () => ({ checks: [true, true, true, true, true], finalized: true }));
+          localStorage.setItem('ict-atlas-validation-20-sessions-v1', JSON.stringify(records));
+        });
+        await page.reload();
+        await expect(page.locator('[data-roadmap-validation-status]')).toHaveText('VALIDÉ · 20 / 20');
+        await expect(page.locator('[data-roadmap-forward-status]')).toHaveText('À DÉMARRER');
+        await expect(page.locator('[data-roadmap-next-link]')).toHaveAttribute('href', 'pages/19-preuve-statistique.html');
+      }
+
       if (fileName === 'pages/replay-cases.html') {
         await expect(page.locator('.guided-case')).toHaveCount(6);
         const firstCorrection = page.locator('#cas-guide-01 .case-reveal');
@@ -172,6 +205,7 @@ test.describe('ICT Atlas visual smoke audit', () => {
         await expect(page.locator('[data-exam-score]')).toHaveText('12 / 12');
         await expect(page.locator('.exam-diagnostic')).toHaveCount(6);
         await expect(page.locator('.exam-question.is-correct')).toHaveCount(12);
+        await expect.poll(() => page.evaluate(() => localStorage.getItem('ict-atlas-session-exam-mastery-v1'))).toBe('true');
       }
 
       if (fileName === 'pages/programme-validation-20-sessions.html') {
@@ -202,7 +236,7 @@ test.describe('ICT Atlas visual smoke audit', () => {
         await expect(page.locator('[data-validation-passed]')).toHaveText('1');
       }
 
-      if (['pages/04-setups-core.html', 'pages/08-quiz.html', 'pages/20-workflow-session.html', 'pages/29-fondations-stop-tp.html', 'pages/replay-cases.html', 'pages/examen-decision-session.html', 'pages/programme-validation-20-sessions.html', 'pages/41-no-trade.html'].includes(fileName)) {
+      if (['index.html', 'pages/04-setups-core.html', 'pages/08-quiz.html', 'pages/20-workflow-session.html', 'pages/29-fondations-stop-tp.html', 'pages/replay-cases.html', 'pages/examen-decision-session.html', 'pages/programme-validation-20-sessions.html', 'pages/41-no-trade.html'].includes(fileName)) {
         mkdirSync(path.join(__dirname, '..', 'test-results', 'visual-smoke'), { recursive: true });
         const safeProject = testInfo.project.name.replace(/[^a-z0-9_-]/gi, '-');
         const safeFileName = fileName.replace(/[^a-z0-9_-]/gi, '-');
@@ -218,6 +252,12 @@ test.describe('ICT Atlas visual smoke audit', () => {
         if (fileName === 'pages/20-workflow-session.html') {
           await page.locator('#protocole-operationnel').screenshot({
             path: path.join(__dirname, '..', 'test-results', 'visual-smoke', `${safeProject}-${safeFileName}-cockpit.png`),
+          });
+        }
+
+        if (fileName === 'index.html') {
+          await page.locator('#parcours-operationnel').screenshot({
+            path: path.join(__dirname, '..', 'test-results', 'visual-smoke', `${safeProject}-${safeFileName}-operational-roadmap.png`),
           });
         }
 

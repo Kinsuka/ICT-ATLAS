@@ -1,0 +1,2 @@
+decision_id,date,market,session,ruleset_version,decision_type,eligible_trade,setup_valid,followed_plan,process_error,gross_result_r,costs_slippage_r,net_result_r,equity_r,drawdown_r,market_regime,news_regime,screenshot_before,screenshot_after,notes
+FWD-001,YYYY-MM-DD,EURUSD,London/NY AM,V1,trade/no_trade,yes/no,yes/no,yes/no,none/reading/entry/risk/management/behavior,+/-R,R,+/-R,R,R,trend/range/transition,normal/pre-news/post-news,,,

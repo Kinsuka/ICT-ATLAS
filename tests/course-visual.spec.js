@@ -144,6 +144,10 @@ test.describe('ICT Atlas visual smoke audit', () => {
         await expect(page.locator('[data-roadmap-validation-status]')).toHaveText('VALIDÉ · 20 / 20');
         await expect(page.locator('[data-roadmap-forward-status]')).toHaveText('À DÉMARRER');
         await expect(page.locator('[data-roadmap-next-link]')).toHaveAttribute('href', 'pages/19-preuve-statistique.html');
+        await page.evaluate(() => localStorage.setItem('ict-atlas-forward-gate-v1', JSON.stringify({ verdict: 'go' })));
+        await page.reload();
+        await expect(page.locator('[data-roadmap-forward-status]')).toHaveText('GO PÉDAGOGIQUE');
+        await expect(page.locator('[data-roadmap-next-title]')).toHaveText('Relire le verdict forward');
       }
 
       if (fileName === 'pages/replay-cases.html') {
@@ -187,6 +191,38 @@ test.describe('ICT Atlas visual smoke audit', () => {
         await firstAnswer.locator('summary').click();
         await expect(firstAnswer).toHaveAttribute('open', '');
         await expect(firstAnswer.locator('div').first()).toBeVisible();
+      }
+
+      if (fileName === 'pages/19-preuve-statistique.html') {
+        const gate = page.locator('[data-forward-gate]');
+        await expect(gate.locator('[data-forward-evidence] article')).toHaveCount(8);
+        await expect(gate.locator('[data-forward-verdict-label]')).toHaveText('CORRIGER');
+
+        await gate.locator('[data-forward-field="decisions"]').fill('30');
+        await gate.locator('[data-forward-field="trades"]').fill('20');
+        await gate.locator('[data-forward-field="netR"]').fill('4');
+        await gate.locator('[data-forward-field="drawdown"]').fill('3');
+        await gate.locator('[data-forward-field="processErrors"]').fill('2');
+        for (const field of ['rulesFrozen', 'independent', 'costsIncluded']) {
+          await gate.locator(`[data-forward-field="${field}"]`).check();
+        }
+
+        await expect(gate.locator('[data-forward-verdict-label]')).toHaveText('GO PÉDAGOGIQUE');
+        await expect(gate.locator('[data-forward-expectancy]')).toHaveText('0.20R');
+        await expect(gate.locator('[data-forward-error-rate]')).toHaveText('6.7 %');
+        await expect(gate.locator('.forward-evidence article.is-passed')).toHaveCount(8);
+
+        mkdirSync(path.join(__dirname, '..', 'test-results', 'visual-smoke'), { recursive: true });
+        const safeProject = testInfo.project.name.replace(/[^a-z0-9_-]/gi, '-');
+        await gate.screenshot({
+          path: path.join(__dirname, '..', 'test-results', 'visual-smoke', `${safeProject}-pages-19-preuve-statistique-html-forward-go.png`),
+        });
+
+        await page.reload();
+        await expect(page.locator('[data-forward-verdict-label]')).toHaveText('GO PÉDAGOGIQUE');
+        await page.locator('[data-forward-field="netR"]').fill('-2');
+        await expect(page.locator('[data-forward-verdict-label]')).toHaveText('STOP');
+        await expect(page.locator('[data-forward-next-action]')).toContainText('Ne risque rien');
       }
 
       if (fileName === 'pages/examen-decision-session.html') {
@@ -236,7 +272,7 @@ test.describe('ICT Atlas visual smoke audit', () => {
         await expect(page.locator('[data-validation-passed]')).toHaveText('1');
       }
 
-      if (['index.html', 'pages/04-setups-core.html', 'pages/08-quiz.html', 'pages/20-workflow-session.html', 'pages/29-fondations-stop-tp.html', 'pages/replay-cases.html', 'pages/examen-decision-session.html', 'pages/programme-validation-20-sessions.html', 'pages/41-no-trade.html'].includes(fileName)) {
+      if (['index.html', 'pages/04-setups-core.html', 'pages/08-quiz.html', 'pages/19-preuve-statistique.html', 'pages/20-workflow-session.html', 'pages/29-fondations-stop-tp.html', 'pages/replay-cases.html', 'pages/examen-decision-session.html', 'pages/programme-validation-20-sessions.html', 'pages/41-no-trade.html'].includes(fileName)) {
         mkdirSync(path.join(__dirname, '..', 'test-results', 'visual-smoke'), { recursive: true });
         const safeProject = testInfo.project.name.replace(/[^a-z0-9_-]/gi, '-');
         const safeFileName = fileName.replace(/[^a-z0-9_-]/gi, '-');
@@ -253,6 +289,20 @@ test.describe('ICT Atlas visual smoke audit', () => {
           await page.locator('#protocole-operationnel').screenshot({
             path: path.join(__dirname, '..', 'test-results', 'visual-smoke', `${safeProject}-${safeFileName}-cockpit.png`),
           });
+        }
+
+        if (fileName === 'pages/19-preuve-statistique.html') {
+          await page.locator('[data-forward-gate]').screenshot({
+            path: path.join(__dirname, '..', 'test-results', 'visual-smoke', `${safeProject}-${safeFileName}-forward-stop.png`),
+          });
+          const resetButton = page.locator('[data-forward-reset]');
+          await resetButton.click();
+          await expect(resetButton).toHaveAttribute('data-armed', 'true');
+          await resetButton.click();
+          await expect(page.locator('[data-forward-verdict-label]')).toHaveText('CORRIGER');
+          await expect(page.locator('[data-forward-field="decisions"]')).toHaveValue('0');
+          await page.reload();
+          await expect(page.locator('[data-forward-field="decisions"]')).toHaveValue('0');
         }
 
         if (fileName === 'index.html') {

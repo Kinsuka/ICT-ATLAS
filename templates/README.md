@@ -10,6 +10,7 @@ Ces fichiers servent a transformer le cours en pratique documentee.
 - `regles-prop-firm.md` : cadre defensif pour challenge prop firm.
 - `replay-lab.csv` : fiche de cas pour entrainement bar replay.
 - `cas-replay-validation.md` : fiche de validation avant/apres pour la bibliotheque de cas replay.
+- `forward-test-journal.csv` : journal du bloc forward indépendant et de son enveloppe de risque.
 
 Les fichiers CSV s'ouvrent dans Excel, Numbers, Google Sheets ou LibreOffice.
 Le but n'est pas de remplir beaucoup de cases, mais de garder une preuve stable

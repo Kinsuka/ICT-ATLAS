@@ -5,6 +5,7 @@
   const examBestKey = 'ict-atlas-session-exam-best-v1';
   const examMasteryKey = 'ict-atlas-session-exam-mastery-v1';
   const validationKey = 'ict-atlas-validation-20-sessions-v1';
+  const forwardKey = 'ict-atlas-forward-gate-v1';
 
   function read(key) {
     try { return localStorage.getItem(key); } catch (_) { return null; }
@@ -33,6 +34,11 @@
   const riskValid = records.length === 20
     && records.slice(10).every((record) => record && record.finalized && Array.isArray(record.checks) && record.checks[3]);
   const validationReady = finalized.length === 20 && passed >= 17 && phasesValid && riskValid;
+  let forwardVerdict = '';
+  try {
+    const storedForward = JSON.parse(read(forwardKey));
+    if (storedForward && ['go', 'correct', 'stop'].includes(storedForward.verdict)) forwardVerdict = storedForward.verdict;
+  } catch (_) { /* unavailable or invalid local progress */ }
 
   const examStatus = root.querySelector('[data-roadmap-exam-status]');
   const validationStatus = root.querySelector('[data-roadmap-validation-status]');
@@ -43,15 +49,17 @@
 
   examStatus.textContent = examMastered ? 'SEUIL VALIDÉ' : best ? `MEILLEUR · ${best} / 12` : 'NON TENTÉ';
   validationStatus.textContent = validationReady ? 'VALIDÉ · 20 / 20' : `${finalized.length} / 20 · ${passed} CONFORMES`;
-  forwardStatus.textContent = validationReady ? 'À DÉMARRER' : 'VERROUILLÉ';
+  forwardStatus.textContent = !validationReady ? 'VERROUILLÉ' : forwardVerdict === 'go' ? 'GO PÉDAGOGIQUE' : forwardVerdict === 'stop' ? 'STOP / AUDIT' : forwardVerdict === 'correct' ? 'EN COURS' : 'À DÉMARRER';
   root.querySelector('[data-roadmap-stage="exam"]').classList.toggle('is-complete', examMastered);
   root.querySelector('[data-roadmap-stage="validation"]').classList.toggle('is-complete', validationReady);
-  root.querySelector('[data-roadmap-stage="forward"]').classList.toggle('is-unlocked', validationReady);
+  const forwardStage = root.querySelector('[data-roadmap-stage="forward"]');
+  forwardStage.classList.toggle('is-unlocked', validationReady);
+  forwardStage.classList.toggle('is-complete', validationReady && forwardVerdict === 'go');
 
   if (validationReady) {
     nextLink.href = 'pages/19-preuve-statistique.html';
-    nextTitle.textContent = 'Démarrer l’échantillon indépendant';
-    nextDetail.textContent = 'Conserve exactement le même modèle et mesure l’espérance hors échantillon.';
+    nextTitle.textContent = forwardVerdict === 'go' ? 'Relire le verdict forward' : forwardVerdict === 'stop' ? 'Auditer le bloc forward' : forwardVerdict === 'correct' ? 'Continuer le Forward Test Control' : 'Démarrer l’échantillon indépendant';
+    nextDetail.textContent = forwardVerdict === 'go' ? 'Le GO reste pédagogique : applique uniquement le plus petit risque déjà défini dans ton plan.' : forwardVerdict === 'stop' ? 'Aucun risque : identifie la porte échouée avant de créer une version distincte.' : 'Conserve exactement le même modèle et mesure l’espérance hors échantillon.';
   } else if (finalized.length > 0 || examMastered) {
     nextLink.href = 'pages/programme-validation-20-sessions.html';
     const nextIncomplete = records.findIndex((record) => !record || !record.finalized);

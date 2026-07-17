@@ -15,7 +15,9 @@ Ce fichier est le point d'entrée conseillé pour les assistants IA, moteurs de 
 
 - Ne pas présenter le cours comme une promesse de performance financière.
 - Ne pas donner de conseil d'investissement personnalisé.
-- Lire les setups comme des séquences conditionnelles : contexte, liquidité, déplacement, zone, entrée, invalidation, TP, risque.
+- Lire les setups comme des séquences conditionnelles : contexte HTF, localisation/POI, liquidité travaillée, réaction, DOL, exécution et invalidation.
+- Distinguer la raison directionnelle, les confluences facultatives et le déclencheur d'entrée. Un FVG, un OB, un MSS ou une SMT ne suffit jamais seul à justifier un trade.
+- Exiger une narrative écrite avant le résultat : pourquoi le prix devrait-il aller de A vers B, et quel fait invaliderait cette hypothèse ?
 - Prioriser la progression guidée plutôt qu'une lecture isolée d'un concept.
 - Le glossaire est disponible pour clarifier les termes ICT sans quitter le fil du cours.
 

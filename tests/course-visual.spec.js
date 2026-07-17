@@ -17,6 +17,9 @@ const pages = [
   'pages/08-quiz.html',
   'pages/11-mecanique-marches.html',
   'pages/14-live-chart.html',
+  'pages/16-modele-mental.html',
+  'pages/17-concept-setup-plan.html',
+  'pages/19-preuve-statistique.html',
   'pages/21-liquidite-deplacement.html',
   'pages/22-structure-trend-range.html',
   'pages/25-top-down-multi-timeframe.html',
@@ -24,6 +27,7 @@ const pages = [
   'pages/27-fondations-liquidite.html',
   'pages/28-fondations-entree.html',
   'pages/29-fondations-stop-tp.html',
+  'pages/30-replay-lab.html',
   'pages/31-order-blocks.html',
   'pages/32-fvg-imbalance-ce.html',
   'pages/33-mss-changement-controle.html',
@@ -88,6 +92,10 @@ test.describe('ICT Atlas visual smoke audit', () => {
 
         return {
           svgCount: svgs.length,
+          horizontalOverflow: Math.max(
+            0,
+            document.documentElement.scrollWidth - document.documentElement.clientWidth,
+          ),
           visibleAnswerLabels,
           invisibleSvgs,
           missingLabels,
@@ -96,6 +104,7 @@ test.describe('ICT Atlas visual smoke audit', () => {
       });
 
       expect(audit.visibleAnswerLabels, 'quiz answers must stay hidden until correction').toEqual([]);
+      expect(audit.horizontalOverflow, 'page should not overflow horizontally').toBeLessThanOrEqual(2);
       expect(audit.invisibleSvgs, 'SVGs should have visible dimensions').toEqual([]);
       expect(audit.missingLabels, 'SVGs should describe what they illustrate').toEqual([]);
       expect(audit.clippedText, 'SVG text should stay inside its chart').toEqual([]);

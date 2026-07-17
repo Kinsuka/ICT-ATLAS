@@ -11,14 +11,21 @@
 
 ## Lecture du marche
 
+- Narrative initiale en une phrase :
+- POI HTF et position Premium / Discount :
 - DOL initiale :
+- La DOL etait-elle encore ouverte au moment de l'entree ?
 - Liquidite prise :
 - Environnement : trend / range / transition
+- Profil de journee observe :
+- La narrative a-t-elle ete validee, invalidee ou revisee ?
+- Quel fait observable a change la lecture ?
 - Le plan etait-il coherent avec l'environnement ?
 
 ## Execution
 
 - Ai-je attendu la sequence complete ?
+- Ai-je confondu raison directionnelle, confluence et declencheur ?
 - Ai-je clique avant confirmation ?
 - Le stop etait-il structurel ?
 - TP1 et TP2 etaient-ils justifies par une liquidite ?
@@ -47,6 +54,7 @@
 - Trade hors plan :
 - No trade correct :
 - No trade rate :
+- Perte du systeme / erreur de lecture / erreur d'execution / erreur de risque / erreur comportementale :
 
 ## Lecon unique
 

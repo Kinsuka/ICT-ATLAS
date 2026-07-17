@@ -16,9 +16,27 @@
 - Lien / chemin capture avant :
 - Ce qui est visible a ce moment :
 - Environnement : trend / range / transition
+- Profil de journee :
+- Regime de news :
+- Contexte Weekly / Daily :
+- POI H4 / H1 :
+- Premium / Discount :
 - DOL probable :
+- DOL encore ouverte : oui / non / ambigu
 - Liquidite cible :
 - Liquidite declencheur :
+
+## Narrative ecrite avant revelation
+
+- Horodatage de la decision :
+- Raison directionnelle :
+- Confluence facultative :
+- Declencheur attendu :
+- Fait qui invalide la narrative :
+
+Phrase complete :
+
+> Parce que [contexte], a [localisation], apres [liquidite + reaction], j'attends un deplacement vers [DOL]. J'execute avec [modele] et j'abandonne l'idee si [invalidation].
 
 ## Question posee
 
@@ -29,6 +47,7 @@
 ## Decision ecrite avant resultat
 
 - Decision :
+- Capture avant obligatoire sauvegardee avant revelation : oui / non
 - Entree :
 - Stop :
 - TP1 :
@@ -41,6 +60,9 @@
 - Lien / chemin capture apres :
 - Resultat :
 - Classification : conforme gagnant / conforme perdant / hors plan / no trade correct / cas ambigu
+- Score de narrative : coherent / incomplet / reconstruit apres coup
+- Score d'execution : conforme / erreur d'entree / erreur de risque / erreur de gestion
+- Type de perte : perte valide / lecture / execution / risque / comportement
 - Ce que le cas enseigne :
 
 ## Statut bibliotheque

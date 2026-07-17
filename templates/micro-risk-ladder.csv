@@ -1,0 +1,2 @@
+date,bloc_id,actif,session,risk_cap_pct,trade_number,setup_version,decision_quality,net_result_r,max_drawdown_r,daily_stop_hit,process_error,rules_unchanged,no_scale_up,commentaire
+2026-01-01,MR-001,NQ,NY AM,0.25,1,V1,A,0.00,0.00,no,no,yes,yes,exemple pedagogique

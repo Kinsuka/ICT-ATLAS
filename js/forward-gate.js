@@ -37,6 +37,7 @@
 
   function save(verdict) {
     try { localStorage.setItem(storageKey, JSON.stringify({ ...state, verdict, updatedAt: new Date().toISOString() })); } catch (_) { /* storage can be unavailable */ }
+    window.dispatchEvent(new CustomEvent('ict-atlas-forward-updated', { detail: { verdict } }));
   }
 
   function syncFields() {

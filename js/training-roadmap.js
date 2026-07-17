@@ -57,9 +57,9 @@
   forwardStage.classList.toggle('is-complete', validationReady && forwardVerdict === 'go');
 
   if (validationReady) {
-    nextLink.href = 'pages/19-preuve-statistique.html';
-    nextTitle.textContent = forwardVerdict === 'go' ? 'Relire le verdict forward' : forwardVerdict === 'stop' ? 'Auditer le bloc forward' : forwardVerdict === 'correct' ? 'Continuer le Forward Test Control' : 'Démarrer l’échantillon indépendant';
-    nextDetail.textContent = forwardVerdict === 'go' ? 'Le GO reste pédagogique : applique uniquement le plus petit risque déjà défini dans ton plan.' : forwardVerdict === 'stop' ? 'Aucun risque : identifie la porte échouée avant de créer une version distincte.' : 'Conserve exactement le même modèle et mesure l’espérance hors échantillon.';
+    nextLink.href = forwardVerdict === 'go' ? 'pages/19-preuve-statistique.html#v90-risk-ladder' : 'pages/19-preuve-statistique.html';
+    nextTitle.textContent = forwardVerdict === 'go' ? 'Configurer l’échelle de micro-risque' : forwardVerdict === 'stop' ? 'Auditer le bloc forward' : forwardVerdict === 'correct' ? 'Continuer le Forward Test Control' : 'Démarrer l’échantillon indépendant';
+    nextDetail.textContent = forwardVerdict === 'go' ? 'Le GO ne déclenche pas une montée : il déverrouille seulement un bloc au plus petit risque.' : forwardVerdict === 'stop' ? 'Aucun risque : identifie la porte échouée avant de créer une version distincte.' : 'Conserve exactement le même modèle et mesure l’espérance hors échantillon.';
   } else if (finalized.length > 0 || examMastered) {
     nextLink.href = 'pages/programme-validation-20-sessions.html';
     const nextIncomplete = records.findIndex((record) => !record || !record.finalized);

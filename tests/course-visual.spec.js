@@ -147,7 +147,8 @@ test.describe('ICT Atlas visual smoke audit', () => {
         await page.evaluate(() => localStorage.setItem('ict-atlas-forward-gate-v1', JSON.stringify({ verdict: 'go' })));
         await page.reload();
         await expect(page.locator('[data-roadmap-forward-status]')).toHaveText('GO PÉDAGOGIQUE');
-        await expect(page.locator('[data-roadmap-next-title]')).toHaveText('Relire le verdict forward');
+        await expect(page.locator('[data-roadmap-next-title]')).toHaveText('Configurer l’échelle de micro-risque');
+        await expect(page.locator('[data-roadmap-next-link]')).toHaveAttribute('href', 'pages/19-preuve-statistique.html#v90-risk-ladder');
       }
 
       if (fileName === 'pages/replay-cases.html') {
@@ -195,8 +196,11 @@ test.describe('ICT Atlas visual smoke audit', () => {
 
       if (fileName === 'pages/19-preuve-statistique.html') {
         const gate = page.locator('[data-forward-gate]');
+        const ladder = page.locator('[data-risk-ladder]');
         await expect(gate.locator('[data-forward-evidence] article')).toHaveCount(8);
         await expect(gate.locator('[data-forward-verdict-label]')).toHaveText('CORRIGER');
+        await expect(ladder.locator('[data-risk-evidence] article')).toHaveCount(9);
+        await expect(ladder.locator('[data-risk-verdict-label]')).toHaveText('VERROUILLÉ');
 
         await gate.locator('[data-forward-field="decisions"]').fill('30');
         await gate.locator('[data-forward-field="trades"]').fill('20');
@@ -211,18 +215,37 @@ test.describe('ICT Atlas visual smoke audit', () => {
         await expect(gate.locator('[data-forward-expectancy]')).toHaveText('0.20R');
         await expect(gate.locator('[data-forward-error-rate]')).toHaveText('6.7 %');
         await expect(gate.locator('.forward-evidence article.is-passed')).toHaveCount(8);
+        await expect(ladder.locator('[data-risk-verdict-label]')).toHaveText('COLLECTER');
+
+        await ladder.locator('[data-risk-field="trades"]').fill('20');
+        await ladder.locator('[data-risk-field="netR"]').fill('3');
+        await ladder.locator('[data-risk-field="drawdown"]').fill('2');
+        await ladder.locator('[data-risk-field="processErrors"]').fill('0');
+        await ladder.locator('[data-risk-field="dailyStopHits"]').fill('0');
+        for (const field of ['rulesUnchanged', 'noScaleUp']) {
+          await ladder.locator(`[data-risk-field="${field}"]`).check();
+        }
+
+        await expect(ladder.locator('[data-risk-verdict-label]')).toHaveText('STABILISER');
+        await expect(ladder.locator('[data-risk-score]')).toHaveText('9 / 9');
+        await expect(ladder.locator('.risk-evidence article.is-passed')).toHaveCount(9);
 
         mkdirSync(path.join(__dirname, '..', 'test-results', 'visual-smoke'), { recursive: true });
         const safeProject = testInfo.project.name.replace(/[^a-z0-9_-]/gi, '-');
         await gate.screenshot({
           path: path.join(__dirname, '..', 'test-results', 'visual-smoke', `${safeProject}-pages-19-preuve-statistique-html-forward-go.png`),
         });
+        await ladder.screenshot({
+          path: path.join(__dirname, '..', 'test-results', 'visual-smoke', `${safeProject}-pages-19-preuve-statistique-html-risk-stabilize.png`),
+        });
 
         await page.reload();
         await expect(page.locator('[data-forward-verdict-label]')).toHaveText('GO PÉDAGOGIQUE');
+        await expect(page.locator('[data-risk-verdict-label]')).toHaveText('STABILISER');
         await page.locator('[data-forward-field="netR"]').fill('-2');
         await expect(page.locator('[data-forward-verdict-label]')).toHaveText('STOP');
         await expect(page.locator('[data-forward-next-action]')).toContainText('Ne risque rien');
+        await expect(page.locator('[data-risk-verdict-label]')).toHaveText('VERROUILLÉ');
       }
 
       if (fileName === 'pages/examen-decision-session.html') {
@@ -295,6 +318,39 @@ test.describe('ICT Atlas visual smoke audit', () => {
           await page.locator('[data-forward-gate]').screenshot({
             path: path.join(__dirname, '..', 'test-results', 'visual-smoke', `${safeProject}-${safeFileName}-forward-stop.png`),
           });
+          await page.evaluate(() => localStorage.setItem('ict-atlas-forward-gate-v1', JSON.stringify({
+            minDecisions: 30,
+            minTrades: 20,
+            minExpectancy: 0.10,
+            maxDrawdown: 6,
+            maxErrorRate: 10,
+            decisions: 30,
+            trades: 20,
+            netR: 4,
+            drawdown: 3,
+            processErrors: 2,
+            rulesFrozen: true,
+            independent: true,
+            costsIncluded: true,
+            verdict: 'go',
+          })));
+          await page.reload();
+          await page.locator('[data-risk-field="trades"]').fill('20');
+          await page.locator('[data-risk-field="netR"]').fill('2');
+          await page.locator('[data-risk-field="drawdown"]').fill('2');
+          await page.locator('[data-risk-field="processErrors"]').fill('2');
+          await page.locator('[data-risk-field="rulesUnchanged"]').check();
+          await page.locator('[data-risk-field="noScaleUp"]').check();
+          await expect(page.locator('[data-risk-verdict-label]')).toHaveText('PAUSE');
+          await page.locator('[data-risk-ladder]').screenshot({
+            path: path.join(__dirname, '..', 'test-results', 'visual-smoke', `${safeProject}-${safeFileName}-risk-pause.png`),
+          });
+          const riskReset = page.locator('[data-risk-reset]');
+          await riskReset.click();
+          await expect(riskReset).toHaveAttribute('data-armed', 'true');
+          await riskReset.click();
+          await expect(page.locator('[data-risk-field="trades"]')).toHaveValue('0');
+          await expect(page.locator('[data-risk-verdict-label]')).toHaveText('COLLECTER');
           const resetButton = page.locator('[data-forward-reset]');
           await resetButton.click();
           await expect(resetButton).toHaveAttribute('data-armed', 'true');

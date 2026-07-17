@@ -26,6 +26,59 @@
 - Liquidite cible :
 - Liquidite declencheur :
 
+## Protocole en huit decisions avant revelation
+
+### 1. Localiser
+
+- Etat du marche : trend / range / transition
+- Range active :
+- Position du prix dans la range :
+- Phrase de contexte :
+
+### 2. Cartographier
+
+- Reperes qui modifient la decision :
+- Reperes volontairement masques :
+
+### 3. Cibler
+
+- DOL primaire encore ouverte :
+- DOL secondaire :
+- Obstacle / target interne :
+
+### 4. Scenariser
+
+> Si le prix ___ dans le POI ___, alors j'attends ___ vers ___. J'abandonne si ___.
+
+### 5. Attendre
+
+- Evenement prealable attendu :
+- Evenement reellement observe :
+- Decision : attendre / abandonner / passer a la confirmation
+
+### 6. Confirmer
+
+- Modele unique autorise :
+- Trigger exact :
+- Si le prix part sans retour :
+
+### 7. Planifier
+
+- Entree :
+- Invalidation :
+- Stop :
+- TP1 :
+- TP2 :
+- Regle de gestion :
+
+### 8. Mesurer et decider
+
+- R vers TP1 :
+- R vers TP2 :
+- Taille calculee depuis le stop :
+- Decision : buy / sell / attendre / no trade
+- Porte fermee si refus : contexte / DOL / permission / paiement / risque
+
 ## Narrative ecrite avant revelation
 
 - Horodatage de la decision :

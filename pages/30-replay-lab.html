@@ -41,6 +41,7 @@
 </div>
 <div class="rule-block"><strong>Règle :</strong> un cas replay n’est valide que si la décision est écrite avant de révéler la suite.</div>
 </section>
+<section class="card operating-cockpit" id="drill-zero-protocole"><header><h2>Drill 00 : « que faire maintenant ? »</h2><span>Anti-paralysie</span></header><div class="cockpit-lead"><p>Avant les drills spécialisés, entraîne l’ordre des décisions. À chaque arrêt du replay, tu ne peux répondre qu’à l’étape active. Tu n’as pas le droit de chercher une entrée si la DOL n’est pas encore choisie.</p><div class="cockpit-command">Une capture par étape<br/>Une sortie écrite<br/>Puis seulement la suite</div></div><div class="protocol-compact"><div><strong>Arrêt A — HTF</strong><p>Localise le prix et trace uniquement les repères qui modifient le scénario. Production : contexte + range active.</p></div><div><strong>Arrêt B — DOL</strong><p>Classe destination primaire, secondaire et obstacle interne. Production : une target justifiée et encore ouverte.</p></div><div><strong>Arrêt C — POI</strong><p>Écris « si… alors… » et l’invalidation. Production : attendre, abandonner ou surveiller la confirmation.</p></div><div><strong>Arrêt D — ordre</strong><p>Seulement après permission : entrée, stop, TP1, TP2, R et taille. Production : exécuter ou no-trade.</p></div></div><div class="decision-gates"><div class="decision-gate"><strong>Interdit</strong><span>Ajouter un nouveau POI après avoir vu la réaction suivante.</span></div><div class="decision-gate"><strong>Interdit</strong><span>Changer de DOL parce que la première ne semble plus confortable.</span></div><div class="decision-gate"><strong>Interdit</strong><span>Passer d’une entrée confirmation à une limite pendant le mouvement.</span></div><div class="decision-gate"><strong>Interdit</strong><span>Noter seulement le P&amp;L sans classer la qualité des huit décisions.</span></div></div><div class="rule-block"><strong>Validation :</strong> le drill est réussi si l’ordre des décisions est respecté, même si le scénario finit en no-trade ou en perte conforme.</div></section>
 <section class="card" id="protocole-replay">
 <header><h2>Protocole : cacher le futur, décider, puis corriger</h2><span>Méthode</span></header>
 <div class="chart replay-lab-chart">
@@ -100,7 +101,7 @@
 <article class="replay-card">
 <span class="replay-kicker">Drill 01</span>
 <h3>Carte de liquidité</h3>
-<p>Avant toute entrée, marque BSL/SSL, PDH/PDL, highs/lows égaux, liquidité interne et externe.</p>
+<p>Avant toute entrée, marque la range active puis seulement les repères qui changent le scénario : PDH/PDL pertinents, une BSL/SSL externe et l’obstacle interne utile.</p>
 <ul><li>Question : où le prix a-t-il une raison d’aller ?</li><li>Preuve : capture annotée sans entrée.</li></ul>
 </article>
 <article class="replay-card">
@@ -215,7 +216,11 @@
 <header><h2>Bibliothèque de cas replay vérifiables</h2><span>Cas replay</span></header>
 <p>Le Replay Lab explique comment s'entraîner. La bibliothèque organise les cas qui méritent d'être conservés, validés et retravaillés.</p>
 <div class="section-links">
-<a class="section-link" href="replay-cases.html"><h3>Bibliothèque de cas replay</h3><p>Slots de cas vérifiables et méthode pour ajouter de vrais exemples.</p></a>
+<a class="section-link" href="programme-validation-20-sessions.html"><h3>Valider 20 sessions replay</h3><p>Quatre phases, cinq portes par session et des critères de passage sans aucun point accordé au P&amp;L.</p></a>
+<a class="section-link" href="examen-decision-session.html"><h3>Passer l’examen de décision</h3><p>Douze décisions sans correction immédiate, puis score par compétence et remédiation ciblée.</p></a>
+<a class="section-link" href="replay-cases.html#simulateur-session"><h3>Conduire quatre sessions complètes</h3><p>Un gagnant, une perte conforme et deux no-trades révélés décision par décision.</p></a>
+<a class="section-link" href="replay-cases.html#pack-six-cas"><h3>Commencer le pack de six cas</h3><p>Deux longs, deux shorts et deux no-trades à résoudre avec les huit décisions avant de révéler la correction.</p></a>
+<a class="section-link" href="29-fondations-stop-tp.html#laboratoire-stop-tp"><h3>Faire le laboratoire Stop/TP</h3><p>Huit décisions chiffrées pour placer invalidation, stop et targets, calculer R et refuser les plans faibles.</p></a>
 <a class="section-link" download="" href="../templates/cas-replay-validation.md"><h3>Fiche validation</h3><p>Documenter capture avant, décision, capture après et correction.</p></a>
 </div>
 </section>

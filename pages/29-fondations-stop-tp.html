@@ -18,6 +18,73 @@
 </div><section class="lesson-objectives"><h2>Dans cette leçon</h2><div class="lesson-objective-grid"><div class="lesson-objective"><strong>Objectif</strong><p>Relier entrée, invalidation, stop, TP1 et TP2 à la structure du marché.</p></div><div class="lesson-objective"><strong>Avant de continuer</strong><p>Un stop n’est pas une distance confortable ; un TP n’est pas un chiffre rond.</p></div><div class="lesson-objective"><strong>Checkpoint</strong><p>Tu dois pouvoir justifier où le trade est faux et où le prix peut raisonnablement aller.</p></div></div></section>
 <div class="page-meta-dashboard"><div class="meta-main"><div class="meta-goal"><strong>But de la leçon</strong> transformer une entree en plan complet : invalidation, stop, TP1, TP2 et gestion.</div><div class="meta-prereq"><strong>Prerequis</strong> avoir une cible de liquidite et une entree justifiee.</div></div><div class="meta-sidebar"><strong>A lire avec</strong><nav class="pill-nav"><a class="pill" href="27-fondations-liquidite.html">Fondations liquidite</a><a class="pill" href="28-fondations-entree.html">Fondations entree</a><a class="pill" href="12-gestion-risque.html">Gestion du risque</a></nav></div></div>
 <section class="page-note beginner-bridge"><strong>Pourquoi ca marche ?</strong> Le stop n'est pas une distance confortable : c'est l'endroit ou l'hypothese mecanique est invalidee. Le TP n'est pas un souhait : c'est la prochaine zone ou des ordres probables peuvent payer le risque pris.</section>
+<section class="card" id="protocole-stop-tp-etapes-7-8"><header><h2>Étapes 7 et 8 : placer le plan puis mesurer s’il mérite un trade</h2><span>Protocole opérationnel</span></header><p>Le sens de lecture est obligatoire : hypothèse → invalidation → stop → targets → R disponible → taille. Partir d’un lot souhaité ou d’un objectif arbitraire inverse le raisonnement.</p><div class="protocol-compact"><div><strong>Invalidation</strong><p>Termine la phrase : « Si le prix fait ___, l’hypothèse qui autorise mon entrée n’est plus défendable. »</p></div><div><strong>Stop</strong><p>Place-le au-delà du fait invalidant selon la règle testée. Ne le rapproche pas uniquement pour fabriquer un meilleur RR.</p></div><div><strong>TP1</strong><p>Première liquidité opposée ou structure interne pertinente. Elle doit être identifiable avant le résultat, pas inventée pendant le trade.</p></div><div><strong>TP2</strong><p>DOL principale encore ouverte : extrême externe, PDH/PDL, EQH/EQL ou niveau de session prévu dans la narrative.</p></div></div><div class="chart"><table class="référence-table"><tr><th>Scénario</th><th>Invalidation / stop</th><th>TP1</th><th>TP2</th><th>Refus immédiat</th></tr><tr><td><strong>Long après SSL</strong></td><td>Sous le niveau dont la rupture invalide la réintégration ou la structure du modèle.</td><td>High interne ou première BSL utile.</td><td>BSL externe, PDH ou DOL HTF pré-déclarée.</td><td>Target principale déjà prise ou obstacle trop proche.</td></tr><tr><td><strong>Short après BSL</strong></td><td>Au-dessus du niveau dont la reprise invalide le rejet ou la structure du modèle.</td><td>Low interne ou première SSL utile.</td><td>SSL externe, PDL ou DOL HTF pré-déclarée.</td><td>Target principale déjà prise ou stop sans invalidation claire.</td></tr></table></div><div class="decision-gates"><div class="decision-gate"><strong>Stop esthétique</strong><span>Distance choisie pour obtenir un beau RR, sans lien avec l’hypothèse.</span></div><div class="decision-gate"><strong>TP en R</strong><span>Objectif posé à 2R ou 3R sans niveau de marché correspondant.</span></div><div class="decision-gate"><strong>TP rétrospectif</strong><span>La target est déplacée après l’entrée pour s’adapter aux bougies.</span></div><div class="decision-gate"><strong>Gestion improvisée</strong><span>Partiel, BE ou maintien décidés sous pression au lieu d’appliquer la règle testée.</span></div></div><div class="rule-block"><strong>Décision finale :</strong> identifie d’abord les targets logiques, puis mesure le R qu’elles offrent. Si ce R ne satisfait pas le seuil validé par ton modèle, le résultat est NO TRADE — pas un stop artificiellement serré.</div></section>
+<section class="card stop-tp-lab" id="laboratoire-stop-tp">
+<header><h2>Laboratoire Stop/TP : décider avant de calculer</h2><span>8 exercices guidés</span></header>
+<div class="lab-intro">
+<div><span class="lab-eyebrow">Mode d’emploi</span><h3>Choisis d’abord. Ouvre ensuite la correction.</h3><p>Chaque cas utilise des unités pédagogiques, pas des cotations ni des signaux réels. Écris ton invalidation, ton stop et tes cibles avant de révéler la réponse.</p></div>
+<ol><li>Quel fait rend l’idée fausse ?</li><li>Quel stop protège ce fait ?</li><li>Quelles liquidités paient TP1 puis TP2 ?</li><li>Quel R le marché offre-t-il réellement ?</li></ol>
+</div>
+<div class="lab-formula"><strong>Ordre non négociable</strong><span>Hypothèse</span><i>→</i><span>Invalidation</span><i>→</i><span>Stop</span><i>→</i><span>TP</span><i>→</i><span>R</span><i>→</i><span>Taille</span></div>
+<div class="lab-drill-grid">
+<article class="stop-tp-drill" id="stop-tp-drill-01">
+<div class="lab-drill-head"><span>01 · Stop long</span><strong>Après une prise de SSL</strong></div>
+<p class="lab-scenario">La SSL à 96,8 est balayée, le prix réintègre puis déplace haussier. Entrée prévue à 100. L’idée est fausse si le low de manipulation est repris avec acceptation.</p>
+<div class="price-ladder" aria-label="Niveaux du cas 1"><span class="target">108,5 · BSL externe</span><span class="target muted">104,1 · high interne</span><span class="entry">100 · entrée</span><span class="danger">98,9 · stop A</span><span class="danger">96,6 · stop B</span><span class="danger">94,0 · stop C</span></div>
+<div class="level-options"><span>A · 98,9</span><span>B · 96,6</span><span>C · 94,0</span></div>
+<details class="lab-answer"><summary>Révéler la décision et le calcul</summary><div><strong>Stop B : 96,6.</strong><p>A reste à l’intérieur de la structure qui peut respirer ; C ajoute du risque sans protéger un fait supplémentaire. Risque = 100 − 96,6 = 3,4. TP1 = 4,1 / 3,4 = <b>1,21R</b>. TP2 = 8,5 / 3,4 = <b>2,50R</b>. La taille se calcule seulement après ce stop.</p></div></details>
+</article>
+<article class="stop-tp-drill" id="stop-tp-drill-02">
+<div class="lab-drill-head"><span>02 · Stop short</span><strong>Après une prise de BSL</strong></div>
+<p class="lab-scenario">La BSL à 203,2 est prise, puis un displacement baissier casse un low utile. Entrée prévue à 200. Une reprise acceptée au-dessus du raid invalide le rejet.</p>
+<div class="price-ladder" aria-label="Niveaux du cas 2"><span class="danger">206,0 · stop C</span><span class="danger">203,5 · stop B</span><span class="danger">201,2 · stop A</span><span class="entry">200 · entrée</span><span class="target muted">195,8 · low interne</span><span class="target">191,25 · SSL externe</span></div>
+<div class="level-options"><span>A · 201,2</span><span>B · 203,5</span><span>C · 206,0</span></div>
+<details class="lab-answer"><summary>Révéler la décision et le calcul</summary><div><strong>Stop B : 203,5.</strong><p>Il se place au-delà du fait invalidant. Risque = 203,5 − 200 = 3,5. TP1 = 4,2 / 3,5 = <b>1,20R</b>. TP2 = 8,75 / 3,5 = <b>2,50R</b>. A fabrique un meilleur ratio mais ne protège pas la thèse.</p></div></details>
+</article>
+<article class="stop-tp-drill" id="stop-tp-drill-03">
+<div class="lab-drill-head"><span>03 · Targets long</span><strong>Hiérarchiser sans rêver</strong></div>
+<p class="lab-scenario">Entrée 410, stop structurel 406. Trois niveaux sont visibles : high interne 414,8, BSL externe non prise 420, puis 424 sans liquidité identifiée.</p>
+<div class="price-ladder" aria-label="Niveaux du cas 3"><span class="unknown">424 · extension sans repère</span><span class="target">420 · BSL externe</span><span class="target muted">414,8 · high interne</span><span class="entry">410 · entrée</span><span class="danger">406 · stop</span></div>
+<div class="level-options"><span>TP1 · 414,8</span><span>TP2 · 420</span><span>Extension · 424 ?</span></div>
+<details class="lab-answer"><summary>Révéler la hiérarchie</summary><div><strong>TP1 = 414,8 ; TP2 = 420.</strong><p>Risque = 4. TP1 paie <b>1,20R</b> et TP2 <b>2,50R</b>. 424 n’est pas interdit, mais ce n’est pas une target défendable avec les informations données. Un chiffre plus haut n’est pas une DOL.</p></div></details>
+</article>
+<article class="stop-tp-drill" id="stop-tp-drill-04">
+<div class="lab-drill-head"><span>04 · Targets short</span><strong>Interne d’abord, externe ensuite</strong></div>
+<p class="lab-scenario">Entrée 510, stop structurel 514. Le low interne se situe à 505,2 et la SSL externe encore ouverte à 500.</p>
+<div class="price-ladder" aria-label="Niveaux du cas 4"><span class="danger">514 · stop</span><span class="entry">510 · entrée</span><span class="target muted">505,2 · low interne</span><span class="target">500 · SSL externe</span></div>
+<div class="level-options"><span>TP1 · 505,2</span><span>TP2 · 500</span><span>Stop · 514</span></div>
+<details class="lab-answer"><summary>Révéler la hiérarchie</summary><div><strong>Le plan respecte le chemin du prix.</strong><p>Risque = 4. TP1 : (510 − 505,2) / 4 = <b>1,20R</b>. TP2 : (510 − 500) / 4 = <b>2,50R</b>. Prendre un partiel ou déplacer à BE reste une règle de gestion à tester, pas une vérité universelle.</p></div></details>
+</article>
+<article class="stop-tp-drill no-trade" id="stop-tp-drill-05">
+<div class="lab-drill-head"><span>05 · Refus</span><strong>La target logique est trop proche</strong></div>
+<p class="lab-scenario">Long propre : entrée 300, stop structurel 296,4. La première BSL est à 303 et une résistance HTF commence juste au-dessus. Ton modèle exige au moins 1,5R vers la cible principale.</p>
+<div class="price-ladder" aria-label="Niveaux du cas 5"><span class="blocked">303,2 · résistance HTF</span><span class="target">303 · BSL</span><span class="entry">300 · entrée</span><span class="danger">296,4 · stop</span></div>
+<div class="level-options"><span>Entrer quand même</span><span>Serrer le stop</span><span>NO TRADE</span></div>
+<details class="lab-answer"><summary>Révéler la décision</summary><div><strong>NO TRADE.</strong><p>Risque = 3,6 ; gain logique = 3 ; R disponible = <b>0,83R</b>. Le seuil de 1,5R appartient ici au modèle testé : il n’est pas une loi du marché. On ne rapproche pas le stop pour rendre le trade acceptable sur papier.</p></div></details>
+</article>
+<article class="stop-tp-drill no-trade" id="stop-tp-drill-06">
+<div class="lab-drill-head"><span>06 · Refus</span><strong>La DOL a déjà été consommée</strong></div>
+<p class="lab-scenario">Tu préparais un short vers la SSL à 146. Avant que ton trigger apparaisse, le prix atteint 146, balaie le niveau puis remonte. Le trigger short arrive ensuite à 150 avec un stop à 152,4.</p>
+<div class="price-ladder" aria-label="Niveaux du cas 6"><span class="danger">152,4 · stop candidat</span><span class="entry">150 · trigger tardif</span><span class="consumed">146 · SSL déjà prise</span><span class="unknown">? · prochaine DOL non qualifiée</span></div>
+<div class="level-options"><span>Réutiliser 146</span><span>Inventer 144</span><span>NO TRADE</span></div>
+<details class="lab-answer"><summary>Révéler la décision</summary><div><strong>NO TRADE jusqu’à requalification.</strong><p>La target qui justifiait la narrative n’est plus ouverte. Il faut reconstruire une DOL externe vérifiable et recalculer le plan ; 146 ne peut pas être comptée deux fois et 144 n’existe pas simplement parce qu’elle améliore le R.</p></div></details>
+</article>
+<article class="stop-tp-drill no-trade" id="stop-tp-drill-07">
+<div class="lab-drill-head"><span>07 · Refus</span><strong>Bonne direction, entrée trop tardive</strong></div>
+<p class="lab-scenario">Plan initial : long 100, stop 96,8, DOL 107,2. Tu hésites, le prix déplace, puis tu envisages de poursuivre à 104,5 sans qu’une nouvelle structure permette de remonter l’invalidation.</p>
+<div class="price-ladder" aria-label="Niveaux du cas 7"><span class="target">107,2 · DOL inchangée</span><span class="blocked">104,5 · entrée poursuivie</span><span class="entry">100 · entrée planifiée</span><span class="danger">96,8 · invalidation</span></div>
+<div class="level-options"><span>Chasser à 104,5</span><span>Déplacer le stop</span><span>NO TRADE</span></div>
+<details class="lab-answer"><summary>Révéler le calcul</summary><div><strong>NO TRADE sur l’entrée tardive.</strong><p>Plan initial : (107,2 − 100) / (100 − 96,8) = <b>2,25R</b>. Entrée poursuivie : (107,2 − 104,5) / (104,5 − 96,8) = <b>0,35R</b>. Avoir raison sur le sens ne rend pas chaque prix d’entrée valable.</p></div></details>
+</article>
+<article class="stop-tp-drill" id="stop-tp-drill-08">
+<div class="lab-drill-head"><span>08 · Plan complet</span><strong>Choisir A, B ou C</strong></div>
+<p class="lab-scenario">Narrative baissière, entrée 250 après raid de BSL. L’idée est invalidée au-dessus de 253,2. Low interne 246 ; SSL externe 241.</p>
+<div class="plan-choices"><div><b>Plan A</b><span>Stop 251 · TP 241</span><small>Ratio superbe, invalidation non protégée.</small></div><div><b>Plan B</b><span>Stop 253,5 · TP1 246 · TP2 241</span><small>Structure, chemin et mesure cohérents.</small></div><div><b>Plan C</b><span>Stop 256 · TP 246</span><small>Risque élargi sans fait structurel.</small></div></div>
+<details class="lab-answer"><summary>Révéler le plan complet</summary><div><strong>Plan B.</strong><p>Risque = 3,5. TP1 offre (250 − 246) / 3,5 = <b>1,14R</b> ; TP2 offre (250 − 241) / 3,5 = <b>2,57R</b>. A est esthétique ; C est dilué. B est le seul plan dont chaque niveau répond à une information de marché.</p></div></details>
+</article>
+</div>
+<div class="lab-footer"><div><strong>Objectif du drill</strong><p>Obtenir 8 décisions justifiées, pas 8 réponses « gagnantes ». Un refus correctement argumenté compte comme une réussite.</p></div><a class="section-link" download="" href="../templates/drill-stop-tp.md"><h3>Télécharger la fiche Stop/TP</h3><p>Rejouer la même séquence sur tes propres captures.</p></a></div>
+</section>
 <section class="card" id="anatomie-plan"><header><h2>Anatomie du plan : entree, invalidation, TP1, TP2</h2><span>Graphique</span></header>
 <div class="chart"><svg aria-label="Anatomie du plan : entree, invalidation, TP1, TP2 - graphique 1" height="auto" role="img" viewbox="0 0 960 390" width="100%" xmlns="http://www.w3.org/2000/svg">
 <rect fill="#081222" height="390" width="960"></rect>

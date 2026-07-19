@@ -30,7 +30,9 @@ const pages = [
   'pages/29-fondations-stop-tp.html',
   'pages/30-replay-lab.html',
   'pages/replay-cases.html',
+  'pages/replay-historique.html',
   'pages/examen-decision-session.html',
+  'pages/examen-dol-tp.html',
   'pages/programme-validation-20-sessions.html',
   'pages/31-order-blocks.html',
   'pages/32-fvg-imbalance-ce.html',
@@ -117,14 +119,15 @@ test.describe('ICT Atlas visual smoke audit', () => {
         await expect(page.locator('.roadmap-stages > li')).toHaveCount(6);
         const roadmapHrefs = await page.locator('.roadmap-stages > li > a').evaluateAll((links) => links.map((link) => link.getAttribute('href')));
         expect(roadmapHrefs).toEqual([
-          'pages/20-workflow-session.html',
+          'pages/20-workflow-session.html#v92-session-cockpit',
           'pages/replay-cases.html#pack-six-cas',
           'pages/replay-cases.html#simulateur-session',
           'pages/examen-decision-session.html',
           'pages/programme-validation-20-sessions.html',
           'pages/19-preuve-statistique.html',
         ]);
-        await expect(page.locator('[data-roadmap-next-link]')).toHaveAttribute('href', 'pages/20-workflow-session.html');
+        await expect(page.locator('[data-roadmap-next-link]')).toHaveAttribute('href', 'pages/20-workflow-session.html#v92-session-cockpit');
+        await expect(page.locator('[data-roadmap-next-title]')).toHaveText('Remplir le cockpit de session');
 
         await page.evaluate(() => localStorage.setItem('ict-atlas-session-exam-best-v1', '8'));
         await page.reload();
@@ -183,6 +186,108 @@ test.describe('ICT Atlas visual smoke audit', () => {
           await expect(simulator.locator('[data-sim-complete]')).toBeVisible();
           await expect(simulator.locator('[role="progressbar"]')).toHaveAttribute('aria-valuenow', String(config.stages));
         }
+      }
+
+      if (fileName === 'pages/replay-historique.html') {
+        const historicalCases = page.locator('[data-historical-case]');
+        await expect(historicalCases).toHaveCount(4);
+        await expect(page.locator('[data-historical-completed]')).toHaveText('0 / 4');
+        await expect(page.locator('[data-historical-score]')).toHaveText('0 / 16');
+        await expect(page.locator('#hist-01 [data-historical-chart]')).toHaveAttribute('data-candles-shown', '14');
+        await expect(page.locator('#hist-01 [data-case-status]')).toHaveText('FUTUR MASQUÉ');
+
+        for (let caseIndex = 0; caseIndex < 4; caseIndex += 1) {
+          const historicalCase = historicalCases.nth(caseIndex);
+          const correctAnswers = historicalCase.locator('input[data-correct="true"]');
+          await expect(correctAnswers).toHaveCount(4);
+          for (let answerIndex = 0; answerIndex < 4; answerIndex += 1) {
+            await correctAnswers.nth(answerIndex).check();
+          }
+          await expect(historicalCase.locator('[data-case-answered]')).toHaveText('4');
+          await expect(historicalCase.locator('[data-case-submit]')).toBeEnabled();
+          await historicalCase.locator('[data-case-submit]').click();
+          await expect(historicalCase).toHaveClass(/is-reviewed/);
+          await expect(historicalCase.locator('[data-case-score]')).toHaveText('4 / 4');
+          await expect(historicalCase.locator('[data-case-status]')).toHaveText('FUTUR RÉVÉLÉ');
+          await expect(historicalCase.locator('[data-historical-chart]')).toHaveAttribute('data-candles-shown', '33');
+        }
+
+        await expect(page.locator('[data-historical-completed]')).toHaveText('4 / 4');
+        await expect(page.locator('[data-historical-score]')).toHaveText('16 / 16');
+        await expect(page.locator('[data-historical-best]')).toHaveText('16 / 16');
+        await page.reload();
+        await expect(page.locator('[data-historical-completed]')).toHaveText('4 / 4');
+        await expect(page.locator('#hist-01 [data-case-status]')).toHaveText('FUTUR RÉVÉLÉ');
+        await expect(page.locator('#hist-01 [data-case-score]')).toHaveText('4 / 4');
+      }
+
+      if (fileName === 'pages/20-workflow-session.html') {
+        const cockpit = page.locator('[data-session-cockpit]');
+        const field = (name) => cockpit.locator(`[data-cockpit-field="${name}"]`);
+        await expect(cockpit.locator('[data-cockpit-evidence] article')).toHaveCount(8);
+        await expect(cockpit.locator('[data-cockpit-verdict-label]')).toHaveText('À RENSEIGNER');
+        await expect(cockpit.locator('[data-cockpit-copy]')).toBeDisabled();
+        await expect(cockpit.locator('[data-cockpit-download]')).toBeDisabled();
+
+        await field('asset').fill('NQ');
+        await field('session').selectOption({ label: 'NY AM' });
+        await field('direction').selectOption('short');
+        await field('environment').selectOption('trend');
+        await field('location').selectOption('premium');
+        await field('bsl').fill('PDH 19 850');
+        await field('ssl').fill('PDL 19 600');
+        await field('dol').selectOption('ssl');
+        await field('dolStatus').selectOption('open');
+        await field('obstacle').selectOption('clear');
+        await field('poi').fill('Résistance H4 en premium');
+        await field('scenario').fill('Si le PDH est sweepé puis réintégré, je cherche un short vers le PDL.');
+        await field('narrativeInvalidation').fill('Acceptation au-dessus du swing high H4.');
+        await field('eventModel').selectOption({ label: 'Sweep puis réintégration' });
+        await field('triggerModel').selectOption({ label: 'Displacement + MSS + retour FVG' });
+        await field('entry').fill('19800');
+        await field('stop').fill('19820');
+        await field('tp1').fill('19780');
+        await field('tp2').fill('19740');
+        await field('plannedRisk').fill('0.25');
+        await field('window').selectOption('inside');
+        await field('news').selectOption('clear');
+        await field('dailyStop').selectOption('intact');
+        await field('tradeLimit').selectOption('intact');
+        await field('ruleset').selectOption('same');
+
+        await expect(cockpit.locator('[data-cockpit-verdict-label]')).toHaveText('ATTENDRE');
+        await expect(cockpit.locator('[data-cockpit-score]')).toHaveText('6 / 8');
+        await expect(cockpit.locator('[data-cockpit-r1]')).toHaveText('1.00R');
+        await expect(cockpit.locator('[data-cockpit-r2]')).toHaveText('3.00R');
+        await expect(cockpit.locator('.session-evidence article.is-waiting')).toHaveCount(2);
+
+        await field('eventOccurred').check();
+        await expect(cockpit.locator('[data-cockpit-verdict-label]')).toHaveText('ATTENDRE');
+        await expect(cockpit.locator('[data-cockpit-score]')).toHaveText('7 / 8');
+        await field('triggerConfirmed').check();
+        await expect(cockpit.locator('[data-cockpit-verdict-label]')).toHaveText('AUTORISÉ');
+        await expect(cockpit.locator('[data-cockpit-score]')).toHaveText('8 / 8');
+        await expect(cockpit.locator('.session-evidence article.is-passed')).toHaveCount(8);
+        await expect(cockpit.locator('[data-cockpit-copy]')).toBeEnabled();
+        await expect(cockpit.locator('[data-cockpit-download]')).toBeEnabled();
+        await expect(cockpit.locator('[data-cockpit-brief]')).toContainText('Verdict : AUTORISÉ');
+
+        mkdirSync(path.join(__dirname, '..', 'test-results', 'visual-smoke'), { recursive: true });
+        const safeProject = testInfo.project.name.replace(/[^a-z0-9_-]/gi, '-');
+        await cockpit.locator('.session-planner-head').screenshot({
+          path: path.join(__dirname, '..', 'test-results', 'visual-smoke', `${safeProject}-pages-20-workflow-session-html-v92-authorized.png`),
+        });
+
+        await page.reload();
+        await expect(page.locator('[data-cockpit-verdict-label]')).toHaveText('AUTORISÉ');
+        await expect(page.locator('[data-cockpit-field="asset"]')).toHaveValue('NQ');
+        await page.locator('[data-cockpit-field="plannedRisk"]').fill('0.50');
+        await expect(page.locator('[data-cockpit-verdict-label]')).toHaveText('NO TRADE');
+        await expect(page.locator('[data-cockpit-next-action]')).toContainText('risque planifié');
+        await page.locator('[data-cockpit-field="plannedRisk"]').fill('0.25');
+        await page.locator('[data-cockpit-field="dolStatus"]').selectOption('consumed');
+        await expect(page.locator('[data-cockpit-verdict-label]')).toHaveText('NO TRADE');
+        await expect(page.locator('[data-cockpit-next-action]')).toContainText('DOL primaire est déjà consommée');
       }
 
       if (fileName === 'pages/29-fondations-stop-tp.html') {
@@ -267,6 +372,32 @@ test.describe('ICT Atlas visual smoke audit', () => {
         await expect.poll(() => page.evaluate(() => localStorage.getItem('ict-atlas-session-exam-mastery-v1'))).toBe('true');
       }
 
+      if (fileName === 'pages/examen-dol-tp.html') {
+        const questions = page.locator('[data-target-question]');
+        await expect(page.locator('.target-case')).toHaveCount(6);
+        await expect(questions).toHaveCount(18);
+        await expect(page.locator('[data-target-results]')).toBeHidden();
+        await expect(page.locator('[data-target-submit]')).toBeDisabled();
+
+        mkdirSync(path.join(__dirname, '..', 'test-results', 'visual-smoke'), { recursive: true });
+        const safeProject = testInfo.project.name.replace(/[^a-z0-9_-]/gi, '-');
+        await page.locator('#target-case-01').screenshot({
+          path: path.join(__dirname, '..', 'test-results', 'visual-smoke', `${safeProject}-pages-examen-dol-tp-html-case-01.png`),
+        });
+
+        for (let question = 0; question < 18; question += 1) {
+          await questions.nth(question).locator('input[data-correct="true"]').check();
+        }
+
+        await expect(page.locator('[data-target-submit]')).toBeEnabled();
+        await page.locator('[data-target-submit]').click();
+        await expect(page.locator('[data-target-results]')).toBeVisible();
+        await expect(page.locator('[data-target-score]')).toHaveText('18 / 18');
+        await expect(page.locator('.target-diagnostic-grid .exam-diagnostic')).toHaveCount(4);
+        await expect(page.locator('.target-case .exam-question.is-correct')).toHaveCount(18);
+        await expect(page.locator('[data-target-band-code]')).toHaveText('MAÎTRISE');
+      }
+
       if (fileName === 'pages/programme-validation-20-sessions.html') {
         await expect(page.locator('.validation-session')).toHaveCount(20);
         await expect(page.locator('[data-validation-completed]')).toHaveText('0');
@@ -295,7 +426,7 @@ test.describe('ICT Atlas visual smoke audit', () => {
         await expect(page.locator('[data-validation-passed]')).toHaveText('1');
       }
 
-      if (['index.html', 'pages/04-setups-core.html', 'pages/08-quiz.html', 'pages/19-preuve-statistique.html', 'pages/20-workflow-session.html', 'pages/29-fondations-stop-tp.html', 'pages/replay-cases.html', 'pages/examen-decision-session.html', 'pages/programme-validation-20-sessions.html', 'pages/41-no-trade.html'].includes(fileName)) {
+      if (['index.html', 'pages/04-setups-core.html', 'pages/08-quiz.html', 'pages/19-preuve-statistique.html', 'pages/20-workflow-session.html', 'pages/29-fondations-stop-tp.html', 'pages/replay-cases.html', 'pages/replay-historique.html', 'pages/examen-decision-session.html', 'pages/examen-dol-tp.html', 'pages/programme-validation-20-sessions.html', 'pages/41-no-trade.html'].includes(fileName)) {
         mkdirSync(path.join(__dirname, '..', 'test-results', 'visual-smoke'), { recursive: true });
         const safeProject = testInfo.project.name.replace(/[^a-z0-9_-]/gi, '-');
         const safeFileName = fileName.replace(/[^a-z0-9_-]/gi, '-');
@@ -312,6 +443,18 @@ test.describe('ICT Atlas visual smoke audit', () => {
           await page.locator('#protocole-operationnel').screenshot({
             path: path.join(__dirname, '..', 'test-results', 'visual-smoke', `${safeProject}-${safeFileName}-cockpit.png`),
           });
+          await page.locator('.session-planner-rail').screenshot({
+            path: path.join(__dirname, '..', 'test-results', 'visual-smoke', `${safeProject}-${safeFileName}-v92-no-trade.png`),
+          });
+          const cockpitReset = page.locator('[data-cockpit-reset]');
+          await cockpitReset.click();
+          await expect(cockpitReset).toHaveAttribute('data-armed', 'true');
+          await cockpitReset.click();
+          await expect(page.locator('[data-cockpit-verdict-label]')).toHaveText('À RENSEIGNER');
+          await expect(page.locator('[data-cockpit-field="asset"]')).toHaveValue('');
+          await expect(page.locator('[data-cockpit-field="riskCap"]')).toHaveValue('0.25');
+          await page.reload();
+          await expect(page.locator('[data-cockpit-verdict-label]')).toHaveText('À RENSEIGNER');
         }
 
         if (fileName === 'pages/19-preuve-statistique.html') {
@@ -391,6 +534,33 @@ test.describe('ICT Atlas visual smoke audit', () => {
           await expect(firstStage.locator('.sim-options label.is-answer')).toHaveCount(1);
         }
 
+        if (fileName === 'pages/replay-historique.html') {
+          await page.locator('.historical-dashboard').screenshot({
+            path: path.join(__dirname, '..', 'test-results', 'visual-smoke', `${safeProject}-${safeFileName}-dashboard.png`),
+          });
+          await page.locator('#hist-01').screenshot({
+            path: path.join(__dirname, '..', 'test-results', 'visual-smoke', `${safeProject}-${safeFileName}-reviewed-case.png`),
+          });
+
+          const resetButton = page.locator('[data-historical-reset]');
+          await resetButton.click();
+          await expect(resetButton).toHaveAttribute('data-armed', 'true');
+          await resetButton.click();
+          await expect(page.locator('[data-historical-completed]')).toHaveText('0 / 4');
+          await expect(page.locator('#hist-01 [data-case-status]')).toHaveText('FUTUR MASQUÉ');
+          await expect(page.locator('#hist-01 [data-historical-chart]')).toHaveAttribute('data-candles-shown', '14');
+
+          const firstHistoricalCase = page.locator('#hist-01');
+          const wrongAnswers = firstHistoricalCase.locator('input:not([data-correct])');
+          for (let questionIndex = 0; questionIndex < 4; questionIndex += 1) {
+            await wrongAnswers.nth(questionIndex * 2).check();
+          }
+          await firstHistoricalCase.locator('[data-case-submit]').click();
+          await expect(firstHistoricalCase.locator('[data-case-score]')).toHaveText('0 / 4');
+          await expect(firstHistoricalCase.locator('fieldset.is-wrong')).toHaveCount(4);
+          await expect(firstHistoricalCase.locator('label.is-answer')).toHaveCount(4);
+        }
+
         if (fileName === 'pages/29-fondations-stop-tp.html') {
           await page.locator('#stop-tp-drill-01').screenshot({
             path: path.join(__dirname, '..', 'test-results', 'visual-smoke', `${safeProject}-${safeFileName}-drill-01.png`),
@@ -416,6 +586,27 @@ test.describe('ICT Atlas visual smoke audit', () => {
           await expect(page.locator('.exam-diagnostic.is-critical')).toHaveCount(6);
           await expect(page.locator('[data-exam-band-code]')).toHaveText('RECONSTRUCTION');
           await expect(page.locator('[data-exam-best-result]')).toHaveText('12 / 12');
+        }
+
+        if (fileName === 'pages/examen-dol-tp.html') {
+          await page.locator('[data-target-results]').screenshot({
+            path: path.join(__dirname, '..', 'test-results', 'visual-smoke', `${safeProject}-${safeFileName}-results.png`),
+          });
+          await page.locator('[data-target-reset]').click();
+          await expect(page.locator('[data-target-results]')).toBeHidden();
+          await expect(page.locator('[data-target-answered]')).toHaveText('0');
+          await expect(page.locator('[data-target-submit]')).toBeDisabled();
+          await expect(page.locator('[data-target-best]')).toHaveText('18 / 18');
+
+          const targetQuestions = page.locator('[data-target-question]');
+          for (let question = 0; question < 18; question += 1) {
+            await targetQuestions.nth(question).locator('input:not([data-correct])').first().check();
+          }
+          await page.locator('[data-target-submit]').click();
+          await expect(page.locator('[data-target-score]')).toHaveText('0 / 18');
+          await expect(page.locator('.target-diagnostic-grid .exam-diagnostic.is-critical')).toHaveCount(4);
+          await expect(page.locator('[data-target-band-code]')).toHaveText('RECONSTRUCTION');
+          await expect(page.locator('[data-target-best-result]')).toHaveText('18 / 18');
         }
 
         if (fileName === 'pages/programme-validation-20-sessions.html') {

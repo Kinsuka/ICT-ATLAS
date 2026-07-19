@@ -49,6 +49,116 @@
 </div>
 <div class="rule-block"><strong>Règle du cours :</strong> tu ne peux jamais utiliser une étape tardive pour réparer une étape précoce. Un beau FVG ne répare ni une DOL absente, ni une narrative floue.</div>
 </section>
+<section class="session-planner" id="v92-session-cockpit" data-session-cockpit data-verdict="incomplete">
+<header class="session-planner-head">
+<div><span>V92 · PRE-SESSION CONTROL</span><h2>Cockpit interactif des huit décisions</h2><p>Remplis le plan dans l’ordre. Le verdict change avec les informations du marché et ne peut pas être forcé par un beau trigger.</p></div>
+<div class="session-verdict"><small>VERDICT DU PLAN</small><strong data-cockpit-verdict-label>À RENSEIGNER</strong><p data-cockpit-verdict-detail>Complète la carte avant toute décision.</p></div>
+</header>
+
+<div class="session-planner-hud">
+<div><small>PORTES OUVERTES</small><strong data-cockpit-score>0 / 8</strong></div>
+<div><small>DISTANCE RISQUE</small><strong data-cockpit-risk-distance>—</strong></div>
+<div><small>R VERS TP1</small><strong data-cockpit-r1>—</strong></div>
+<div><small>R VERS TP2</small><strong data-cockpit-r2>—</strong></div>
+<div class="session-next-command"><small>PROCHAINE ACTION</small><strong data-cockpit-next-action>Renseigne l’actif.</strong></div>
+</div>
+
+<div class="session-planner-layout">
+<form class="session-planner-form" autocomplete="off">
+<fieldset class="session-planner-step" data-step="context">
+<legend><span>01</span><div><small>LOCALISER</small><strong>Contexte et position</strong></div></legend>
+<div class="session-field-grid three">
+<label><span>Actif</span><input data-cockpit-field="asset" placeholder="Ex. NQ, ES, EURUSD" type="text"/></label>
+<label><span>Date</span><input data-cockpit-field="date" type="date"/></label>
+<label><span>Session</span><select data-cockpit-field="session"><option value="">Choisir…</option><option>Asia</option><option>London</option><option>NY AM</option><option>NY PM</option></select></label>
+<label><span>Sens préparé</span><select data-cockpit-field="direction"><option value="">Choisir…</option><option value="long">Long vers BSL</option><option value="short">Short vers SSL</option></select></label>
+<label><span>Environnement</span><select data-cockpit-field="environment"><option value="">Choisir…</option><option value="trend">Trend</option><option value="range">Range</option><option value="transition">Transition</option><option value="consolidation">Consolidation</option></select></label>
+<label><span>Localisation H4</span><select data-cockpit-field="location"><option value="">Choisir…</option><option value="premium">Premium</option><option value="discount">Discount</option><option value="equilibrium">Équilibre / milieu</option><option value="unclear">Range incertaine</option></select></label>
+</div>
+<p class="session-step-rule">Ce ruleset pédagogique exige long en discount ou short en premium. Une autre hypothèse doit être testée comme version distincte.</p>
+</fieldset>
+
+<fieldset class="session-planner-step" data-step="map">
+<legend><span>02</span><div><small>CARTOGRAPHIER</small><strong>Deux côtés avant une direction</strong></div></legend>
+<div class="session-field-grid two">
+<label><span>BSL externe visible</span><input data-cockpit-field="bsl" placeholder="Ex. PDH + equal highs 19 850" type="text"/></label>
+<label><span>SSL externe visible</span><input data-cockpit-field="ssl" placeholder="Ex. PDL + low session 19 620" type="text"/></label>
+</div>
+<p class="session-step-rule">Écris les deux côtés même si ton scénario n’en privilégie qu’un. Cela empêche de transformer le biais en certitude.</p>
+</fieldset>
+
+<fieldset class="session-planner-step" data-step="target">
+<legend><span>03</span><div><small>CIBLER</small><strong>DOL encore ouverte</strong></div></legend>
+<div class="session-field-grid three">
+<label><span>DOL primaire</span><select data-cockpit-field="dol"><option value="">Choisir…</option><option value="bsl">BSL</option><option value="ssl">SSL</option></select></label>
+<label><span>Statut DOL</span><select data-cockpit-field="dolStatus"><option value="">Choisir…</option><option value="open">Encore ouverte</option><option value="consumed">Déjà consommée</option><option value="unclear">Incertaine</option></select></label>
+<label><span>Obstacle avant TP1</span><select data-cockpit-field="obstacle"><option value="">Choisir…</option><option value="clear">Trajet exploitable</option><option value="blocked">Obstacle bloquant</option></select></label>
+</div>
+</fieldset>
+
+<fieldset class="session-planner-step" data-step="narrative">
+<legend><span>04</span><div><small>SCÉNARISER</small><strong>Si, alors, renoncer</strong></div></legend>
+<div class="session-field-grid two narrative-fields">
+<label><span>POI de travail</span><input data-cockpit-field="poi" placeholder="Ex. résistance H4 en premium" type="text"/></label>
+<label><span>Scénario si/alors</span><textarea data-cockpit-field="scenario" placeholder="Si le PDH est sweepé puis réintégré dans le POI, alors je cherche…"></textarea></label>
+<label class="wide"><span>Invalidation de la narrative</span><textarea data-cockpit-field="narrativeInvalidation" placeholder="J’abandonne l’idée si le prix accepte au-dessus de…"></textarea></label>
+</div>
+</fieldset>
+
+<fieldset class="session-planner-step" data-step="event">
+<legend><span>05</span><div><small>ATTENDRE</small><strong>Événement exigé</strong></div></legend>
+<div class="session-field-grid event-grid">
+<label><span>Événement du plan</span><select data-cockpit-field="eventModel"><option value="">Choisir…</option><option>Sweep puis réintégration</option><option>Arrivée au POI puis rejet</option><option>Manipulation d’un extrême</option><option>Displacement hors consolidation</option></select></label>
+<label class="session-check"><input data-cockpit-field="eventOccurred" type="checkbox"/><span><strong>Événement observé</strong><small>Je peux le montrer sur le graphique sans utiliser le futur.</small></span></label>
+</div>
+</fieldset>
+
+<fieldset class="session-planner-step" data-step="trigger">
+<legend><span>06</span><div><small>CONFIRMER</small><strong>Un seul trigger</strong></div></legend>
+<div class="session-field-grid event-grid">
+<label><span>Modèle d’exécution</span><select data-cockpit-field="triggerModel"><option value="">Choisir…</option><option>Displacement + MSS + retour FVG</option><option>C2 dans le sens du scénario</option><option>Retour CE / OB après rupture utile</option><option>Confirmation LTF du modèle testé</option></select></label>
+<label class="session-check"><input data-cockpit-field="triggerConfirmed" type="checkbox"/><span><strong>Trigger confirmé</strong><small>Il apparaît après l’événement, dans la zone prévue.</small></span></label>
+</div>
+</fieldset>
+
+<fieldset class="session-planner-step" data-step="order">
+<legend><span>07</span><div><small>PLANIFIER</small><strong>Stop et targets avant la taille</strong></div></legend>
+<div class="session-field-grid five">
+<label><span>Entrée</span><input data-cockpit-field="entry" inputmode="decimal" placeholder="0.00" type="number" step="any"/></label>
+<label><span>Stop</span><input data-cockpit-field="stop" inputmode="decimal" placeholder="0.00" type="number" step="any"/></label>
+<label><span>TP1 interne</span><input data-cockpit-field="tp1" inputmode="decimal" placeholder="0.00" type="number" step="any"/></label>
+<label><span>TP2 / DOL</span><input data-cockpit-field="tp2" inputmode="decimal" placeholder="0.00" type="number" step="any"/></label>
+<label><span>R minimum testé</span><input data-cockpit-field="minR" inputmode="decimal" min="0.1" step="0.1" type="number"/></label>
+</div>
+<p class="session-step-rule">Long : stop &lt; entrée &lt; TP1 ≤ TP2. Short : stop &gt; entrée &gt; TP1 ≥ TP2. Le cockpit mesure le R vers les deux targets.</p>
+</fieldset>
+
+<fieldset class="session-planner-step" data-step="risk">
+<legend><span>08</span><div><small>MESURER</small><strong>Limites non négociables</strong></div></legend>
+<div class="session-field-grid risk-grid">
+<label><span>Risque planifié (%)</span><input data-cockpit-field="plannedRisk" inputmode="decimal" min="0.01" step="0.01" placeholder="0.25" type="number"/></label>
+<label><span>Plafond du plan (%)</span><input data-cockpit-field="riskCap" inputmode="decimal" min="0.01" step="0.01" type="number"/></label>
+<label><span>Fenêtre horaire</span><select data-cockpit-field="window"><option value="">Choisir…</option><option value="before">Avant la fenêtre</option><option value="inside">Dans la fenêtre</option><option value="outside">Fenêtre terminée</option></select></label>
+<label><span>News</span><select data-cockpit-field="news"><option value="">Choisir…</option><option value="clear">Règle news respectée</option><option value="pending">Publication à attendre</option><option value="blocked">Entrées bloquées</option></select></label>
+<label><span>Stop journalier</span><select data-cockpit-field="dailyStop"><option value="">Choisir…</option><option value="intact">Intact</option><option value="hit">Atteint</option></select></label>
+<label><span>Limite de trades</span><select data-cockpit-field="tradeLimit"><option value="">Choisir…</option><option value="intact">Intacte</option><option value="hit">Atteinte</option></select></label>
+<label><span>Ruleset</span><select data-cockpit-field="ruleset"><option value="">Choisir…</option><option value="same">Inchangé</option><option value="changed">Modifié en session</option></select></label>
+</div>
+<p class="session-step-rule">Les valeurs de risque affichées sont des exemples pédagogiques à remplacer par les limites testées de ton propre plan.</p>
+</fieldset>
+</form>
+
+<aside class="session-planner-rail" aria-label="Contrôle des portes de session">
+<div class="session-evidence-head"><small>CONTRÔLE TEMPS RÉEL</small><h3>Les huit portes</h3><p>Aucune compensation : une porte fermée reste fermée, même si les sept autres sont ouvertes.</p></div>
+<div class="session-evidence" data-cockpit-evidence></div>
+<div class="session-brief-panel"><small>PLAN EXPORTABLE</small><pre data-cockpit-brief></pre><div><button data-cockpit-copy disabled type="button">Copier le plan</button><button data-cockpit-download disabled type="button">Télécharger .txt</button></div></div>
+<button class="session-cockpit-reset" data-cockpit-reset data-armed="false" type="button">Réinitialiser le cockpit</button>
+</aside>
+</div>
+<div class="session-safety-note"><strong>AUTORISÉ ≠ OBLIGATION</strong><p>Le verdict signifie seulement que ce plan précis ne détecte aucune porte fermée. Il ne prédit pas le résultat du trade et ne remplace ni le backtest, ni le forward test, ni tes limites personnelles.</p></div>
+</section>
+<script src="../js/session-cockpit.js"></script>
+
 <section class="card" id="exemple-protocole-bearish">
 <header><h2>Exemple fil rouge : construire un short sans sauter d’étape</h2><span>Cas guidé</span></header>
 <div class="protocol-example">

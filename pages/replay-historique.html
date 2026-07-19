@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>ICT Atlas - Replay historique guidé</title>
+<link href="../css/style.css" rel="stylesheet"/>
+<script defer src="../js/historical-replay.js"></script>
+</head>
+<body>
+<div class="app-shell">
+<aside aria-label="Navigation replay historique" class="site-nav">
+<div class="nav-brand"><strong>ICT Atlas</strong><span>Historical Decision Lab</span></div>
+<div class="course-nav-title"><span>V91</span><small>4 gels historiques</small></div>
+<div class="course-part">
+<div class="course-part-head"><span>Parcours</span><strong>Pratique</strong></div>
+<ol class="course-lessons">
+<li class="course-lesson"><a href="30-replay-lab.html"><span class="lesson-bullet">1</span><span class="lesson-link-text"><strong>Replay Lab</strong><small>Protocole</small></span></a></li>
+<li class="course-lesson"><a href="replay-cases.html#pack-six-cas"><span class="lesson-bullet">2</span><span class="lesson-link-text"><strong>Cas synthétiques</strong><small>Apprentissage guidé</small></span></a></li>
+<li class="course-lesson active"><a href="replay-historique.html"><span class="lesson-bullet">3</span><span class="lesson-link-text"><strong>Cas historiques</strong><small>Décision sans futur</small></span></a></li>
+<li class="course-lesson"><a href="examen-decision-session.html"><span class="lesson-bullet">4</span><span class="lesson-link-text"><strong>Examen</strong><small>12 décisions</small></span></a></li>
+<li class="course-lesson"><a href="programme-validation-20-sessions.html"><span class="lesson-bullet">5</span><span class="lesson-link-text"><strong>20 sessions</strong><small>Validation</small></span></a></li>
+</ol>
+</div>
+<div class="nav-help"><strong>Règle</strong><br/>Tu réponds avec les données visibles au gel. Le résultat futur ne peut pas corriger rétroactivement une mauvaise décision.</div>
+</aside>
+<main class="page historical-page" id="contenu" data-historical-lab>
+<div class="hero historical-hero">
+<div class="historical-hero-code">V91 · DONNÉES EXCHANGE</div>
+<h1>Historical Decision Lab</h1>
+<p>Quatre séances réelles, gelées avant la suite. Identifie l’état du marché, la DOL, l’exécution et l’invalidation avant de révéler ce qui s’est réellement passé.</p>
+<div class="tagline"><span>BTC-USD</span><span>M15</span><span>UTC</span><span>Futur masqué</span></div>
+</div>
+
+<section class="historical-source-note" aria-label="Méthode et source des données">
+<div><span>SOURCE PRIMAIRE</span><strong>Coinbase Exchange API</strong><p>OHLC historiques BTC-USD agrégés en bougies de 15 minutes. Les interprétations ICT et les corrections sont pédagogiques.</p></div>
+<div><span>FENÊTRE</span><strong>12:00 → 20:00 UTC</strong><p>Le graphique conserve la même amplitude temporelle ; la zone située après le gel reste opaque avant la soumission.</p></div>
+<div><span>LIMITE</span><strong>Ce n’est pas une preuve d’edge</strong><p>Quatre exemples expliquent un processus. Ils ne prouvent ni rentabilité, ni fréquence, ni résultat futur.</p></div>
+</section>
+
+<section class="historical-dashboard" aria-label="Progression des cas historiques">
+<div class="historical-dashboard-copy"><small>TABLEAU DE BORD</small><h2>Lis d’abord. Décide ensuite. Révèle en dernier.</h2><p>Le score mesure la qualité du raisonnement attendu dans l’exercice, jamais la capacité à prédire chaque bougie.</p></div>
+<div class="historical-dashboard-metrics">
+<div><small>CAS CORRIGÉS</small><strong data-historical-completed>0 / 4</strong></div>
+<div><small>SCORE ACTUEL</small><strong data-historical-score>0 / 16</strong></div>
+<div><small>MEILLEUR BLOC</small><strong data-historical-best>0 / 16</strong></div>
+</div>
+<div class="historical-progress" data-historical-progressbar role="progressbar" aria-label="Cas historiques corrigés" aria-valuemin="0" aria-valuemax="4" aria-valuenow="0"><span data-historical-progress></span></div>
+</section>
+
+<section class="card historical-protocol" id="protocole-historique">
+<header><h2>Les quatre questions restent dans le même ordre</h2><span>Anti-paralysie</span></header>
+<div class="historical-protocol-grid">
+<article><span>01</span><div><small>ÉTAT</small><h3>Qu’est-ce qui vient de se produire ?</h3><p>Décris l’information observable sans inventer encore un ordre.</p></div></article>
+<article><span>02</span><div><small>DESTINATION</small><h3>Quelle liquidité reste ouverte ?</h3><p>Une DOL déjà payée ne peut plus justifier le même trade.</p></div></article>
+<article><span>03</span><div><small>EXÉCUTION</small><h3>Entrer, attendre ou refuser ?</h3><p>Une bonne direction ne compense pas un prix devenu trop cher.</p></div></article>
+<article><span>04</span><div><small>INVALIDATION</small><h3>Où l’idée devient-elle fausse ?</h3><p>La structure définit le risque avant le calcul de la taille.</p></div></article>
+</div>
+<div class="rule-block"><strong>Ordre obligatoire :</strong> état → DOL → exécution → invalidation. Si une réponse manque, le bouton de révélation reste verrouillé.</div>
+</section>
+
+<div data-historical-cases></div>
+
+<section class="card historical-data-ledger" id="registre-donnees-v91">
+<header><h2>Registre vérifiable des quatre fenêtres</h2><span>Traçabilité</span></header>
+<p>Chaque lien ouvre la réponse brute de l’API utilisée pour construire le graphique. Coinbase précise que les historiques peuvent être incomplets lorsqu’aucun tick n’est publié ; les quatre fenêtres retenues contiennent ici une série M15 continue.</p>
+<div class="chart">
+<table class="référence-table">
+<thead><tr><th>Cas</th><th>Date UTC</th><th>Repères Daily connus</th><th>Données brutes</th></tr></thead>
+<tbody>
+<tr><td><strong>HIST-01</strong></td><td>5 mars 2024</td><td>PDH 68 602,98 · PDL 62 300</td><td><a href="https://api.exchange.coinbase.com/products/BTC-USD/candles?granularity=900&amp;start=2024-03-05T12%3A00%3A00Z&amp;end=2024-03-05T22%3A00%3A00Z">Ouvrir l’OHLC Coinbase</a></td></tr>
+<tr><td><strong>HIST-02</strong></td><td>14 mars 2024</td><td>PDH 73 709,99 · PDL 71 337,30</td><td><a href="https://api.exchange.coinbase.com/products/BTC-USD/candles?granularity=900&amp;start=2024-03-14T12%3A00%3A00Z&amp;end=2024-03-14T22%3A00%3A00Z">Ouvrir l’OHLC Coinbase</a></td></tr>
+<tr><td><strong>HIST-03</strong></td><td>20 mars 2024</td><td>PDH 68 136,39 · PDL 61 506</td><td><a href="https://api.exchange.coinbase.com/products/BTC-USD/candles?granularity=900&amp;start=2024-03-20T12%3A00%3A00Z&amp;end=2024-03-20T22%3A00%3A00Z">Ouvrir l’OHLC Coinbase</a></td></tr>
+<tr><td><strong>HIST-04</strong></td><td>7 mars 2024</td><td>PDH 67 654,06 · PDL 62 832,39</td><td><a href="https://api.exchange.coinbase.com/products/BTC-USD/candles?granularity=900&amp;start=2024-03-07T12%3A00%3A00Z&amp;end=2024-03-07T22%3A00%3A00Z">Ouvrir l’OHLC Coinbase</a></td></tr>
+</tbody>
+</table>
+</div>
+<p class="historical-source-link">Documentation : <a href="https://docs.cdp.coinbase.com/api-reference/exchange-api/rest-api/products/get-product-candles">Coinbase Exchange — Get product candles</a>.</p>
+</section>
+
+<section class="historical-reset-panel">
+<div><small>REFAIRE LE BLOC</small><h2>Effacer les réponses de cet appareil</h2><p>Le reset demande deux clics et efface les choix, les scores et le meilleur bloc historique local.</p></div>
+<button data-historical-reset data-armed="false" type="button">Réinitialiser les quatre cas</button>
+</section>
+
+<nav aria-label="Navigation finale" class="lesson-bottom-nav"><a class="bottom-link" href="replay-cases.html#pack-six-cas"><small>Revoir</small><span>Cas synthétiques guidés</span></a><a class="bottom-link next" href="examen-decision-session.html"><small>Continuer</small><span>Examen de décision</span></a></nav>
+</main>
+</div>
+</body>
+</html>

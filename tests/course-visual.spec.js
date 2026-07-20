@@ -62,11 +62,38 @@ const pages = [
   'pages/glossaire.html',
 ];
 
+const previouslyMissingVisualPages = [
+  'pages/01-parcours.html',
+  'pages/03-fondations.html',
+  'pages/05-variantes.html',
+  'pages/06-contextes-avances.html',
+  'pages/07-failures-journees.html',
+  'pages/09-synthese.html',
+  'pages/10-programme-avance.html',
+  'pages/12-gestion-risque.html',
+  'pages/13-prop-firm.html',
+  'pages/15-index-concepts.html',
+  'pages/18-transition-reel.html',
+  'pages/23-langage-ict-contexte.html',
+  'pages/24-premium-discount-killzones.html',
+  'pages/34-breaker-mitigation.html',
+  'pages/35-pd-arrays-hierarchie.html',
+  'pages/36-ote-dealing-range.html',
+  'pages/37-dol-targets-hierarchie.html',
+  'pages/38-smt-divergence.html',
+  'pages/glossaire.html',
+];
+
 function fileUrl(fileName) {
   return pathToFileURL(path.join(__dirname, '..', fileName)).href;
 }
 
 test.describe('ICT Atlas visual smoke audit', () => {
+  test('the visual matrix includes the 19 previously omitted pages', async () => {
+    expect(previouslyMissingVisualPages).toHaveLength(19);
+    expect(previouslyMissingVisualPages.filter((fileName) => !pages.includes(fileName))).toEqual([]);
+  });
+
   for (const fileName of pages) {
     test(`${fileName} renders SVG charts without obvious visual regressions`, async ({ page }, testInfo) => {
       await page.goto(fileUrl(fileName));
@@ -153,6 +180,43 @@ test.describe('ICT Atlas visual smoke audit', () => {
           }))
           .filter((item) => item.text && item.height < 8);
 
+        const responsiveModeErrors = visualContainers
+          .filter((container) => container.querySelector('svg, .concept-visual'))
+          .map((container) => ({
+            className: container.className,
+            modes: ['visual-mode-fit', 'visual-mode-scroll']
+              .filter((mode) => container.classList.contains(mode)),
+          }))
+          .filter((item) => item.modes.length !== 1);
+
+        const incompleteSemanticKeys = [...document.querySelectorAll('.chart--dense .visual-line-key')]
+          .map((key, index) => ({ index, items: key.querySelectorAll('.visual-line-key-item').length }))
+          .filter((item) => item.items !== 5);
+
+        const unclassifiedDashedLines = [...document.querySelectorAll([
+          '.visual-mode-scroll svg line[stroke-dasharray]',
+          '.visual-mode-fit svg line[stroke-dasharray]',
+          '.visual-mode-scroll svg path[stroke-dasharray]',
+          '.visual-mode-fit svg path[stroke-dasharray]',
+        ].join(','))]
+          .filter((line) => ![
+            'visual-level-line',
+            'visual-projection-line',
+            'visual-invalidation-line',
+          ].some((className) => line.classList.contains(className)))
+          .map((line) => line.outerHTML.slice(0, 160));
+
+        const unreadableVisualText = [...document.querySelectorAll([
+          '.visual-mode-scroll svg text',
+          '.visual-mode-fit svg text',
+        ].join(','))]
+          .filter((textNode) => textNode.getClientRects().length > 0)
+          .map((textNode) => ({
+            text: textNode.textContent.trim(),
+            height: Math.round(textNode.getBoundingClientRect().height * 10) / 10,
+          }))
+          .filter((item) => item.text && item.height < 8);
+
         return {
           svgCount: svgs.length,
           horizontalOverflow: Math.max(
@@ -167,6 +231,10 @@ test.describe('ICT Atlas visual smoke audit', () => {
           inaccessibleConceptVisuals,
           missingScrollAffordances,
           unreadableDenseText,
+          responsiveModeErrors,
+          incompleteSemanticKeys,
+          unclassifiedDashedLines,
+          unreadableVisualText,
         };
       });
 
@@ -179,6 +247,10 @@ test.describe('ICT Atlas visual smoke audit', () => {
       expect(audit.inaccessibleConceptVisuals, 'concept visuals should expose an accessible description').toEqual([]);
       expect(audit.missingScrollAffordances, 'scrollable visuals should explain horizontal navigation').toEqual([]);
       expect(audit.unreadableDenseText, 'dense chart labels should remain readable').toEqual([]);
+      expect(audit.responsiveModeErrors, 'each graphic should use exactly one responsive mode').toEqual([]);
+      expect(audit.incompleteSemanticKeys, 'dense charts should explain all five graphic roles').toEqual([]);
+      expect(audit.unclassifiedDashedLines, 'dashed lines should carry a semantic role').toEqual([]);
+      expect(audit.unreadableVisualText, 'all visible chart labels should meet the minimum rendered size').toEqual([]);
 
       if (fileName === 'index.html') {
         await expect(page.locator('.roadmap-stages > li')).toHaveCount(6);

@@ -6682,16 +6682,33 @@ pre {
   .progress-tools { display: grid; }
 }
 
-/* V95 — visual clarity system */
+/* V95–V98 — visual clarity system */
 :root {
-  --visual-observed: #d7e6f5;
-  --visual-structure: #53d6e9;
-  --visual-reference: #f8c24e;
-  --visual-positive: #4fd37b;
-  --visual-risk: #ff6868;
-  --visual-muted: #8fa5ba;
+  /* Reference palette */
+  --visual-ref-ice: #d7e6f5;
+  --visual-ref-cyan: #53d6e9;
+  --visual-ref-amber: #f8c24e;
+  --visual-ref-violet: #c4a7ff;
+  --visual-ref-red: #ff6868;
+  --visual-ref-green: #4fd37b;
+  --visual-ref-muted: #8fa5ba;
+
+  /* V98 semantic roles */
+  --visual-observed: var(--visual-ref-ice);
+  --visual-level: var(--visual-ref-amber);
+  --visual-zone: var(--visual-ref-cyan);
+  --visual-projection: var(--visual-ref-violet);
+  --visual-invalidation: var(--visual-ref-red);
+  --visual-positive: var(--visual-ref-green);
+  --visual-muted: var(--visual-ref-muted);
+
+  /* Backward-compatible aliases used by pre-V98 components. */
+  --visual-structure: var(--visual-zone);
+  --visual-reference: var(--visual-level);
+  --visual-risk: var(--visual-invalidation);
 }
 
+/* V96 — concept diagrams replacing the repeated three-line chart. */
 .concept-visual {
   position: relative;
   display: grid;
@@ -6797,6 +6814,34 @@ pre {
 .chart--concept { overflow: visible; }
 .chart--concept .concept-visual { width: 100%; }
 
+/* V95 — explicit fit/scroll modes and horizontal affordance. */
+.visual-mode-scroll {
+  max-width: 100%;
+  min-width: 0;
+  overflow-x: auto !important;
+  overflow-y: visible;
+}
+
+.abc-grid,
+.abc-case { min-width: 0; }
+
+.chart.visual-mode-fit svg,
+.exam-chart.visual-mode-fit svg,
+.guided-case-chart.visual-mode-fit svg,
+.sim-chart-wrap.visual-mode-fit svg,
+.historical-chart-scroll.visual-mode-fit svg {
+  width: 100%;
+  min-width: 0;
+}
+
+.chart.visual-mode-scroll svg,
+.exam-chart.visual-mode-scroll svg,
+.guided-case-chart.visual-mode-scroll svg,
+.sim-chart-wrap.visual-mode-scroll svg,
+.historical-chart-scroll.visual-mode-scroll svg {
+  min-width: var(--visual-scroll-width, 44rem);
+}
+
 .visual-pan-hint {
   display: none;
   position: sticky;
@@ -6823,6 +6868,7 @@ pre {
 .visual-pan-hint span { color: var(--visual-reference); font-size: 1rem; }
 .has-scrolled-visual > .visual-pan-hint { opacity: 0.52; }
 
+/* V97 — reduced secondary detail on the five densest lessons. */
 .visual-density-controls {
   display: flex;
   position: sticky;
@@ -6831,6 +6877,7 @@ pre {
   width: min(100%, calc(100vw - 3.7rem));
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
   gap: 0.75rem;
   margin-bottom: 0.55rem;
   color: var(--visual-muted);
@@ -6839,6 +6886,7 @@ pre {
 
 .visual-line-key {
   display: flex;
+  flex: 1 1 28rem;
   flex-wrap: wrap;
   gap: 0.45rem 0.9rem;
 }
@@ -6855,8 +6903,24 @@ pre {
   content: "";
 }
 
-.visual-line-key-item.is-reference::before {
-  border-color: var(--visual-reference);
+.visual-line-key-item.is-level::before {
+  border-color: var(--visual-level);
+  border-top-style: dashed;
+}
+
+.visual-line-key-item.is-zone::before {
+  height: 0.55rem;
+  border: 1px solid var(--visual-zone);
+  background: color-mix(in oklab, var(--visual-zone) 18%, transparent);
+}
+
+.visual-line-key-item.is-projection::before {
+  border-color: var(--visual-projection);
+  border-top-style: dotted;
+}
+
+.visual-line-key-item.is-invalidation::before {
+  border-color: var(--visual-invalidation);
   border-top-style: dashed;
 }
 
@@ -6874,28 +6938,47 @@ pre {
   cursor: pointer;
 }
 
-svg .visual-reference-line {
+/* V98 — one visual grammar for observed price, levels, zones, projections and invalidation. */
+svg .visual-observed-line {
+  stroke: var(--visual-observed) !important;
+}
+
+svg .visual-level-line {
+  stroke: var(--visual-level) !important;
   stroke-dasharray: 8 6;
   stroke-linecap: round;
 }
 
 svg .visual-projection-line {
+  stroke: var(--visual-projection) !important;
   stroke-dasharray: 3 6;
   stroke-linecap: round;
+}
+
+svg .visual-invalidation-line {
+  stroke: var(--visual-invalidation) !important;
+  stroke-dasharray: 11 4 2 4;
+  stroke-linecap: round;
+}
+
+svg .visual-zone-boundary { stroke: var(--visual-zone) !important; }
+
+svg .visual-zone-shape {
+  fill: color-mix(in oklab, var(--visual-zone) 16%, transparent) !important;
+}
+
+svg .visual-invalidation-zone {
+  fill: color-mix(in oklab, var(--visual-invalidation) 13%, transparent) !important;
 }
 
 .exam-chart::before { display: none; }
 
 @media (max-width: 40rem) {
   .academy-card > .table-like { table-layout: fixed; }
-  .chart svg { min-width: 52rem; }
-  .chart--dense svg { min-width: 58rem; }
   .chart--concept { padding: 0.55rem; }
   .chart--concept .concept-visual { min-width: 0; }
-  .historical-chart-scroll svg { min-width: 58rem; }
-  .exam-chart svg { min-width: 46rem; }
 
-  .is-scrollable-visual > .visual-pan-hint,
+  .is-scrollable-visual > .visual-pan-hint { display: flex; }
   .chart--dense .visual-density-toggle { display: block; }
 
   .chart--dense .visual-grid-line { opacity: 0.16 !important; }
@@ -6911,6 +6994,11 @@ svg .visual-projection-line {
   .chart--dense svg text[font-size="10"],
   .chart--dense svg text[font-size="10.2"],
   .chart--dense svg text[font-size="11"] { font-size: 12px !important; }
+
+  .visual-priority-page .chart--priority {
+    border-color: color-mix(in oklab, var(--visual-zone) 32%, transparent);
+    background: color-mix(in oklab, var(--visual-zone) 2.5%, #050b13);
+  }
 
   .concept-visual { min-height: 0; padding: 1.25rem; }
   .concept-sequence { grid-template-columns: 1fr; gap: 0.7rem; }

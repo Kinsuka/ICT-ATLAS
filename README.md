@@ -15,3 +15,15 @@ Entrées utiles :
 - Pré-cours : https://kinsuka.github.io/ICT-ATLAS/pages/00-precours-bases-trading.html
 - Guide IA : https://kinsuka.github.io/ICT-ATLAS/llms.txt
 - Sitemap : https://kinsuka.github.io/ICT-ATLAS/sitemap.xml
+
+## Lancer le site en local
+
+```bash
+npm run dev
+```
+
+Le site est ensuite disponible sur http://localhost:4173. Pour choisir un autre port :
+
+```bash
+npm run dev -- --port 4174
+```

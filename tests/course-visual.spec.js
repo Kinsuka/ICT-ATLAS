@@ -13,16 +13,29 @@ const pages = [
   'pages/00-precours-05-trade-simple.html',
   'pages/00-precours-06-risque.html',
   'pages/00-precours-07-pont-ict.html',
+  'pages/01-parcours.html',
+  'pages/03-fondations.html',
   'pages/04-setups-core.html',
+  'pages/05-variantes.html',
+  'pages/06-contextes-avances.html',
+  'pages/07-failures-journees.html',
   'pages/08-quiz.html',
+  'pages/09-synthese.html',
+  'pages/10-programme-avance.html',
   'pages/11-mecanique-marches.html',
+  'pages/12-gestion-risque.html',
+  'pages/13-prop-firm.html',
   'pages/14-live-chart.html',
+  'pages/15-index-concepts.html',
   'pages/16-modele-mental.html',
   'pages/17-concept-setup-plan.html',
+  'pages/18-transition-reel.html',
   'pages/19-preuve-statistique.html',
   'pages/20-workflow-session.html',
   'pages/21-liquidite-deplacement.html',
   'pages/22-structure-trend-range.html',
+  'pages/23-langage-ict-contexte.html',
+  'pages/24-premium-discount-killzones.html',
   'pages/25-top-down-multi-timeframe.html',
   'pages/26-psychologie-trader.html',
   'pages/27-fondations-liquidite.html',
@@ -38,9 +51,15 @@ const pages = [
   'pages/31-order-blocks.html',
   'pages/32-fvg-imbalance-ce.html',
   'pages/33-mss-changement-controle.html',
+  'pages/34-breaker-mitigation.html',
+  'pages/35-pd-arrays-hierarchie.html',
+  'pages/36-ote-dealing-range.html',
+  'pages/37-dol-targets-hierarchie.html',
+  'pages/38-smt-divergence.html',
   'pages/39-profils-journee-sessions.html',
   'pages/40-displacement-operationnel.html',
   'pages/41-no-trade.html',
+  'pages/glossaire.html',
 ];
 
 function fileUrl(fileName) {
@@ -52,9 +71,17 @@ test.describe('ICT Atlas visual smoke audit', () => {
     test(`${fileName} renders SVG charts without obvious visual regressions`, async ({ page }, testInfo) => {
       await page.goto(fileUrl(fileName));
       await expect(page.locator('h1').first()).toBeVisible();
+      await page.evaluate(() => new Promise((resolve) => requestAnimationFrame(() => resolve())));
 
       const audit = await page.evaluate(() => {
         const svgs = [...document.querySelectorAll('svg')];
+        const visualContainers = [...document.querySelectorAll([
+          '.chart',
+          '.exam-chart',
+          '.guided-case-chart',
+          '.sim-chart-wrap',
+          '.historical-chart-scroll',
+        ].join(','))].filter((container) => !container.classList.contains('chart--concept'));
         const visibleAnswerLabels = [...document.querySelectorAll('svg text')]
           .filter((node) => node.textContent.includes('Réponse') && !node.closest('details'))
           .map((node) => node.textContent.trim());
@@ -78,6 +105,7 @@ test.describe('ICT Atlas visual smoke audit', () => {
         const clippedText = svgs.flatMap((svg, svgIndex) => {
           const svgRect = svg.getBoundingClientRect();
           return [...svg.querySelectorAll('text')]
+            .filter((textNode) => textNode.getClientRects().length > 0)
             .map((textNode) => {
               const textRect = textNode.getBoundingClientRect();
               const text = textNode.textContent.trim();
@@ -97,6 +125,34 @@ test.describe('ICT Atlas visual smoke audit', () => {
             .map(({ svgIndex, text }) => ({ svgIndex, text }));
         });
 
+        const remainingDecorativeSeries = svgs
+          .map((svg, index) => ({
+            index,
+            signature: svg.querySelector('polyline')?.getAttribute('points') || '',
+          }))
+          .filter((item) => item.signature === '120,270 190,210 260,232 330,150 405,182 480,108 560,132 640,82 760,104');
+
+        const inaccessibleConceptVisuals = [...document.querySelectorAll('.concept-visual')]
+          .map((visual, index) => ({
+            index,
+            role: visual.getAttribute('role') || '',
+            label: visual.getAttribute('aria-label') || '',
+          }))
+          .filter((visual) => visual.role !== 'img' || !visual.label.trim());
+
+        const missingScrollAffordances = visualContainers
+          .filter((container) => container.scrollWidth > container.clientWidth + 2)
+          .filter((container) => !container.querySelector(':scope > .visual-pan-hint'))
+          .map((container) => container.className);
+
+        const unreadableDenseText = [...document.querySelectorAll('.chart--dense svg text')]
+          .filter((textNode) => textNode.getClientRects().length > 0)
+          .map((textNode) => ({
+            text: textNode.textContent.trim(),
+            height: Math.round(textNode.getBoundingClientRect().height * 10) / 10,
+          }))
+          .filter((item) => item.text && item.height < 8);
+
         return {
           svgCount: svgs.length,
           horizontalOverflow: Math.max(
@@ -107,6 +163,10 @@ test.describe('ICT Atlas visual smoke audit', () => {
           invisibleSvgs,
           missingLabels,
           clippedText,
+          remainingDecorativeSeries,
+          inaccessibleConceptVisuals,
+          missingScrollAffordances,
+          unreadableDenseText,
         };
       });
 
@@ -115,6 +175,10 @@ test.describe('ICT Atlas visual smoke audit', () => {
       expect(audit.invisibleSvgs, 'SVGs should have visible dimensions').toEqual([]);
       expect(audit.missingLabels, 'SVGs should describe what they illustrate').toEqual([]);
       expect(audit.clippedText, 'SVG text should stay inside its chart').toEqual([]);
+      expect(audit.remainingDecorativeSeries, 'decorative multi-line charts should use a concept visual').toEqual([]);
+      expect(audit.inaccessibleConceptVisuals, 'concept visuals should expose an accessible description').toEqual([]);
+      expect(audit.missingScrollAffordances, 'scrollable visuals should explain horizontal navigation').toEqual([]);
+      expect(audit.unreadableDenseText, 'dense chart labels should remain readable').toEqual([]);
 
       if (fileName === 'index.html') {
         await expect(page.locator('.roadmap-stages > li')).toHaveCount(6);

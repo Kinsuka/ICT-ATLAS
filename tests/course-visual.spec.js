@@ -33,6 +33,7 @@ const pages = [
   'pages/replay-historique.html',
   'pages/examen-decision-session.html',
   'pages/examen-dol-tp.html',
+  'pages/tableau-progression.html',
   'pages/programme-validation-20-sessions.html',
   'pages/31-order-blocks.html',
   'pages/32-fvg-imbalance-ce.html',
@@ -370,6 +371,7 @@ test.describe('ICT Atlas visual smoke audit', () => {
         await expect(page.locator('.exam-diagnostic')).toHaveCount(6);
         await expect(page.locator('.exam-question.is-correct')).toHaveCount(12);
         await expect.poll(() => page.evaluate(() => localStorage.getItem('ict-atlas-session-exam-mastery-v1'))).toBe('true');
+        await expect.poll(() => page.evaluate(() => JSON.parse(localStorage.getItem('ict-atlas-session-exam-diagnostic-v1')).score)).toBe(12);
       }
 
       if (fileName === 'pages/examen-dol-tp.html') {
@@ -396,6 +398,52 @@ test.describe('ICT Atlas visual smoke audit', () => {
         await expect(page.locator('.target-diagnostic-grid .exam-diagnostic')).toHaveCount(4);
         await expect(page.locator('.target-case .exam-question.is-correct')).toHaveCount(18);
         await expect(page.locator('[data-target-band-code]')).toHaveText('MAÎTRISE');
+        await expect.poll(() => page.evaluate(() => JSON.parse(localStorage.getItem('ict-atlas-target-exam-diagnostic-v1')).score)).toBe(18);
+      }
+
+      if (fileName === 'pages/tableau-progression.html') {
+        await expect(page.locator('.progress-route-step')).toHaveCount(6);
+        await expect(page.locator('[data-progress-completed]')).toHaveText('0');
+        await expect(page.locator('[data-progress-title]')).toHaveText('Préparer puis passer l’examen de décision');
+        await expect(page.locator('.progress-route-step.is-active')).toHaveCount(1);
+
+        mkdirSync(path.join(__dirname, '..', 'test-results', 'visual-smoke'), { recursive: true });
+        const safeProject = testInfo.project.name.replace(/[^a-z0-9_-]/gi, '-');
+        await page.screenshot({
+          path: path.join(__dirname, '..', 'test-results', 'visual-smoke', `${safeProject}-pages-tableau-progression-html-start.png`),
+          fullPage: false,
+        });
+
+        await page.evaluate(() => {
+          localStorage.setItem('ict-atlas-session-exam-best-v1', '8');
+          localStorage.setItem('ict-atlas-session-exam-diagnostic-v1', JSON.stringify({
+            score: 8,
+            total: 12,
+            categories: {
+              Contexte: { score: 0, total: 2 },
+              'DOL / repères': { score: 2, total: 2 },
+            },
+          }));
+        });
+        await page.locator('[data-progress-refresh]').click();
+        await expect(page.locator('[data-progress-title]')).toHaveText('Repasser l’examen de décision');
+        await expect(page.locator('.progress-skill.is-critical')).toHaveCount(1);
+        await expect(page.locator('[data-progress-skills] .progress-skill').first()).toContainText('Contexte');
+
+        await page.evaluate(() => {
+          localStorage.setItem('ict-atlas-session-exam-best-v1', '12');
+          localStorage.setItem('ict-atlas-session-exam-mastery-v1', 'true');
+          localStorage.setItem('ict-atlas-target-exam-best-v1', '18');
+          localStorage.setItem('ict-atlas-historical-replay-v1', JSON.stringify({ scores: { 'hist-01': 4, 'hist-02': 4, 'hist-03': 4, 'hist-04': 4 }, best: 16 }));
+          localStorage.setItem('ict-atlas-validation-20-sessions-v1', JSON.stringify(Array.from({ length: 20 }, () => ({ checks: [true, true, true, true, true], finalized: true }))));
+          localStorage.setItem('ict-atlas-forward-gate-v1', JSON.stringify({ verdict: 'go' }));
+          localStorage.setItem('ict-atlas-risk-ladder-v1', JSON.stringify({ verdict: 'stabilize' }));
+        });
+        await page.locator('[data-progress-refresh]').click();
+        await expect(page.locator('[data-progress-completed]')).toHaveText('6');
+        await expect(page.locator('.progress-route-step.is-complete')).toHaveCount(6);
+        await expect(page.locator('[data-progress-state]')).toHaveText('PROCESSUS COMPLET');
+        await expect(page.locator('[data-progress-command]')).toHaveAttribute('data-progress-command', 'complete');
       }
 
       if (fileName === 'pages/programme-validation-20-sessions.html') {
@@ -426,12 +474,15 @@ test.describe('ICT Atlas visual smoke audit', () => {
         await expect(page.locator('[data-validation-passed]')).toHaveText('1');
       }
 
-      if (['index.html', 'pages/04-setups-core.html', 'pages/08-quiz.html', 'pages/19-preuve-statistique.html', 'pages/20-workflow-session.html', 'pages/29-fondations-stop-tp.html', 'pages/replay-cases.html', 'pages/replay-historique.html', 'pages/examen-decision-session.html', 'pages/examen-dol-tp.html', 'pages/programme-validation-20-sessions.html', 'pages/41-no-trade.html'].includes(fileName)) {
+      if (['index.html', 'pages/04-setups-core.html', 'pages/08-quiz.html', 'pages/19-preuve-statistique.html', 'pages/20-workflow-session.html', 'pages/29-fondations-stop-tp.html', 'pages/replay-cases.html', 'pages/replay-historique.html', 'pages/examen-decision-session.html', 'pages/examen-dol-tp.html', 'pages/tableau-progression.html', 'pages/programme-validation-20-sessions.html', 'pages/41-no-trade.html'].includes(fileName)) {
         mkdirSync(path.join(__dirname, '..', 'test-results', 'visual-smoke'), { recursive: true });
         const safeProject = testInfo.project.name.replace(/[^a-z0-9_-]/gi, '-');
         const safeFileName = fileName.replace(/[^a-z0-9_-]/gi, '-');
-        if (fileName === 'pages/programme-validation-20-sessions.html') {
-          await page.evaluate(() => window.scrollTo(0, 0));
+        if (['pages/programme-validation-20-sessions.html', 'pages/tableau-progression.html'].includes(fileName)) {
+          await page.evaluate(() => {
+            document.documentElement.style.scrollBehavior = 'auto';
+            window.scrollTo(0, 0);
+          });
           await page.locator('.page').evaluate((element) => element.scrollTo(0, 0));
         }
         await page.screenshot({

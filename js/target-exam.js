@@ -78,6 +78,7 @@
     'Gestion': ['37-dol-targets-hierarchie.html#checklist-targets', 'Gestion des targets'],
   };
   const storageKey = 'ict-atlas-target-exam-best-v1';
+  const diagnosticStorageKey = 'ict-atlas-target-exam-diagnostic-v1';
   const casesRoot = exam.querySelector('[data-target-cases]');
   const submit = exam.querySelector('[data-target-submit]');
   const results = exam.querySelector('[data-target-results]');
@@ -184,6 +185,15 @@
       card.innerHTML = `<div><strong>${category}</strong><span>${entry.score} / ${entry.total}</span></div><i style="--exam-category-score:${(entry.score / entry.total) * 100}%"></i><a href="${href}">${entry.score === entry.total ? 'Compétence validée' : `Retravailler : ${lesson}`}</a>`;
       diagnostics.append(card);
     });
+
+    try {
+      localStorage.setItem(diagnosticStorageKey, JSON.stringify({
+        score,
+        total: questions.length,
+        categories: Object.fromEntries(categories),
+        completedAt: new Date().toISOString(),
+      }));
+    } catch (_) { /* storage can be unavailable */ }
 
     let code = 'RECONSTRUCTION';
     let band = 'La chaîne cible → ordre → décision reste fragile';

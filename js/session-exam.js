@@ -14,6 +14,7 @@
   const bestLabels = [...exam.querySelectorAll('[data-exam-best], [data-exam-best-result]')];
   const storageKey = 'ict-atlas-session-exam-best-v1';
   const masteryStorageKey = 'ict-atlas-session-exam-mastery-v1';
+  const diagnosticStorageKey = 'ict-atlas-session-exam-diagnostic-v1';
 
   function getBest() {
     try {
@@ -127,6 +128,15 @@
       card.append(head, bar, link);
       diagnostics.append(card);
     });
+
+    try {
+      localStorage.setItem(diagnosticStorageKey, JSON.stringify({
+        score,
+        total: questions.length,
+        categories: Object.fromEntries(categories),
+        completedAt: new Date().toISOString(),
+      }));
+    } catch (_) { /* local storage can be unavailable */ }
 
     const mastered = score >= 10 && !hasZeroCategory;
     if (mastered) {

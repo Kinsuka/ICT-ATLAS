@@ -84,6 +84,19 @@ const previouslyMissingVisualPages = [
   'pages/glossaire.html',
 ];
 
+const editorialTierCounts = {
+  'pages/04-setups-core.html': { essential: 7, application: 3, reference: 4 },
+  'pages/05-variantes.html': { essential: 8, application: 4, reference: 14 },
+  'pages/06-contextes-avances.html': { essential: 8, application: 3, reference: 3 },
+};
+
+const editorialArcPages = [
+  'pages/03-fondations.html',
+  'pages/04-setups-core.html',
+  'pages/05-variantes.html',
+  'pages/06-contextes-avances.html',
+];
+
 function fileUrl(fileName) {
   return pathToFileURL(path.join(__dirname, '..', fileName)).href;
 }
@@ -98,7 +111,45 @@ test.describe('ICT Atlas visual smoke audit', () => {
     test(`${fileName} renders SVG charts without obvious visual regressions`, async ({ page }, testInfo) => {
       await page.goto(fileUrl(fileName));
       await expect(page.locator('h1').first()).toBeVisible();
+      if (await page.locator('script[src$="glossary-panel.js"]').count()) {
+        await expect(page.locator('html')).toHaveAttribute('data-visuals-ready', 'true');
+      }
       await page.evaluate(() => new Promise((resolve) => requestAnimationFrame(() => resolve())));
+
+      if (editorialArcPages.includes(fileName)) {
+        await expect(page.locator('.lesson-role-arc a')).toHaveCount(4);
+        await expect(page.locator('.lesson-role-arc a[aria-current="page"]')).toHaveCount(1);
+        const caseNumberAudit = await page.locator('main.page > section.card > header h2').evaluateAll((headings) => ({
+          badges: headings.filter((heading) => heading.querySelector('.atlas-case-number')).length,
+          rawPrefixes: headings
+            .map((heading) => heading.textContent.trim())
+            .filter((text) => /^\d{2}\s*—/.test(text)),
+        }));
+        expect(caseNumberAudit.badges).toBeGreaterThan(0);
+        expect(caseNumberAudit.rawPrefixes).toEqual([]);
+      }
+
+      if (fileName === 'pages/04-setups-core.html') {
+        await expect(page.locator('#setup-prerequisites .prerequisite-matrix > li')).toHaveCount(9);
+        await expect(page.locator('[id^="v63-bridge"], [id^="v64-bridge"], [id^="v65-bridge"], [id^="v66-bridge"], [id^="v67-bridge"], [id^="v68-bridge"], [id^="v69-bridge"], #v70-bridge-smt-divergence, #v71-bridge-profils-journee')).toHaveCount(0);
+      }
+
+      const readingMap = page.locator('.lesson-reading-map');
+      if (await readingMap.count()) {
+        const actualTierCounts = await page.locator('main.page > section[data-learning-tier]').evaluateAll((sections) => (
+          sections.reduce((counts, section) => ({
+            ...counts,
+            [section.dataset.learningTier]: (counts[section.dataset.learningTier] || 0) + 1,
+          }), {})
+        ));
+        expect(actualTierCounts).toEqual(editorialTierCounts[fileName]);
+        await expect(readingMap).toHaveAttribute('data-reading-mode', 'guided');
+        expect(await page.locator('main.page > section[data-learning-tier][hidden]').count()).toBeGreaterThan(0);
+        await readingMap.locator('[data-reading-mode="all"]').click();
+        await expect(readingMap).toHaveAttribute('data-reading-mode', 'all');
+        await expect(page.locator('main.page > section[data-learning-tier][hidden]')).toHaveCount(0);
+        await page.evaluate(() => new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve))));
+      }
 
       const audit = await page.evaluate(() => {
         const svgs = [...document.querySelectorAll('svg')];
@@ -253,18 +304,20 @@ test.describe('ICT Atlas visual smoke audit', () => {
       expect(audit.unreadableVisualText, 'all visible chart labels should meet the minimum rendered size').toEqual([]);
 
       if (fileName === 'index.html') {
-        await expect(page.locator('.roadmap-stages > li')).toHaveCount(6);
+        await expect(page.locator('.roadmap-stages > li')).toHaveCount(8);
         const roadmapHrefs = await page.locator('.roadmap-stages > li > a').evaluateAll((links) => links.map((link) => link.getAttribute('href')));
         expect(roadmapHrefs).toEqual([
           'pages/20-workflow-session.html#v92-session-cockpit',
           'pages/replay-cases.html#pack-six-cas',
           'pages/replay-cases.html#simulateur-session',
           'pages/examen-decision-session.html',
+          'pages/examen-dol-tp.html',
+          'pages/replay-historique.html',
           'pages/programme-validation-20-sessions.html',
           'pages/19-preuve-statistique.html',
         ]);
-        await expect(page.locator('[data-roadmap-next-link]')).toHaveAttribute('href', 'pages/20-workflow-session.html#v92-session-cockpit');
-        await expect(page.locator('[data-roadmap-next-title]')).toHaveText('Remplir le cockpit de session');
+        await expect(page.locator('[data-roadmap-next-link]')).toHaveAttribute('href', 'pages/16-modele-mental.html');
+        await expect(page.locator('[data-roadmap-next-title]')).toHaveText('Commencer par le modèle mental');
 
         await page.evaluate(() => localStorage.setItem('ict-atlas-session-exam-best-v1', '8'));
         await page.reload();
@@ -274,6 +327,16 @@ test.describe('ICT Atlas visual smoke audit', () => {
         await page.evaluate(() => localStorage.setItem('ict-atlas-session-exam-mastery-v1', 'true'));
         await page.reload();
         await expect(page.locator('[data-roadmap-exam-status]')).toHaveText('SEUIL VALIDÉ');
+        await expect(page.locator('[data-roadmap-next-link]')).toHaveAttribute('href', 'pages/examen-dol-tp.html');
+
+        await page.evaluate(() => localStorage.setItem('ict-atlas-target-exam-best-v1', '16'));
+        await page.reload();
+        await expect(page.locator('[data-roadmap-target-status]')).toHaveText('SEUIL VALIDÉ');
+        await expect(page.locator('[data-roadmap-next-link]')).toHaveAttribute('href', 'pages/replay-historique.html');
+
+        await page.evaluate(() => localStorage.setItem('ict-atlas-historical-replay-v1', JSON.stringify({ scores: { 'hist-01': 3, 'hist-02': 3, 'hist-03': 3, 'hist-04': 3 }, best: 12 })));
+        await page.reload();
+        await expect(page.locator('[data-roadmap-historical-status]')).toHaveText('SEUIL VALIDÉ');
         await expect(page.locator('[data-roadmap-next-link]')).toHaveAttribute('href', 'pages/programme-validation-20-sessions.html');
 
         await page.evaluate(() => {
@@ -625,6 +688,18 @@ test.describe('ICT Atlas visual smoke audit', () => {
           path: path.join(__dirname, '..', 'test-results', 'visual-smoke', `${safeProject}-${safeFileName}.png`),
           fullPage: false,
         });
+
+        if (fileName === 'pages/04-setups-core.html') {
+          await page.locator('.lesson-role-arc').screenshot({
+            path: path.join(__dirname, '..', 'test-results', 'visual-smoke', `${safeProject}-${safeFileName}-editorial-arc.png`),
+          });
+          await page.locator('#setup-prerequisites').screenshot({
+            path: path.join(__dirname, '..', 'test-results', 'visual-smoke', `${safeProject}-${safeFileName}-prerequisite-grid.png`),
+          });
+          await page.locator('#fvg-bull > header').screenshot({
+            path: path.join(__dirname, '..', 'test-results', 'visual-smoke', `${safeProject}-${safeFileName}-case-number.png`),
+          });
+        }
 
         if (fileName === 'pages/20-workflow-session.html') {
           await page.locator('#protocole-operationnel').screenshot({

@@ -1,0 +1,31 @@
+/* V102 — données du glossaire rapide, chargées uniquement à la première ouverture. */
+window.ICT_ATLAS_GLOSSARY_TERMS = Object.freeze([
+  ["Liquidité", "Zones où les ordres sont probablement concentrés : stops au-dessus des highs, stops sous les lows, niveaux évidents."],
+  ["BSL / SSL", "Buy-Side Liquidity au-dessus d’un high ; Sell-Side Liquidity sous un low. Ce sont des cibles possibles, pas des entrées."],
+  ["Sweep / Raid", "Dépassement d’un high ou low visible pour prendre la liquidité. On observe ensuite la réaction du prix."],
+  ["DOL", "Draw on Liquidity : cible de liquidité la plus logique dans le contexte actuel."],
+  ["Liquidité interne / externe", "Interne : cible proche dans la structure courante. Externe : high/low plus large qui peut devenir DOL principal."],
+  ["PDH / PDL", "Previous Day High / Low. Repères journaliers majeurs pour lire la liquidité et le biais."],
+  ["Displacement", "Mouvement impulsif qui montre une livraison rapide du prix, peu d’overlap, une rupture utile et un déséquilibre directionnel."],
+  ["FVG", "Fair Value Gap : zone créée par une livraison rapide. Elle devient utile seulement avec contexte, cible et invalidation."],
+  ["MSS", "Market Structure Shift : changement de structure après une prise de liquidité ou une rupture de contrôle."],
+  ["OB", "Order Block : dernière zone opposée avant une impulsion significative. Zone candidate, pas signal automatique."],
+  ["Breaker", "Ancien OB invalidé qui peut agir dans l’autre sens après changement de structure."],
+  ["PD Arrays", "Famille de zones de prix utiles en lecture ICT : OB, FVG, breaker, liquidité, premium/discount ou niveaux HTF. Elles doivent être priorisées."],
+  ["OTE", "Optimal Trade Entry : zone de retracement, généralement utilisée seulement si l’ancrage du mouvement est justifié."],
+  ["Dealing Range", "Range de référence utilisée pour lire premium/discount, ancrer un retracement et situer objectifs/invalidation."],
+  ["CE", "Consequent Encroachment : milieu d’une zone, souvent utilisé comme repère de précision ou de qualité."],
+  ["SMT", "Divergence entre deux marchés corrélés : l’un prend une liquidité, l’autre ne confirme pas. Confluence, pas entrée autonome."],
+  ["Profil de journée", "Lecture du comportement global d’une session : trend day, range day, reversal day, expansion/continuation ou no-trade."],
+  ["No Trade", "Décision active de ne pas entrer parce qu’une condition obligatoire manque : contexte, timing, target, risque ou état mental."],
+  ["Premium / Discount", "Position du prix dans une range. Acheter en discount et vendre en premium donne une meilleure logique contextuelle."],
+  ["Kill Zone", "Fenêtre horaire où l’on accepte de chercher certains setups. Hors timing, le même signal perd en qualité."],
+  ["Trend", "Environnement directionnel : impulsions plus fortes que corrections. Les pullbacks dans le sens du flux sont favorisés."],
+  ["Range", "Environnement d’équilibre relatif : rejet, absorption et faux breakouts sont plus fréquents."],
+  ["Transition", "Phase où le marché passe d’un équilibre à un déséquilibre, ou d’une tendance à une autre."],
+  ["Pullback", "Correction contre l’impulsion. Il est sain s’il respecte la structure et ne détruit pas le déplacement précédent."],
+  ["Failed breakout", "Cassure sans acceptation : le prix sort d’une zone puis réintègre rapidement la range."],
+  ["Edge", "Avantage mesurable sur échantillon. Un beau pattern ne devient un edge qu’après preuve statistique."],
+]);
+
+window.dispatchEvent(new CustomEvent("ict-atlas:glossary-data"));

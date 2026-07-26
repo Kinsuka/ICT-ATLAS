@@ -5,6 +5,12 @@
   "main": "js/glossary-panel.js",
   "scripts": {
     "dev": "node scripts/serve.js",
+    "preview": "node scripts/serve.js --production",
+    "sync:navigation": "python3 scripts/course_platform_layout.py",
+    "test:performance": "node scripts/check-performance.js && playwright test tests/course-performance.spec.js",
+    "test:structure": "node scripts/check-course-structure.js",
+    "test:journey": "playwright test tests/course-journey.spec.js",
+    "test:a11y": "playwright test tests/course-accessibility.spec.js",
     "test:e2e": "playwright test",
     "test:e2e:headed": "playwright test --headed",
     "test:e2e:update": "playwright test --update-snapshots"

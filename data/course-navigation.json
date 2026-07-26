@@ -1,0 +1,67 @@
+[
+  {
+    "label": "Partie 1",
+    "title": "Comprendre la logique ICT",
+    "lessons": [
+      ["index.html", "Accueil du cours"],
+      ["16-modele-mental.html", "Modèle mental"],
+      ["01-parcours.html", "Tirez le maximum du cours"],
+      ["11-mecanique-marches.html", "Comprenez la mécanique des marchés"],
+      ["23-langage-ict-contexte.html", "Lisez le langage ICT en contexte"],
+      ["21-liquidite-deplacement.html", "Comprenez le déplacement du prix"],
+      ["40-displacement-operationnel.html", "Validez un displacement opérationnel"],
+      ["27-fondations-liquidite.html", "Lisez la liquidité"],
+      ["28-fondations-entree.html", "Construisez le scénario d’entrée"],
+      ["29-fondations-stop-tp.html", "Placez stop, invalidation et TP"],
+      ["22-structure-trend-range.html", "Comprenez trend, range et transitions"],
+      ["17-concept-setup-plan.html", "Distinguez concept, setup et plan"]
+    ]
+  },
+  {
+    "label": "Partie 2",
+    "title": "Construire une lecture de setup",
+    "lessons": [
+      ["24-premium-discount-killzones.html", "Situez où et quand chercher"],
+      ["03-fondations.html", "Posez les fondations de décision"],
+      ["25-top-down-multi-timeframe.html", "Lisez en top-down multi-timeframe"],
+      ["31-order-blocks.html", "Comprenez les Order Blocks"],
+      ["32-fvg-imbalance-ce.html", "Comprenez FVG, imbalance et CE"],
+      ["33-mss-changement-controle.html", "Validez le MSS et le changement de contrôle"],
+      ["34-breaker-mitigation.html", "Comprenez breaker et mitigation"],
+      ["35-pd-arrays-hierarchie.html", "Priorisez les PD Arrays"],
+      ["36-ote-dealing-range.html", "Ancrez OTE et dealing range"],
+      ["37-dol-targets-hierarchie.html", "Hiérarchisez DOL et targets"],
+      ["38-smt-divergence.html", "Utilisez SMT comme confluence"],
+      ["39-profils-journee-sessions.html", "Lisez les profils de journée"],
+      ["04-setups-core.html", "Reconnaissez les setups cœur"],
+      ["18-transition-reel.html", "Passez du propre au réel"],
+      ["05-variantes.html", "Filtrez les variantes et faux signaux"],
+      ["07-failures-journees.html", "Acceptez les failures et journées complexes"],
+      ["41-no-trade.html", "Maîtrisez le no trade"]
+    ]
+  },
+  {
+    "label": "Partie 3",
+    "title": "Tester, risquer et exécuter",
+    "lessons": [
+      ["06-contextes-avances.html", "Ajoutez les contextes avancés"],
+      ["12-gestion-risque.html", "Calculez le risque"],
+      ["19-preuve-statistique.html", "Prouvez l’edge statistiquement"],
+      ["26-psychologie-trader.html", "Travaillez le jeu mental"],
+      ["20-workflow-session.html", "Préparez une session live"],
+      ["14-live-chart.html", "Lisez un graphique TradingView"]
+    ]
+  },
+  {
+    "label": "Partie 4",
+    "title": "Valider et pratiquer",
+    "lessons": [
+      ["10-programme-avance.html", "Suivez le programme avancé"],
+      ["30-replay-lab.html", "Entraînez-vous en bar replay"],
+      ["08-quiz.html", "Passez les quiz"],
+      ["13-prop-firm.html", "Adaptez-vous aux prop firms"],
+      ["09-synthese.html", "Validez la synthèse finale"],
+      ["15-index-concepts.html", "Retrouvez les concepts"]
+    ]
+  }
+]

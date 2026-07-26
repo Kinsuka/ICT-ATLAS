@@ -1,0 +1,12 @@
+{
+  "htmlTotalBytes": 2150000,
+  "htmlTotalGzipBytes": 470000,
+  "htmlPageBytes": 230000,
+  "htmlPageGzipBytes": 31000,
+  "cssGzipBytes": 33000,
+  "javascriptFileGzipBytes": 11000,
+  "domNodesPerPage": 6500,
+  "svgElementsPerPage": 30,
+  "inlineSvgTotalBytes": 750000,
+  "inlineSvgPageBytes": 165000
+}

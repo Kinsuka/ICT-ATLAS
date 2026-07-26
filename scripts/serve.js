@@ -1,6 +1,10 @@
 const http = require('node:http');
 const path = require('node:path');
 const { readFile, stat } = require('node:fs/promises');
+const { promisify } = require('node:util');
+const { gzip } = require('node:zlib');
+
+const gzipAsync = promisify(gzip);
 
 const siteRoot = path.resolve(__dirname, '..');
 const defaultPort = 4173;
@@ -40,6 +44,7 @@ function readOption(name) {
 
 const requestedPort = readOption('--port') || process.env.ICT_ATLAS_PORT || defaultPort;
 const port = Number.parseInt(requestedPort, 10);
+const productionMode = process.argv.includes('--production');
 
 if (!Number.isInteger(port) || port < 1 || port > 65535) {
   console.error(`Port invalide : ${requestedPort}`);
@@ -47,11 +52,12 @@ if (!Number.isInteger(port) || port < 1 || port > 65535) {
   return;
 }
 
-function send(response, statusCode, body, contentType = 'text/plain; charset=utf-8') {
+function send(response, statusCode, body, contentType = 'text/plain; charset=utf-8', headers = {}) {
   response.writeHead(statusCode, {
-    'Cache-Control': 'no-store',
+    'Cache-Control': productionMode ? 'no-cache' : 'no-store',
     'Content-Type': contentType,
     'X-Content-Type-Options': 'nosniff',
+    ...headers,
   });
   response.end(body);
 }
@@ -85,10 +91,34 @@ const server = http.createServer(async (request, response) => {
   }
 
   try {
-    const fileStats = await stat(filePath);
+    let fileStats = await stat(filePath);
     if (fileStats.isDirectory()) filePath = path.join(filePath, 'index.html');
-    const body = request.method === 'HEAD' ? undefined : await readFile(filePath);
-    send(response, 200, body, mimeTypes.get(path.extname(filePath).toLowerCase()) || 'application/octet-stream');
+    if (fileStats.isDirectory()) fileStats = await stat(filePath);
+
+    const extension = path.extname(filePath).toLowerCase();
+    const contentType = mimeTypes.get(extension) || 'application/octet-stream';
+    const etag = `W/"${fileStats.size}-${Math.trunc(fileStats.mtimeMs)}"`;
+    const cacheControl = productionMode && extension !== '.html'
+      ? 'public, max-age=600'
+      : productionMode ? 'no-cache' : 'no-store';
+    const responseHeaders = {
+      'Cache-Control': cacheControl,
+      ETag: etag,
+    };
+
+    if (request.headers['if-none-match'] === etag) {
+      send(response, 304, undefined, contentType, responseHeaders);
+      return;
+    }
+
+    let body = request.method === 'HEAD' ? undefined : await readFile(filePath);
+    const compressible = /^(?:text\/|application\/(?:javascript|json|xml))/.test(contentType);
+    if (productionMode && body?.length >= 1024 && compressible && /\bgzip\b/.test(request.headers['accept-encoding'] || '')) {
+      body = await gzipAsync(body, { level: 6 });
+      responseHeaders['Content-Encoding'] = 'gzip';
+      responseHeaders.Vary = 'Accept-Encoding';
+    }
+    send(response, 200, body, contentType, responseHeaders);
   } catch (error) {
     send(response, error.code === 'EACCES' ? 403 : 404, error.code === 'EACCES' ? 'Accès interdit' : 'Page introuvable');
   }
@@ -104,7 +134,7 @@ server.on('error', (error) => {
 });
 
 server.listen(port, '127.0.0.1', () => {
-  console.log(`ICT Atlas est disponible sur http://localhost:${port}`);
+  console.log(`ICT Atlas est disponible sur http://localhost:${port} (${productionMode ? 'aperçu optimisé' : 'développement'})`);
   console.log('Arrêt du serveur : Ctrl+C');
 });
 

@@ -1,74 +1,10 @@
+import json
 from pathlib import Path
 from bs4 import BeautifulSoup
 
 
-PARTS = [
-    {
-        "label": "Partie 1",
-        "title": "Comprendre la logique ICT",
-        "lessons": [
-            ("index.html", "Accueil du cours"),
-            ("16-modele-mental.html", "Modèle mental"),
-            ("01-parcours.html", "Tirez le maximum du cours"),
-            ("11-mecanique-marches.html", "Comprenez la mécanique des marchés"),
-            ("23-langage-ict-contexte.html", "Lisez le langage ICT en contexte"),
-            ("21-liquidite-deplacement.html", "Comprenez le déplacement du prix"),
-            ("40-displacement-operationnel.html", "Validez un displacement opérationnel"),
-            ("27-fondations-liquidite.html", "Lisez la liquidité"),
-            ("28-fondations-entree.html", "Construisez le scénario d’entrée"),
-            ("29-fondations-stop-tp.html", "Placez stop, invalidation et TP"),
-            ("22-structure-trend-range.html", "Comprenez trend, range et transitions"),
-            ("17-concept-setup-plan.html", "Distinguez concept, setup et plan"),
-        ],
-    },
-    {
-        "label": "Partie 2",
-        "title": "Construire une lecture de setup",
-        "lessons": [
-            ("24-premium-discount-killzones.html", "Situez où et quand chercher"),
-            ("03-fondations.html", "Posez les fondations de décision"),
-            ("25-top-down-multi-timeframe.html", "Lisez en top-down multi-timeframe"),
-            ("31-order-blocks.html", "Comprenez les Order Blocks"),
-            ("32-fvg-imbalance-ce.html", "Comprenez FVG, imbalance et CE"),
-            ("33-mss-changement-controle.html", "Validez le MSS et le changement de contrôle"),
-            ("34-breaker-mitigation.html", "Comprenez breaker et mitigation"),
-            ("35-pd-arrays-hierarchie.html", "Priorisez les PD Arrays"),
-            ("36-ote-dealing-range.html", "Ancrez OTE et dealing range"),
-            ("37-dol-targets-hierarchie.html", "Hiérarchisez DOL et targets"),
-            ("38-smt-divergence.html", "Utilisez SMT comme confluence"),
-            ("39-profils-journee-sessions.html", "Lisez les profils de journée"),
-            ("04-setups-core.html", "Reconnaissez les setups cœur"),
-            ("18-transition-reel.html", "Passez du propre au réel"),
-            ("05-variantes.html", "Filtrez les variantes et faux signaux"),
-            ("07-failures-journees.html", "Acceptez les failures et journées complexes"),
-            ("41-no-trade.html", "Maîtrisez le no trade"),
-        ],
-    },
-    {
-        "label": "Partie 3",
-        "title": "Tester, risquer et exécuter",
-        "lessons": [
-            ("06-contextes-avances.html", "Ajoutez les contextes avancés"),
-            ("12-gestion-risque.html", "Calculez le risque"),
-            ("19-preuve-statistique.html", "Prouvez l’edge statistiquement"),
-            ("26-psychologie-trader.html", "Travaillez le jeu mental"),
-            ("20-workflow-session.html", "Préparez une session live"),
-            ("14-live-chart.html", "Lisez un graphique TradingView"),
-        ],
-    },
-    {
-        "label": "Partie 4",
-        "title": "Valider et pratiquer",
-        "lessons": [
-            ("10-programme-avance.html", "Suivez le programme avancé"),
-            ("30-replay-lab.html", "Entraînez-vous en bar replay"),
-            ("08-quiz.html", "Passez les quiz"),
-            ("13-prop-firm.html", "Adaptez-vous aux prop firms"),
-            ("09-synthese.html", "Validez la synthèse finale"),
-            ("15-index-concepts.html", "Retrouvez les concepts"),
-        ],
-    },
-]
+ROOT = Path(__file__).resolve().parents[1]
+PARTS = json.loads((ROOT / "data" / "course-navigation.json").read_text(encoding="utf-8"))
 
 
 def flatten_lessons():
@@ -252,37 +188,52 @@ LESSON_OBJECTIVES = {
         ("Avant de continuer", "Le replay n’est utile que si tu notes ta décision avant de voir la suite."),
         ("Checkpoint", "Tu dois pouvoir produire une fiche de cas : contexte, liquidité, décision, invalidation, résultat."),
     ],
+    "06-contextes-avances.html": [
+        ("Objectif", "Combiner Daily Bias, narrative, SMT et contexte événementiel sans transformer une confluence en signal automatique."),
+        ("À produire", "Une fiche de contexte qui sépare faits observés, hypothèse, invalidation et conditions de no trade."),
+        ("Checkpoint", "Sur un cas inédit, tu dois choisir trade ou no trade et nommer le fait précis qui invalide ta lecture."),
+    ],
+    "12-gestion-risque.html": [
+        ("Objectif", "Transformer une invalidation graphique en taille de position et en risque total de session."),
+        ("À produire", "Une fiche de risque avec capital, risque en pourcentage, distance du stop, taille et perte maximale quotidienne."),
+        ("Checkpoint", "Tu dois calculer une taille correcte et refuser le trade si le stop structurel dépasse ton budget de risque."),
+    ],
+    "20-workflow-session.html": [
+        ("Objectif", "Enchaîner préparation, autorisation, exécution et review dans un protocole unique."),
+        ("À produire", "Un cockpit de session rempli avant l’ouverture, puis finalisé avec décision et preuve après la session."),
+        ("Checkpoint", "Tu dois pouvoir autoriser ou refuser un trade avec les mêmes critères avant et après le résultat."),
+    ],
+    "14-live-chart.html": [
+        ("Objectif", "Transférer la grille du cours vers un graphique réel sans bénéficier du recul."),
+        ("À produire", "Une capture annotée avec contexte, liquidité, scénario, invalidation, DOL et décision horodatée."),
+        ("Checkpoint", "Tu dois lire un graphique non préparé et distinguer observation, hypothèse et confirmation."),
+    ],
+    "10-programme-avance.html": [
+        ("Objectif", "Organiser l’apprentissage en cycles de lecture, replay, journal et correction mesurable."),
+        ("À produire", "Un calendrier de travail avec un modèle unique, un échantillon cible et une revue planifiée."),
+        ("Checkpoint", "Tu dois terminer un cycle sans changer de règles en cours d’échantillon et présenter les preuves collectées."),
+    ],
+    "08-quiz.html": [
+        ("Objectif", "Tester la compréhension des décisions plutôt que la mémorisation des sigles."),
+        ("À produire", "Un journal d’erreurs classé par contexte, liquidité, confirmation, risque et cible."),
+        ("Checkpoint", "Tu dois expliquer chaque correction avec une règle du cours sans relire immédiatement la réponse."),
+    ],
+    "13-prop-firm.html": [
+        ("Objectif", "Adapter le plan aux limites d’une prop firm sans dégrader le modèle ni augmenter la fréquence."),
+        ("À produire", "Une fiche de règles traduite en risque par trade, perte quotidienne, drawdown maximal et conditions d’arrêt."),
+        ("Checkpoint", "Tu dois calculer le nombre maximal d’essais permis et arrêter la session avant la violation d’une limite."),
+    ],
+    "09-synthese.html": [
+        ("Objectif", "Assembler contexte, setup, risque, exécution et preuve dans une méthode personnelle cohérente."),
+        ("À produire", "Un plan d’une page qui définit ce que tu trades, ce que tu refuses et ce que tu mesures."),
+        ("Checkpoint", "Tu dois présenter un scénario complet de la préparation à la review sans ajouter une règle après le résultat."),
+    ],
+    "15-index-concepts.html": [
+        ("Objectif", "Retrouver rapidement la définition, la leçon source et l’usage pratique de chaque concept."),
+        ("À produire", "Une carte personnelle reliant les concepts utilisés dans ton modèle aux chapitres de référence."),
+        ("Checkpoint", "Tu dois retrouver en moins d’une minute la source et la checklist d’un terme rencontré en replay."),
+    ],
 }
-
-GLOSSARY_TERMS = [
-    ("Liquidité", "Zones où les ordres sont probablement concentrés : stops au-dessus des highs, stops sous les lows, niveaux évidents."),
-    ("BSL / SSL", "Buy-Side Liquidity au-dessus d’un high ; Sell-Side Liquidity sous un low. Ce sont des cibles possibles, pas des entrées."),
-    ("Sweep / Raid", "Dépassement d’un high ou low visible pour prendre la liquidité. On observe ensuite la réaction du prix."),
-    ("DOL", "Draw on Liquidity : cible de liquidité la plus logique dans le contexte actuel."),
-    ("Liquidité interne / externe", "Interne : cible proche dans la structure courante. Externe : high/low plus large qui peut devenir DOL principal."),
-    ("PDH / PDL", "Previous Day High / Low. Repères journaliers majeurs pour lire la liquidité et le biais."),
-    ("Displacement", "Mouvement impulsif qui montre une livraison rapide du prix, peu d’overlap, une rupture utile et un déséquilibre directionnel."),
-    ("FVG", "Fair Value Gap : zone créée par une livraison rapide. Elle devient utile seulement avec contexte, cible et invalidation."),
-    ("MSS", "Market Structure Shift : changement de structure après une prise de liquidité ou une rupture de contrôle."),
-    ("OB", "Order Block : dernière zone opposée avant une impulsion significative. Zone candidate, pas signal automatique."),
-    ("Breaker", "Ancien OB invalidé qui peut agir dans l’autre sens après changement de structure."),
-    ("PD Arrays", "Famille de zones de prix utiles en lecture ICT : OB, FVG, breaker, liquidité, premium/discount ou niveaux HTF. Elles doivent être priorisées."),
-    ("OTE", "Optimal Trade Entry : zone de retracement, généralement utilisée seulement si l’ancrage du mouvement est justifié."),
-    ("Dealing Range", "Range de référence utilisée pour lire premium/discount, ancrer un retracement et situer objectifs/invalidation."),
-    ("CE", "Consequent Encroachment : milieu d’une zone, souvent utilisé comme repère de précision ou de qualité."),
-    ("SMT", "Divergence entre deux marchés corrélés : l’un prend une liquidité, l’autre ne confirme pas. Confluence, pas entrée autonome."),
-    ("Profil de journée", "Lecture du comportement global d’une session : trend day, range day, reversal day, expansion/continuation ou no-trade."),
-    ("No Trade", "Décision active de ne pas entrer parce qu’une condition obligatoire manque : contexte, timing, target, risque ou état mental."),
-    ("Premium / Discount", "Position du prix dans une range. Acheter en discount et vendre en premium donne une meilleure logique contextuelle."),
-    ("Kill Zone", "Fenêtre horaire où l’on accepte de chercher certains setups. Hors timing, le même signal perd en qualité."),
-    ("Trend", "Environnement directionnel : impulsions plus fortes que corrections. Les pullbacks dans le sens du flux sont favorisés."),
-    ("Range", "Environnement d’équilibre relatif : rejet, absorption et faux breakouts sont plus fréquents."),
-    ("Transition", "Phase où le marché passe d’un équilibre à un déséquilibre, ou d’une tendance à une autre."),
-    ("Pullback", "Correction contre l’impulsion. Il est sain s’il respecte la structure et ne détruit pas le déplacement précédent."),
-    ("Failed breakout", "Cassure sans acceptation : le prix sort d’une zone puis réintègre rapidement la range."),
-    ("Edge", "Avantage mesurable sur échantillon. Un beau pattern ne devient un edge qu’après preuve statistique."),
-]
-
 
 def tag(soup, name, text=None, **attrs):
     item = soup.new_tag(name, **attrs)
@@ -296,6 +247,12 @@ def lesson_position(filename):
         if lesson["href"] == filename:
             return index, lesson
     return 0, LESSONS[0]
+
+
+def course_href(filename, target):
+    if filename == "index.html":
+        return "index.html" if target == "index.html" else f"pages/{target}"
+    return "../index.html" if target == "index.html" else target
 
 
 def rebuild_course_nav(soup, filename):
@@ -321,7 +278,11 @@ def rebuild_course_nav(soup, filename):
     glossary_link.append(tag(soup, "span", "Ouvrir sans quitter la leçon"))
     aside.append(glossary_link)
 
-    resources_link = soup.new_tag("a", href="ressources-pratiques.html", **{"class": "resources-nav-link"})
+    resources_link = soup.new_tag(
+        "a",
+        href=course_href(filename, "ressources-pratiques.html"),
+        **{"class": "resources-nav-link"},
+    )
     resources_link.append(tag(soup, "strong", "Ressources pratiques"))
     resources_link.append(tag(soup, "span", "Journal · Backtest · Checklist"))
     aside.append(resources_link)
@@ -338,7 +299,7 @@ def rebuild_course_nav(soup, filename):
         for local_index, (href, title) in enumerate(part["lessons"], 1):
             li_class = "course-lesson active" if href == filename else "course-lesson"
             li = tag(soup, "li", **{"class": li_class})
-            a = soup.new_tag("a", href=href)
+            a = soup.new_tag("a", href=course_href(filename, href))
             a.append(tag(soup, "span", f"{local_index}", **{"class": "lesson-bullet"}))
             text = tag(soup, "span", **{"class": "lesson-link-text"})
             text.append(tag(soup, "strong", title))
@@ -362,20 +323,23 @@ def rebuild_course_nav(soup, filename):
     old_panel = soup.find("div", class_="glossary-panel-shell")
     if old_panel:
         old_panel.decompose()
-    old_script = soup.find("script", src="glossary-panel.js")
-    if old_script:
+    for old_script in soup.find_all(
+        "script",
+        src=lambda value: value and value.endswith("glossary-panel.js"),
+    ):
         old_script.decompose()
     if soup.body:
         fab = soup.new_tag("button", type="button", **{"class": "glossary-fab", "aria-label": "Ouvrir le glossaire ICT"})
         fab["data-glossary-open"] = ""
         fab.string = "Glossaire"
         soup.body.append(fab)
-        soup.body.append(build_glossary_panel(soup))
-        script = soup.new_tag("script", src="glossary-panel.js", defer=True)
+        soup.body.append(build_glossary_panel(soup, filename))
+        script_src = "js/glossary-panel.js" if filename == "index.html" else "../js/glossary-panel.js"
+        script = soup.new_tag("script", src=script_src, defer=True)
         soup.body.append(script)
 
 
-def build_glossary_panel(soup):
+def build_glossary_panel(soup, filename):
     shell = tag(soup, "div", **{"class": "glossary-panel-shell", "aria-hidden": "true"})
     backdrop = tag(soup, "button", type="button", **{"class": "glossary-backdrop", "aria-label": "Fermer le glossaire"})
     backdrop["data-glossary-close"] = ""
@@ -411,16 +375,16 @@ def build_glossary_panel(soup):
 
     list_wrap = tag(soup, "div", **{"class": "glossary-list"})
     list_wrap["data-glossary-list"] = ""
-    for term, definition in GLOSSARY_TERMS:
-        item = tag(soup, "article", **{"class": "glossary-item"})
-        item["data-glossary-item"] = ""
-        item["data-glossary-text"] = f"{term} {definition}".lower()
-        item.append(tag(soup, "h3", term))
-        item.append(tag(soup, "p", definition))
-        list_wrap.append(item)
+    loading = tag(soup, "p", "Le glossaire sera chargé à sa première ouverture.", **{"class": "glossary-loading"})
+    loading["data-glossary-loading"] = ""
+    list_wrap.append(loading)
     panel.append(list_wrap)
 
-    full = soup.new_tag("a", href="glossaire.html", **{"class": "glossary-full-link"})
+    full = soup.new_tag(
+        "a",
+        href=course_href(filename, "glossaire.html"),
+        **{"class": "glossary-full-link"},
+    )
     full.string = "Ouvrir la page glossaire complète"
     panel.append(full)
     shell.append(panel)
@@ -457,14 +421,22 @@ def insert_lesson_header(soup, filename):
 
     pager = tag(soup, "nav", **{"class": "lesson-pager", "aria-label": "Navigation de leçon"})
     if previous_lesson:
-        prev = soup.new_tag("a", href=previous_lesson["href"], **{"class": "pager-link"})
+        prev = soup.new_tag(
+            "a",
+            href=course_href(filename, previous_lesson["href"]),
+            **{"class": "pager-link"},
+        )
         prev.append(tag(soup, "small", "Précédent"))
         prev.append(tag(soup, "span", previous_lesson["title"]))
         pager.append(prev)
     else:
         pager.append(tag(soup, "span", "Début du cours", **{"class": "pager-link disabled"}))
     if next_lesson:
-        nxt = soup.new_tag("a", href=next_lesson["href"], **{"class": "pager-link next"})
+        nxt = soup.new_tag(
+            "a",
+            href=course_href(filename, next_lesson["href"]),
+            **{"class": "pager-link next"},
+        )
         nxt.append(tag(soup, "small", "Suivant"))
         nxt.append(tag(soup, "span", next_lesson["title"]))
         pager.append(nxt)
@@ -480,15 +452,32 @@ def insert_lesson_header(soup, filename):
 
     bottom = tag(soup, "nav", **{"class": "lesson-bottom-nav", "aria-label": "Navigation finale de leçon"})
     if previous_lesson:
-        prev = soup.new_tag("a", href=previous_lesson["href"], **{"class": "bottom-link"})
+        prev = soup.new_tag(
+            "a",
+            href=course_href(filename, previous_lesson["href"]),
+            **{"class": "bottom-link"},
+        )
         prev.append(tag(soup, "small", "Revoir"))
         prev.append(tag(soup, "span", previous_lesson["title"]))
         bottom.append(prev)
     if next_lesson:
-        nxt = soup.new_tag("a", href=next_lesson["href"], **{"class": "bottom-link next"})
+        nxt = soup.new_tag(
+            "a",
+            href=course_href(filename, next_lesson["href"]),
+            **{"class": "bottom-link next"},
+        )
         nxt.append(tag(soup, "small", "Continuer"))
         nxt.append(tag(soup, "span", next_lesson["title"]))
         bottom.append(nxt)
+    else:
+        practice = soup.new_tag(
+            "a",
+            href=course_href(filename, "tableau-progression.html"),
+            **{"class": "bottom-link next", "data-course-completion-next": ""},
+        )
+        practice.append(tag(soup, "small", "Passer à la pratique"))
+        practice.append(tag(soup, "span", "Ouvrir le tableau de progression"))
+        bottom.append(practice)
     main.append(bottom)
 
 
@@ -523,7 +512,8 @@ def add_lesson_intro(soup, filename):
 
 
 def main():
-    for path in sorted(Path(".").glob("*.html")):
+    paths = [ROOT / "index.html", *sorted((ROOT / "pages").glob("*.html"))]
+    for path in paths:
         if path.name not in LESSON_BY_FILE:
             continue
         soup = BeautifulSoup(path.read_text(encoding="utf-8"), "html.parser")

@@ -1793,7 +1793,7 @@ button:focus-visible {
   --course-ink: #eef5ff;
   --course-text: #c8d5e7;
   --course-muted: #7f91a9;
-  --course-faint: #52657d;
+  --course-faint: #6b8098;
   --course-line: rgba(157, 179, 207, 0.16);
   --course-line-strong: rgba(157, 179, 207, 0.28);
   --course-accent: #f6aa1c;
@@ -5212,6 +5212,30 @@ pre {
 .roadmap-stages li[data-roadmap-stage="forward"] .roadmap-stage-number { background: #596d81; }
 .roadmap-stages li.is-unlocked .roadmap-stage-number { background: #f8c24e; }
 
+/* === V103 / END-TO-END JOURNEY === */
+.course-completion-gateway {
+  margin-top: 2rem;
+  padding: clamp(1.1rem, 3vw, 1.8rem);
+  background: linear-gradient(135deg, rgba(83, 214, 233, 0.1), rgba(248, 194, 78, 0.06)), #07131f;
+  border: 1px solid rgba(83, 214, 233, 0.38);
+  border-top: 4px solid #53d6e9;
+  border-radius: var(--course-radius);
+}
+.course-completion-gateway > small { color: #8ee5fa; font-size: 0.7rem; font-weight: 950; letter-spacing: 0.12em; }
+.course-completion-gateway h2 { margin: 0.45rem 0; color: var(--course-ink); }
+.course-completion-gateway > p { max-width: 52rem; color: var(--course-muted); }
+.course-completion-steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.7rem; margin: 1rem 0; }
+.course-completion-steps article { padding: 0.9rem; background: rgba(6, 16, 26, 0.78); border: 1px solid var(--course-line); }
+.course-completion-steps span { color: #f8c24e; font-size: 0.7rem; font-weight: 950; }
+.course-completion-steps strong { display: block; margin-top: 0.35rem; color: var(--course-ink); }
+.course-completion-actions { display: flex; flex-wrap: wrap; gap: 0.7rem; }
+.course-completion-actions a { padding: 0.75rem 0.9rem; color: #06111d; font-weight: 950; text-decoration: none; background: #53d6e9; border-radius: 0.35rem; }
+.course-completion-actions a:last-child { color: #d7e6f5; background: transparent; border: 1px solid #456077; }
+
+@media (max-width: 700px) {
+  .course-completion-steps { grid-template-columns: 1fr; }
+}
+
 .roadmap-stop-rule {
   display: grid;
   grid-template-columns: minmax(14rem, 0.55fr) minmax(0, 1fr);
@@ -6973,6 +6997,348 @@ svg .visual-invalidation-zone {
 
 .exam-chart::before { display: none; }
 
+/* V99 — editorial hierarchy for the three longest reference lessons. */
+:root {
+  --reading-essential: var(--visual-zone);
+  --reading-application: var(--visual-level);
+  --reading-reference: var(--visual-projection);
+}
+
+.lesson-reading-map {
+  display: grid;
+  gap: 1.15rem;
+  margin: 0 0 1.35rem;
+  padding: clamp(1.15rem, 3vw, 1.8rem);
+  overflow: hidden;
+  border: 1px solid color-mix(in oklab, var(--reading-essential) 26%, #21374b);
+  border-radius: 0.75rem;
+  background:
+    linear-gradient(90deg, color-mix(in oklab, var(--reading-essential) 42%, transparent) 1px, transparent 1px) 0 0 / 5.5rem 100%,
+    radial-gradient(circle at 92% -10%, color-mix(in oklab, var(--reading-essential) 13%, transparent), transparent 19rem),
+    #07131f;
+  box-shadow: 0 1.1rem 2.8rem rgba(0, 0, 0, 0.2);
+}
+
+.reading-map-intro { max-width: 54rem; }
+
+.reading-map-intro > span {
+  color: var(--reading-essential);
+  font-size: 0.65rem;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.reading-map-intro h2 {
+  margin: 0.4rem 0 0;
+  color: #edf7fb;
+  font-size: clamp(1.35rem, 3vw, 2rem);
+  line-height: 1.05;
+}
+
+.reading-map-intro p {
+  margin: 0.7rem 0 0;
+  color: #aabccc;
+  line-height: 1.6;
+}
+
+.reading-mode-control {
+  display: inline-grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  width: min(100%, 31rem);
+  padding: 0.22rem;
+  border: 1px solid #294359;
+  border-radius: 999px;
+  background: rgba(3, 11, 18, 0.72);
+}
+
+.reading-mode-control button {
+  min-height: 2.45rem;
+  padding: 0.5rem 0.85rem;
+  border: 0;
+  border-radius: 999px;
+  color: #91a7b9;
+  background: transparent;
+  font: 850 0.72rem/1 inherit;
+  cursor: pointer;
+}
+
+.reading-mode-control button:hover { color: #e5f3f8; }
+
+.reading-mode-control button:focus-visible,
+.reading-tier-link:focus-visible {
+  outline: 2px solid var(--reading-essential);
+  outline-offset: 3px;
+}
+
+.reading-mode-control button.is-active {
+  color: #061119;
+  background: var(--reading-essential);
+  box-shadow: 0 0.35rem 1.1rem color-mix(in oklab, var(--reading-essential) 22%, transparent);
+}
+
+.reading-tier-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.7rem;
+}
+
+.reading-tier-link {
+  --tier-accent: var(--reading-essential);
+  display: grid;
+  min-height: 8.1rem;
+  align-content: center;
+  gap: 0.32rem;
+  padding: 1rem 1rem 1rem 1.15rem;
+  border: 1px solid color-mix(in oklab, var(--tier-accent) 36%, #243a4b);
+  border-left: 0.22rem solid var(--tier-accent);
+  border-radius: 0.5rem;
+  color: inherit;
+  background: color-mix(in oklab, var(--tier-accent) 5%, #07131f);
+  text-decoration: none;
+  transition: border-color 160ms ease, background-color 160ms ease, transform 160ms ease;
+}
+
+.reading-tier-link.is-application { --tier-accent: var(--reading-application); }
+.reading-tier-link.is-reference { --tier-accent: var(--reading-reference); }
+
+.reading-tier-link:hover {
+  border-color: color-mix(in oklab, var(--tier-accent) 68%, #243a4b);
+  background: color-mix(in oklab, var(--tier-accent) 9%, #07131f);
+  transform: translateY(-2px);
+}
+
+.reading-tier-link small {
+  color: var(--tier-accent);
+  font-size: 0.58rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.reading-tier-link strong { color: #e8f1f5; font-size: 1rem; }
+.reading-tier-link span { color: #91a6b7; font-size: 0.75rem; line-height: 1.45; }
+
+.reading-mode-status {
+  margin: 0;
+  color: #8fa5b6;
+  font-size: 0.72rem;
+}
+
+.has-editorial-reading-map main.page > section[data-learning-tier] {
+  --tier-accent: var(--reading-reference);
+  scroll-margin-top: 1rem;
+}
+
+.has-editorial-reading-map main.page > section[data-learning-tier] > header {
+  border-top-color: color-mix(in oklab, var(--tier-accent) 72%, #22394d);
+}
+
+.has-editorial-reading-map main.page > section[data-learning-tier="essential"] {
+  --tier-accent: var(--reading-essential);
+}
+
+.has-editorial-reading-map main.page > section[data-learning-tier="application"] {
+  --tier-accent: var(--reading-application);
+}
+
+.has-editorial-reading-map main.page > section[data-learning-tier] > header::before {
+  flex: 0 0 auto;
+  align-self: center;
+  justify-self: start;
+  width: fit-content;
+  padding: 0.28rem 0.5rem;
+  border: 1px solid color-mix(in oklab, var(--tier-accent) 56%, transparent);
+  border-radius: 999px;
+  color: var(--tier-accent);
+  background: color-mix(in oklab, var(--tier-accent) 7%, transparent);
+  font-size: 0.52rem;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  content: "Approfondissement";
+}
+
+.has-editorial-reading-map main.page > section[data-learning-tier="essential"] > header::before {
+  content: "Essentiel";
+}
+
+.has-editorial-reading-map main.page > section[data-learning-tier="application"] > header::before {
+  content: "Application";
+}
+
+.has-editorial-reading-map main.page > section[data-learning-tier][hidden] { display: none !important; }
+
+/* V100 — compact prerequisites and a distinct role for lessons 03–06. */
+.setup-prerequisite-index {
+  max-width: 54rem;
+  margin: 0 0 4.2rem;
+  padding-top: 2.1rem;
+  border-top: 1px solid var(--reading-application);
+}
+
+.setup-prerequisite-index > header {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(16rem, 0.95fr);
+  gap: 1rem 2.2rem;
+  align-items: end;
+  margin-bottom: 1.2rem;
+}
+
+.setup-prerequisite-index > header span,
+.lesson-role-arc-head span {
+  color: var(--reading-application);
+  font-size: 0.62rem;
+  font-weight: 900;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.setup-prerequisite-index h2,
+.lesson-role-arc h2 {
+  margin: 0.4rem 0 0;
+  color: var(--course-ink);
+  font-size: clamp(1.45rem, 3vw, 2.15rem);
+  line-height: 1.08;
+}
+
+.setup-prerequisite-index > header p {
+  margin: 0;
+  color: var(--course-muted);
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+
+.prerequisite-matrix {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.6rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.prerequisite-matrix a {
+  display: grid;
+  min-height: 9.2rem;
+  align-content: start;
+  gap: 0.38rem;
+  padding: 1rem;
+  border: 1px solid var(--course-line);
+  border-radius: 0.45rem;
+  color: inherit;
+  background: color-mix(in oklab, var(--reading-application) 3%, var(--course-bg));
+  text-decoration: none;
+  transition: border-color 160ms ease, background-color 160ms ease, transform 160ms ease;
+}
+
+.prerequisite-matrix a:hover {
+  border-color: color-mix(in oklab, var(--reading-application) 68%, var(--course-line));
+  background: color-mix(in oklab, var(--reading-application) 7%, var(--course-bg));
+  transform: translateY(-2px);
+}
+
+.prerequisite-matrix a:focus-visible {
+  outline: 2px solid var(--reading-application);
+  outline-offset: 3px;
+}
+
+.prerequisite-matrix small {
+  color: var(--reading-application);
+  font-size: 0.56rem;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.prerequisite-matrix strong { color: var(--course-ink); font-size: 0.9rem; }
+.prerequisite-matrix span { color: var(--course-muted); font-size: 0.74rem; line-height: 1.5; }
+
+.prerequisite-gate {
+  margin: 0.85rem 0 0;
+  padding-left: 0.85rem;
+  border-left: 2px solid var(--reading-application);
+  color: var(--course-muted);
+  font-size: 0.8rem;
+  line-height: 1.55;
+}
+
+.prerequisite-gate strong { color: var(--reading-application); }
+
+.lesson-role-arc {
+  max-width: 54rem;
+  margin: 0 0 1.35rem;
+  padding: 1.2rem 0;
+  border-top: 1px solid var(--course-line);
+  border-bottom: 1px solid var(--course-line);
+}
+
+.lesson-role-arc-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.85rem;
+}
+
+.lesson-role-arc h2 { max-width: 24ch; font-size: 1.05rem; }
+
+.lesson-role-arc ol {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.45rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.lesson-role-arc a {
+  display: grid;
+  min-height: 6.8rem;
+  align-content: start;
+  gap: 0.24rem;
+  padding: 0.8rem;
+  border: 1px solid var(--course-line);
+  border-radius: 0.38rem;
+  color: inherit;
+  background: transparent;
+  text-decoration: none;
+}
+
+.lesson-role-arc a:hover { border-color: color-mix(in oklab, var(--reading-essential) 48%, var(--course-line)); }
+.lesson-role-arc a:focus-visible { outline: 2px solid var(--reading-essential); outline-offset: 3px; }
+
+.lesson-role-arc a.is-current {
+  border-color: color-mix(in oklab, var(--reading-essential) 72%, var(--course-line));
+  background: color-mix(in oklab, var(--reading-essential) 7%, transparent);
+  box-shadow: inset 0 0.16rem 0 var(--reading-essential);
+}
+
+.lesson-role-arc small {
+  color: var(--reading-essential);
+  font-size: 0.55rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+}
+
+.lesson-role-arc strong { color: var(--course-ink); font-size: 0.84rem; }
+.lesson-role-arc a span { color: var(--course-muted); font-size: 0.68rem; line-height: 1.4; }
+
+.card > header h2 .atlas-case-number {
+  display: block;
+  width: fit-content;
+  margin: 0 0 0.48rem;
+  padding: 0;
+  border: 0;
+  color: var(--reading-essential);
+  background: transparent;
+  font-size: 0.58rem;
+  font-weight: 900;
+  letter-spacing: 0.13em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
 @media (max-width: 40rem) {
   .academy-card > .table-like { table-layout: fixed; }
   .chart--concept { padding: 0.55rem; }
@@ -7010,8 +7376,105 @@ svg .visual-invalidation-zone {
     transform: translateX(50%) rotate(135deg);
   }
   .concept-comparison { grid-template-columns: 1fr; }
+
+  .lesson-reading-map { margin-inline: -0.15rem; padding: 1rem; }
+  .reading-mode-control { width: 100%; }
+  .reading-mode-control button { min-height: 2.65rem; padding-inline: 0.4rem; font-size: 0.66rem; }
+  .reading-tier-grid { grid-template-columns: 1fr; }
+  .reading-tier-link { min-height: 0; }
+  .has-editorial-reading-map main.page > section[data-learning-tier] > header::before { align-self: flex-start; }
+
+  .setup-prerequisite-index > header { grid-template-columns: 1fr; }
+  .prerequisite-matrix { grid-template-columns: 1fr; }
+  .prerequisite-matrix a { min-height: 0; }
+  .lesson-role-arc-head { display: grid; }
+  .lesson-role-arc ol { grid-template-columns: 1fr; }
+  .lesson-role-arc a { min-height: 0; }
+}
+
+@media (min-width: 40.01rem) and (max-width: 68rem) {
+  .prerequisite-matrix { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .lesson-role-arc ol { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .visual-pan-hint { scroll-behavior: auto; }
+}
+
+/* V101 — keyboard navigation, focus visibility and robust target sizes. */
+:root {
+  --a11y-focus: var(--course-accent-2);
+  --a11y-focus-halo: var(--course-bg-deep);
+}
+
+.skip-link {
+  position: fixed;
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: 10000;
+  min-height: 2.75rem;
+  padding: 0.72rem 1rem;
+  border: 2px solid var(--a11y-focus);
+  border-radius: 0.4rem;
+  color: var(--course-bg-deep);
+  background: var(--a11y-focus);
+  box-shadow: 0 0.8rem 2rem rgba(0, 0, 0, 0.42);
+  font-size: 0.82rem;
+  font-weight: 900;
+  text-decoration: none;
+  transform: translateY(calc(-100% - 1.5rem));
+  transition: transform 140ms ease;
+}
+
+.skip-link:focus { transform: translateY(0); }
+
+:where(a, button, input, select, textarea, summary, [tabindex]:not([tabindex="-1"])):focus-visible {
+  outline: 3px solid var(--a11y-focus) !important;
+  outline-offset: 3px !important;
+  box-shadow: 0 0 0 5px color-mix(in oklab, var(--a11y-focus-halo) 82%, transparent) !important;
+}
+
+main[tabindex="-1"]:focus { outline: none; }
+
+button:not(.glossary-term),
+summary,
+select,
+input[type="button"],
+input[type="submit"],
+input[type="reset"] {
+  min-height: 2.75rem;
+}
+
+.glossary-term {
+  min-width: 1.5rem;
+  min-height: 1.5rem;
+  padding-inline: 0.08rem;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+  min-width: 1.25rem;
+  min-height: 1.25rem;
+}
+
+.glossary-panel[tabindex="-1"]:focus { outline: none; }
+
+.glossary-loading {
+  margin: 0;
+  padding: 1rem;
+  color: var(--course-muted);
+  text-align: center;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skip-link { transition: none; }
+}
+
+@media (forced-colors: active) {
+  .skip-link,
+  :where(a, button, input, select, textarea, summary, [tabindex]:not([tabindex="-1"])):focus-visible {
+    border-color: CanvasText;
+    outline-color: Highlight !important;
+    box-shadow: none !important;
+  }
 }

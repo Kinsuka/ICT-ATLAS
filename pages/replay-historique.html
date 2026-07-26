@@ -1,11 +1,12 @@
 <!DOCTYPE html>
+
 <html lang="fr">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <title>ICT Atlas - Replay historique guidé</title>
 <link href="../css/style.css" rel="stylesheet"/>
-<script defer src="../js/historical-replay.js"></script>
+<script defer="" src="../js/historical-replay.js"></script>
 </head>
 <body>
 <div class="app-shell">
@@ -14,40 +15,31 @@
 <div class="course-nav-title"><span>V91</span><small>4 gels historiques</small></div>
 <div class="course-part">
 <div class="course-part-head"><span>Parcours</span><strong>Pratique</strong></div>
-<ol class="course-lessons">
-<li class="course-lesson"><a href="30-replay-lab.html"><span class="lesson-bullet">1</span><span class="lesson-link-text"><strong>Replay Lab</strong><small>Protocole</small></span></a></li>
-<li class="course-lesson"><a href="replay-cases.html#pack-six-cas"><span class="lesson-bullet">2</span><span class="lesson-link-text"><strong>Cas synthétiques</strong><small>Apprentissage guidé</small></span></a></li>
-<li class="course-lesson active"><a href="replay-historique.html"><span class="lesson-bullet">3</span><span class="lesson-link-text"><strong>Cas historiques</strong><small>Décision sans futur</small></span></a></li>
-<li class="course-lesson"><a href="examen-decision-session.html"><span class="lesson-bullet">4</span><span class="lesson-link-text"><strong>Examen</strong><small>12 décisions</small></span></a></li>
-<li class="course-lesson"><a href="programme-validation-20-sessions.html"><span class="lesson-bullet">5</span><span class="lesson-link-text"><strong>20 sessions</strong><small>Validation</small></span></a></li>
-</ol>
+<ol class="course-lessons"><li class="course-lesson"><a href="tableau-progression.html"><span class="lesson-bullet">1</span><span class="lesson-link-text"><strong>Tableau de progression</strong><small>Prochaine action</small></span></a></li><li class="course-lesson"><a href="replay-cases.html#pack-six-cas"><span class="lesson-bullet">2</span><span class="lesson-link-text"><strong>Cas et simulateurs</strong><small>Apprendre</small></span></a></li><li class="course-lesson"><a href="examen-decision-session.html"><span class="lesson-bullet">3</span><span class="lesson-link-text"><strong>Examen de décision</strong><small>10/12 minimum</small></span></a></li><li class="course-lesson"><a href="examen-dol-tp.html"><span class="lesson-bullet">4</span><span class="lesson-link-text"><strong>Examen DOL / TP</strong><small>16/18 minimum</small></span></a></li><li class="course-lesson active"><a href="replay-historique.html"><span class="lesson-bullet">5</span><span class="lesson-link-text"><strong>Replay historique</strong><small>12/16 minimum</small></span></a></li><li class="course-lesson"><a href="programme-validation-20-sessions.html"><span class="lesson-bullet">6</span><span class="lesson-link-text"><strong>20 sessions replay</strong><small>Valider</small></span></a></li></ol>
 </div>
 <div class="nav-help"><strong>Règle</strong><br/>Tu réponds avec les données visibles au gel. Le résultat futur ne peut pas corriger rétroactivement une mauvaise décision.</div>
 </aside>
-<main class="page historical-page" id="contenu" data-historical-lab>
+<main class="page historical-page" data-historical-lab="" id="contenu">
 <div class="hero historical-hero">
 <div class="historical-hero-code">V91 · DONNÉES EXCHANGE</div>
 <h1>Historical Decision Lab</h1>
 <p>Quatre séances réelles, gelées avant la suite. Identifie l’état du marché, la DOL, l’exécution et l’invalidation avant de révéler ce qui s’est réellement passé.</p>
 <div class="tagline"><span>BTC-USD</span><span>M15</span><span>UTC</span><span>Futur masqué</span></div>
 </div>
-
-<section class="historical-source-note" aria-label="Méthode et source des données">
+<section aria-label="Méthode et source des données" class="historical-source-note">
 <div><span>SOURCE PRIMAIRE</span><strong>Coinbase Exchange API</strong><p>OHLC historiques BTC-USD agrégés en bougies de 15 minutes. Les interprétations ICT et les corrections sont pédagogiques.</p></div>
 <div><span>FENÊTRE</span><strong>12:00 → 20:00 UTC</strong><p>Le graphique conserve la même amplitude temporelle ; la zone située après le gel reste opaque avant la soumission.</p></div>
 <div><span>LIMITE</span><strong>Ce n’est pas une preuve d’edge</strong><p>Quatre exemples expliquent un processus. Ils ne prouvent ni rentabilité, ni fréquence, ni résultat futur.</p></div>
 </section>
-
-<section class="historical-dashboard" aria-label="Progression des cas historiques">
+<section aria-label="Progression des cas historiques" class="historical-dashboard">
 <div class="historical-dashboard-copy"><small>TABLEAU DE BORD</small><h2>Lis d’abord. Décide ensuite. Révèle en dernier.</h2><p>Le score mesure la qualité du raisonnement attendu dans l’exercice, jamais la capacité à prédire chaque bougie.</p></div>
 <div class="historical-dashboard-metrics">
-<div><small>CAS CORRIGÉS</small><strong data-historical-completed>0 / 4</strong></div>
-<div><small>SCORE ACTUEL</small><strong data-historical-score>0 / 16</strong></div>
-<div><small>MEILLEUR BLOC</small><strong data-historical-best>0 / 16</strong></div>
+<div><small>CAS CORRIGÉS</small><strong data-historical-completed="">0 / 4</strong></div>
+<div><small>SCORE ACTUEL</small><strong data-historical-score="">0 / 16</strong></div>
+<div><small>MEILLEUR BLOC</small><strong data-historical-best="">0 / 16</strong></div>
 </div>
-<div class="historical-progress" data-historical-progressbar role="progressbar" aria-label="Cas historiques corrigés" aria-valuemin="0" aria-valuemax="4" aria-valuenow="0"><span data-historical-progress></span></div>
+<div aria-label="Cas historiques corrigés" aria-valuemax="4" aria-valuemin="0" aria-valuenow="0" class="historical-progress" data-historical-progressbar="" role="progressbar"><span data-historical-progress=""></span></div>
 </section>
-
 <section class="card historical-protocol" id="protocole-historique">
 <header><h2>Les quatre questions restent dans le même ordre</h2><span>Anti-paralysie</span></header>
 <div class="historical-protocol-grid">
@@ -58,9 +50,7 @@
 </div>
 <div class="rule-block"><strong>Ordre obligatoire :</strong> état → DOL → exécution → invalidation. Si une réponse manque, le bouton de révélation reste verrouillé.</div>
 </section>
-
-<div data-historical-cases></div>
-
+<div data-historical-cases=""></div>
 <section class="card historical-data-ledger" id="registre-donnees-v91">
 <header><h2>Registre vérifiable des quatre fenêtres</h2><span>Traçabilité</span></header>
 <p>Chaque lien ouvre la réponse brute de l’API utilisée pour construire le graphique. Coinbase précise que les historiques peuvent être incomplets lorsqu’aucun tick n’est publié ; les quatre fenêtres retenues contiennent ici une série M15 continue.</p>
@@ -77,13 +67,11 @@
 </div>
 <p class="historical-source-link">Documentation : <a href="https://docs.cdp.coinbase.com/api-reference/exchange-api/rest-api/products/get-product-candles">Coinbase Exchange — Get product candles</a>.</p>
 </section>
-
 <section class="historical-reset-panel">
 <div><small>REFAIRE LE BLOC</small><h2>Effacer les réponses de cet appareil</h2><p>Le reset demande deux clics et efface les choix, les scores et le meilleur bloc historique local.</p></div>
-<button data-historical-reset data-armed="false" type="button">Réinitialiser les quatre cas</button>
+<button data-armed="false" data-historical-reset="" type="button">Réinitialiser les quatre cas</button>
 </section>
-
-<nav aria-label="Navigation finale" class="lesson-bottom-nav"><a class="bottom-link" href="replay-cases.html#pack-six-cas"><small>Revoir</small><span>Cas synthétiques guidés</span></a><a class="bottom-link next" href="examen-decision-session.html"><small>Continuer</small><span>Examen de décision</span></a></nav>
+<nav aria-label="Navigation finale" class="lesson-bottom-nav"><a class="bottom-link" href="examen-dol-tp.html"><small>Revoir</small><span>Examen DOL / TP</span></a><a class="bottom-link next" href="programme-validation-20-sessions.html"><small>Étape suivante</small><span>Commencer les 20 sessions replay</span></a></nav>
 </main>
 </div>
 <script defer="" src="../js/glossary-panel.js"></script>
